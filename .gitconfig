@@ -1,0 +1,11 @@
+[user]
+	email = tuan-dat.tran@mailbox.org
+	name = TuDatTr
+[alias]
+	ls = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	gud = !git add * && git commit -m 
+	stat = status
+[core]
+	excludesfile = ~/.gitignore
+[http]
+	sslVerify = false
