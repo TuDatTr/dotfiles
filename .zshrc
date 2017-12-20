@@ -30,20 +30,11 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 POWERLEVEL9K_MODE='awesome-patched'
-export TERM="xterm-256color"
+# export TERM="xterm-256color" in case you are using urxvt, to bypass an error during sshing
+PATH=$PATH:~/.local/bin
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # User alias
 alias df="df -h"
