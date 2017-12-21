@@ -19,11 +19,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
+    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (elpy forest-blue-theme)))
+ '(package-selected-packages
+   (quote
+    (color-theme-sanityinc-solarized elpy forest-blue-theme)))
  '(pyvenv-activate "~/.virtualenv/default"))
 
  ;; https://github.com/Boruch-Baum
@@ -65,7 +68,7 @@
 
 (global-set-key (kbd "C-c C-w") 'my-cut-to-xclipboard)
 (global-set-key (kbd "C-c M-w") 'my-copy-to-xclipboard)
-(global-set-key (kbd "C-c C-y") 'my-paste-from-xclipboard)
+(global-set-key (kbd "C-c M-y") 'my-paste-from-xclipboard)
 
 (load-theme 'forest-blue t)
 (elpy-enable)
@@ -74,4 +77,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(diff-context ((t (:foreground "brightblack"))))
  '(highlight-indentation-face ((t (:inherit nil :background "brightblack")))))
