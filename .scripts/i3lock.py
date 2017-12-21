@@ -1,36 +1,42 @@
-import os
-from PIL import Image
 import datetime
+import os
+
+from PIL import Image
 
 
 def screenshot():
-    os.system('import -window root /tmp/.i3lock.png')
+    os.system('import -window root /tmp/i3lock.png')
 
 
 def pixelate():
     # backgroundColor = (0,)*3
     pixelSize = 9
 
-    image = Image.open('/tmp/.i3lock.png')
-    image_x, image_y = image.size
-    
-    image = image.resize((int(image_x/pixelSize), int(image_y/pixelSize)),
-                         Image.NEAREST)
-    image = image.resize((image_x*pixelSize, image_y*pixelSize),
-                         Image.NEAREST)
-#     pixel = image.load()
+    image = Image.open('/tmp/i3lock.png')
+    image_x = image.size[0]
+    image_y = image.size[1]
 
-#      for i in range(0,image.size[0],pixelSize):
-#          for j in range(0,image.size[1],pixelSize):
-#              for r in range(pixelSize):
-#                  pixel[i+r,j] = backgroundColor
-#                  pixel[i,j+r] = backgroundColor
+    image = image.resize((int(image_x / pixelSize), int(image_y / pixelSize)),
+                         Image.NEAREST)
 
-    image.save('/tmp/.i3lock.png')
+    image_x = image.size[0]
+    image_y = image.size[1]
+
+    image = image.resize((image_x * pixelSize, image_y * pixelSize),
+                         Image.NEAREST)
+# image.load()
+
+    #      for i in range(0,image.size[0],pixelSize):
+    #          for j in range(0,image.size[1],pixelSize):
+    #              for r in range(pixelSize):
+    #                  pixel[i+r,j] = backgroundColor
+    #                  pixel[i,j+r] = backgroundColor
+
+    image.save('/tmp/i3lock.png')
 
 
 def getResolution():
-    image = Image.open('/tmp/.i3lock.png')
+    image = Image.open('/tmp/i3lock.png')
     return image.size
 
 
@@ -46,11 +52,11 @@ def lock_config():
     res_y = int(res[1])
 
     # alignments
-    left_margin = int(res[0]/25)
-  
+    left_margin = int(res[0] / 25)
+
     # clock pos
     clock_x = left_margin
-    clock_y = int(res_y*(83/100))
+    clock_y = int(res_y * (83 / 100))
 
     date_x = left_margin
     date_y = clock_y + default_fontsize
@@ -61,7 +67,7 @@ def lock_config():
     clock = "{} {}".format(lock_clock_args, lock_clock_align)
     # time
     lock_time_pos = '--timepos="{}:{}"'.format(clock_x, clock_y)
-    lock_time_size = '--timesize={}'.format(default_fontsize*2)
+    lock_time_size = '--timesize={}'.format(default_fontsize * 2)
     time = "{} {}".format(lock_time_pos, lock_time_size)
     # date
     lock_date_pos = '--datepos="{}:{}"'.format(date_x, date_y)
@@ -78,8 +84,7 @@ def lock_config():
     lock_ver_color = '--insidevercolor 00000000 '
     # Color of the circle if wrong | Color: transparent
     lock_wrong_color = '--insidewrongcolor 00000000 '
-    indicator_inner = "{} {} {}".format(lock_rest_color,
-                                        lock_wrong_color,
+    indicator_inner = "{} {} {}".format(lock_rest_color, lock_wrong_color,
                                         lock_ver_color)
 
     # indicator_outer_ring
@@ -94,28 +99,21 @@ def lock_config():
     # Color on Deletion | Color: orange
     lock_del = '--bshlcolor D13400FF'
     # Color of seperator | Color: dark-blue
-    lock_sep_color = '--seperatorcolor 0000D1FF'
+    lock_sep_color = '--separatorcolor 0000D1FF'
 
-    indicator_outer_ring = "{} {} {} {} {} {}".format(lock_ring,
-                                                      lock_ring_w,
-                                                      lock_ring_v,
-                                                      lock_press,
-                                                      lock_del,
-                                                      lock_sep_color)
+    indicator_outer_ring = "{} {} {} {} {} {}".format(lock_ring, lock_ring_w,
+                                                      lock_ring_v, lock_press,
+                                                      lock_del, lock_sep_color)
     # done
     indicator = "{} {}".format(indicator_inner, indicator_outer_ring)
-  
+
     # background
-    lock_pic = '-i /tmp/.i3lock.png'
+    lock_pic = '-i /tmp/i3lock.png'
 
-    return "{} {} {} {} {}".format(lock_core,
-                                   clock,
-                                   datetime,
-                                   indicator,
-                                   lock_pic
-    )
+    return "{} {} {} {} {}".format(lock_core, clock, datetime, indicator,
+                                   lock_pic)
 
-  
+
 def log_command(command):
     write_mode = ''
     home = os.path.expanduser('~')
@@ -134,9 +132,9 @@ def log_command(command):
 def lock():
     'Locks the System'
     command = lock_config()
-  
+
     log_command(command)
-  
+
     os.system(command)
 
 
