@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: sectioning
+# key: secc
+# --
+\usepackage{titlesec}
+
+\titleformat{\section}{\huge\bfseries}{}{0em}{}[{\titlerule[0.4pt]}]
+\titleformat{\sectionsub}{\large\bfseries}{}{0em}{}[{\titlerule[0.4pt]}]
+

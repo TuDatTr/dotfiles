@@ -1,9 +1,3 @@
-;; load emacs 24's package system. Add MELPA repository.
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 (when (>= emacs-major-version 24)
@@ -26,7 +20,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-solarized elpy forest-blue-theme)))
+    (auctex color-theme-sanityinc-solarized elpy forest-blue-theme)))
  '(pyvenv-activate "~/.virtualenv/default")
  '(tex-run-command "pdflatex")
  '(texinfo-tex-command "pdflatex"))
@@ -75,7 +69,7 @@
 (load-theme 'forest-blue t)
 (elpy-enable)
 (setq TeX-PDF-mode t)
-(setq latex-run-command "pdflatex")
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -83,3 +77,10 @@
  ;; If there is more than one, they won't work right.
  '(diff-context ((t (:foreground "brightblack"))))
  '(highlight-indentation-face ((t (:inherit nil :background "brightblack")))))
+
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"                 ;; personal snippets
+        ))
+
+(yas-global-mode t)
+
