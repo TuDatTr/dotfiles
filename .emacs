@@ -27,7 +27,9 @@
  '(package-selected-packages
    (quote
     (color-theme-sanityinc-solarized elpy forest-blue-theme)))
- '(pyvenv-activate "~/.virtualenv/default"))
+ '(pyvenv-activate "~/.virtualenv/default")
+ '(tex-run-command "pdflatex")
+ '(texinfo-tex-command "pdflatex"))
 
  ;; https://github.com/Boruch-Baum
 (defun my-copy-to-xclipboard(arg)
@@ -72,6 +74,8 @@
 
 (load-theme 'forest-blue t)
 (elpy-enable)
+(setq TeX-PDF-mode t)
+(setq latex-run-command "pdflatex")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
