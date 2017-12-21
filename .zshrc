@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 POWERLEVEL9K_MODE='awesome-patched'
-# export TERM="xterm-256color" in case you are using urxvt, to bypass an error during sshing
+export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
 PATH=$PATH:~/.local/bin
 
 

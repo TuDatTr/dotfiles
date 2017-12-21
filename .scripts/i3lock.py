@@ -9,8 +9,7 @@ def screenshot():
 
 
 def pixelate():
-    # backgroundColor = (0,)*3
-    pixelSize = 9
+    pixelSize = 12
 
     image = Image.open('/tmp/i3lock.png')
     image_x = image.size[0]
@@ -24,13 +23,6 @@ def pixelate():
 
     image = image.resize((image_x * pixelSize, image_y * pixelSize),
                          Image.NEAREST)
-# image.load()
-
-    #      for i in range(0,image.size[0],pixelSize):
-    #          for j in range(0,image.size[1],pixelSize):
-    #              for r in range(pixelSize):
-    #                  pixel[i+r,j] = backgroundColor
-    #                  pixel[i,j+r] = backgroundColor
 
     image.save('/tmp/i3lock.png')
 
