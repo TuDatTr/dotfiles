@@ -1,5 +1,6 @@
 (package-initialize)
 
+;; Package Repos
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list
@@ -7,25 +8,11 @@
    ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
    '("melpa" . "http://melpa.milkbox.net/packages/")
    '("elpy" . "http://jorgenschaefer.github.io/packages/")
-   ))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
- '(custom-safe-themes
-   (quote
-    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-    (auctex color-theme-sanityinc-solarized elpy forest-blue-theme)))
- '(pyvenv-activate "~/.virtualenv/default")
- '(tex-run-command "pdflatex")
- '(texinfo-tex-command "pdflatex"))
+   )
+  )
 
- ;; https://github.com/Boruch-Baum
+;; Copy and Paste
+;; https://github.com/Boruch-Baum
 (defun my-copy-to-xclipboard(arg)
       (interactive "P")
       (cond
@@ -62,25 +49,52 @@
            ((= 16 opt) "s"))))
 	 (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 
-(global-set-key (kbd "C-c C-w") 'my-cut-to-xclipboard)
-(global-set-key (kbd "C-c M-w") 'my-copy-to-xclipboard)
-(global-set-key (kbd "C-c M-y") 'my-paste-from-xclipboard)
-
-(load-theme 'forest-blue t)
-(elpy-enable)
-(setq TeX-PDF-mode t)
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
+ '(global-font-lock-mode t)
+ '(package-selected-packages (quote (elpy auctex forest-blue-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(diff-context ((t (:foreground "brightblack"))))
- '(highlight-indentation-face ((t (:inherit nil :background "brightblack")))))
+ '(font-latex-bold-face ((t (:foreground "brightcyan"))))
+ '(font-latex-sedate-face ((t (:foreground "brightcyan"))))
+ '(font-lock-comment-face ((t (:foreground "color-142"))))
+ '(font-lock-keyword-face ((t (:foreground "brightcyan" :weight bold))))
+ '(font-lock-type-face ((t (:foreground "green")))))
 
+
+;; Startup
+;; Load Theme
+(load-theme 'forest-blue t)
+
+;; Python
+(elpy-enable)
+(defalias 'workon 'pyvenv-workon)
+(workon "~/.virtualenv/default")
+;; AUCTeX
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+;; Tex To PDF
+(require 'tex)
+(TeX-global-PDF-mode t)
+;; Yasnippet
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"                 ;; personal snippets
-        ))
+      '("~/.emacs.d/snippets"  ;; personal snippets/copied ones
+	)  
+      )
 
 (yas-global-mode t)
 
+;; Custom Keybinds
+(global-set-key (kbd "C-c C-w") 'my-cut-to-xclipboard)
+(global-set-key (kbd "C-c M-w") 'my-copy-to-xclipboard)
+(global-set-key (kbd "C-c M-y") 'my-paste-from-xclipboard)

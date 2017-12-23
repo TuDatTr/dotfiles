@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: fsrtable
+# key: fsrtable  
+# --
+Abstimmung
+\begin{tabular}{ccc}
+\toprule
+Ja & Nein & Enthaltung	\\\\\midrule
+3 & 1 & 9 \\\\\bottomrule
+\end{tabularx}		
