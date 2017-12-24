@@ -10,7 +10,7 @@
    '("elpy" . "http://jorgenschaefer.github.io/packages/")
    )
   )
-
+;; Functions
 ;; Copy and Paste
 ;; https://github.com/Boruch-Baum
 (defun my-copy-to-xclipboard(arg)
@@ -58,7 +58,7 @@
    (quote
     ("66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
  '(global-font-lock-mode t)
- '(package-selected-packages (quote (elpy auctex forest-blue-theme))))
+ '(package-selected-packages (quote (rainbow-mode elpy auctex forest-blue-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
