@@ -281,6 +281,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id nextcloud
 exec --no-startup-id ~/.scripts/dotfiles.sh
+exec --no-startup-id ~/.scripts/startup.sh
 
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
