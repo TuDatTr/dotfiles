@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/tuan/.oh-my-zsh
+export ZSH=/home/tuan/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -12,7 +12,7 @@ DISABLE_AUTO_TITLE="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
- HIST_STAMPS="yyyy.mm.dd"
+HIST_STAMPS="yyyy.mm.dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -25,19 +25,37 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
-POWERLEVEL9K_MODE='awesome-patched'
+#POWERLEVEL
+
+POWERLEVEL9K_MODE='awesome-fontconfig'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+
+POWERLEVEL9K_STATUS_OK_BACKGROUND="blue"
+POWERLEVEL9K_STATUS_OK_FOREGROUND="orange"
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND="blue"
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
+
+#POWERLEVEL9K_BATTERY_BACKGROUND="color6"
+#POWERLEVEL9K_BATTERY_DISCONNECTED="color6"
+#POWERLEVEL9K_BATTERY_STAGES="▁▂▃▄▅▆▇█"
+
+POWERLEVEL9K_TIME_BACKGROUND="black"
+POWERLEVEL9K_TIME_FOREGROUND="color7"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S} "
+
+# PATHS
 export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
 PATH=$PATH:~/.local/bin
-
-
-
 
 # User alias
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
 alias emacs="emacs -nw"
 alias rm="rm -i"
+
+
+source $ZSH/oh-my-zsh.sh
