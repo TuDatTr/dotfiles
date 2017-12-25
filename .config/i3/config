@@ -182,6 +182,7 @@ assign [class="Firefox"] $ws2
 assign [class="Spotify"] $ws4
 assign [class="Thunderbird"] $ws7
 assign [class="Keepassx2"] $ws8
+assign [class="Veracrypt"] $ws8
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -269,20 +270,19 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id "python ~/.scripts/i3lock.py"
 
 # Autostart applications
+exec --no-startup-id ~/.scripts/startup.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
+#exec --no-startup-id pamac-tray
 #609exec --no-startup-id clipit
 exec --no-startup-id start_conky_maia
-exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
 exec --no-startup-id nextcloud
 exec --no-startup-id ~/.scripts/dotfiles.sh
-exec --no-startup-id ~/.scripts/startup.sh
-
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
@@ -343,7 +343,7 @@ set $i3_color17         #0c0c0c
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	status_command ~/.conkyi3
+	status_command ~/.scripts/conkyi3
 	position top
 
 	font xft:Noto Sans 10.5
