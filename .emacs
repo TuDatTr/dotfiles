@@ -49,6 +49,13 @@
            ((= 16 opt) "s"))))
 	 (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 
+;; Latex
+(fset 'next-section
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+(fset 'prev-section
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+
+;; Theme
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,6 +74,7 @@
  '(font-latex-bold-face ((t (:foreground "brightcyan"))))
  '(font-latex-sedate-face ((t (:foreground "brightcyan"))))
  '(font-lock-comment-face ((t (:foreground "color-142"))))
+ '(font-lock-doc-face ((t (:foreground "color-242"))))
  '(font-lock-keyword-face ((t (:foreground "brightcyan" :weight bold))))
  '(font-lock-type-face ((t (:foreground "green")))))
 
@@ -83,6 +91,10 @@
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
+(eval-after-load 'latex
+  '(define-key LaTeX-mode-map (kbd "C-c n") 'next-section))
+(eval-after-load 'latex
+  '(define-key LaTeX-mode-map (kbd "C-c p") 'prev-section))
 ;; Tex To PDF
 (require 'tex)
 (TeX-global-PDF-mode t)
