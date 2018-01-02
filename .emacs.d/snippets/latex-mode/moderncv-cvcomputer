@@ -2,5 +2,5 @@
 # name: moderncv-cvcomputer
 # key: cvcomp
 # --
-\cvcomputer{${1:category}}{${2:programs}}{${3:category}}{${3:programs}}
+\cvcomputer{${1:category}}{${2:programs}}{${3:category}}{${4:programs}}
 $0

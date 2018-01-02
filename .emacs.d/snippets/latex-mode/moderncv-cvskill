@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: moderncv-cvskill
+# key: cvskill
+# --
+\cvitemwithcomment{${1:skill}}{\skill{${2:level}}}{${3:comment}}
+$0
