@@ -1,3 +1,5 @@
+;;; package --- summary
+;;; Code:
 (package-initialize)
 
 ;; Package Repos
@@ -10,6 +12,7 @@
    '("elpy" . "http://jorgenschaefer.github.io/packages/")
    )
   )
+;;; Commentary:
 ;; Functions
 ;; Copy and Paste
 ;; https://github.com/Boruch-Baum
@@ -49,6 +52,24 @@
            ((= 16 opt) "s"))))
 	 (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 
+
+(defun pyexec ()
+  "Execute the python program in an external terminal."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "termite --hold -e \"python " buffer-file-name "\""))
+    )
+  )
+
+(defun cppexec ()
+  "Execute the python program in an external terminal."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "termite -e \"g++ " buffer-file-name "\""))
+    (shell-command (concat "termite --hold -e \"./a.out\""))
+    )
+  )
+
 ;; Latex
 (fset 'next-section
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
@@ -64,8 +85,12 @@
  '(custom-safe-themes
    (quote
     ("66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
+ '(elpy-dedicated-shells t)
+ '(elpy-shell-display-buffer-after-send t)
  '(global-font-lock-mode t)
- '(package-selected-packages (quote (rainbow-mode elpy auctex forest-blue-theme))))
+ '(package-selected-packages
+   (quote
+    (auto-complete nyan-mode google-this dummyparens flycheck rainbow-mode elpy auctex forest-blue-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,20 +99,29 @@
  '(font-latex-bold-face ((t (:foreground "brightcyan"))))
  '(font-latex-sedate-face ((t (:foreground "brightcyan"))))
  '(font-lock-comment-face ((t (:foreground "color-142"))))
- '(font-lock-doc-face ((t (:foreground "color-242"))))
+ '(font-lock-doc-face ((t (:foreground "color-83"))))
  '(font-lock-keyword-face ((t (:foreground "brightcyan" :weight bold))))
- '(font-lock-type-face ((t (:foreground "green")))))
+ '(font-lock-type-face ((t (:foreground "green"))))
+ '(highlight-indentation-face ((t (:background "green")))))
 
 
 ;; Startup
 ;; Load Theme
 (load-theme 'forest-blue t)
-
+;; General stuff
+(show-paren-mode 1)
+(menu-bar-mode -1)
 ;; Python
 (elpy-enable)
 (defalias 'workon 'pyvenv-workon)
 (workon "~/.virtualenv/default")
-;; AUCTeX
+(eval-after-load 'elpy
+  '(define-key elpy-mode-map (kbd "C-c C-c") 'pyexec)
+  )
+;; C++
+(eval-after-load 'cc-mode
+  '(define-key c++-mode-map (kbd "C-c C-c") 'cppexec))
+;; LaTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -101,12 +135,27 @@
 ;; Yasnippet
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"  ;; personal snippets/copied ones
-	)  
+	)
       )
-
 (yas-global-mode t)
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;; dummyparents
+(eval-after-load "dummyparens-autoloads"
+  '(progn
+     (if (require 'dummyparens nil t)
+         (global-dummyparens-mode)
+       (warn "dummyparens not found"))))
+;; Google-this
+(google-this-mode 1)
+;; Nyan-Mode
+(nyan-mode 1)
 
 ;; Custom Keybinds
 (global-set-key (kbd "C-c C-w") 'my-cut-to-xclipboard)
 (global-set-key (kbd "C-c M-w") 'my-copy-to-xclipboard)
 (global-set-key (kbd "C-c M-y") 'my-paste-from-xclipboard)
+(global-set-key (kbd "C-x g") 'google-this-mode-submap)
+
+(provide '.emacs)
+;;; .emacs ends here

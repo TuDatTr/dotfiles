@@ -1,8 +1,8 @@
 # i3 config file (v4)
 
-#######################
-### System Settings ###
-#######################
+################################################################################################
+####################################### System Settings ########################################
+################################################################################################
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -12,13 +12,15 @@ floating_modifier $mod
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Sans 12
+# font xft:Noto Sans 12
 
-#######################
-### Window Settings ###
-#######################
+focus_follows_mouse no
+################################################################################################
+####################################### Window Settings ########################################
+################################################################################################
 
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
+# Configure
+# border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
 new_float normal
 hide_edge_borders none
@@ -35,95 +37,16 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
-# start a terminal
-bindsym $mod+Return exec terminal 
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-
-# Application Shortcuts
-bindsym $mod+F1 exec --no-startup-id ~/.scripts/dotfiles.sh
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec pcmanfm
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
-# bindsym $mod+t exec --no-startup-id pkill compton
-# bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-focus_follows_mouse no
-
-
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
-
-# toggle fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# toggle sticky
-bindsym $mod+Shift+s sticky toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-#navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+###################################### Workspace Settings ######################################
+################################################################################################
 
 # Workspace names
 set $ws1 ""
 set $ws2 ""
 set $ws3 ""
-set $ws4 ""
-set $ws5 "5"
-set $ws6 "6"
+set $ws4 ""
+set $ws5 ""
+set $ws6 ""
 set $ws7 ""
 set $ws8 ""
 
@@ -196,6 +119,107 @@ for_window [class="Xfburn"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+###############################################################################
+############################ Startup Applications #############################
+############################################################################### 
+exec --no-startup-id ~/.scripts/startup.sh
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id pamac-tray
+#exec --no-startup-id clipit
+exec --no-startup-id start_conky_maia
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
+exec --no-startup-id nextcloud
+exec --no-startup-id ~/.scripts/dotfiles.sh
+
+###############################################################################
+################################# Keybindings #################################
+###############################################################################
+
+# start a terminal
+bindsym $mod+Return exec terminal 
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start program launcher
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# launch categorized menu
+bindsym $mod+z exec --no-startup-id morc_menu
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Application Shortcuts
+bindsym $mod+F1 exec --no-startup-id ~/.scripts/dotfiles.sh
+bindsym $mod+b exec firefox
+bindsym $mod+e exec pcmanfm
+bindsym $mod+m exec thunderbird
+# bindsym $mod+t exec --no-startup-id pkill compton
+# bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# split orientation
+bindsym $mod+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+semicolon workspace next
+bindsym $mod+Ctrl+j workspace prev
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -203,7 +227,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
@@ -226,22 +250,13 @@ mode "$mode_system" {
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
         bindsym l resize shrink height 5 px or 5 ppt
         bindsym semicolon resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
         # exit resize mode: Enter or Escape
+	bindsym $mod+g mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -249,20 +264,8 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id "python ~/.scripts/i3lock.py"
 
-# Autostart applications
-exec --no-startup-id ~/.scripts/startup.sh
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id pamac-tray
-#609exec --no-startup-id clipit
-exec --no-startup-id start_conky_maia
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
-exec --no-startup-id nextcloud
-exec --no-startup-id ~/.scripts/dotfiles.sh
+# hide/unhide i3status bar
+bindsym $mod+Alt_L bar mode toggle
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
@@ -300,9 +303,6 @@ exec --no-startup-id ~/.scripts/dotfiles.sh
 # https://i3wm.org/dovs/userguide.html#variables
 # Changing the value of one of the variables will
 # effect all the areas with the same color.
-set $i3_background      #2b2c2b
-set $i3_text            #f9faf9
-set $i3_separator       #454947
 set $i3_color1          #f9faf9
 set $i3_color2          #595b5b
 set $i3_color3          #353836
@@ -326,40 +326,37 @@ bar {
 	status_command ~/.scripts/conkyi3
 	position top
 
-	font xft:Noto Sans 10.5
-# 	strip_workspace_numbers yes
+	font xft:Noto Sans 10
+#	strip_workspace_numbers yes
 
     colors {
-        separator  $i3_border
-	background $i3_background
-	statusline $i3_text
+        separator  $i3_color3
+	background $i3_color10
+	statusline $i3_color1
 	
 #				border		bground		text
-	focused_workspace	$i3_border	$i3_main	$i3_text
-	inactive_workspace	$i3_border	$i3_background	$i3_text
-	urgent_workspace	$i3_border	$i3_urgent	$i3_text
+	focused_workspace	$i3_color8	$i3_color4	$i3_color16
+	inactive_workspace	$i3_color8	$i3_color10	$i3_color16
+	urgent_workspace	$i3_color8	$i3_color4	$i3_color16
     }
 }
 
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
-
 # Theme colors
 # class                 border      backgr.     text        indic.      child_border
-client.focused          $i3_color8  $i3_color8  $i3_color11 $i3_color12
+client.focused          $i3_color4  $i3_color8  $i3_color11 $i3_color12
 client.focused_inactive $i3_color9  $i3_color9  $i3_color4  $i3_color10
 client.unfocused        $i3_color9  $i3_color9  $i3_color4  $i3_color10
 client.urgent           $i3_color13 $i3_color12 $i3_color4  $i3_color14
 client.placeholder      $i3_color15 $i3_color17 $i3_color16 $i3_color15 $i3_color17
 
-client.background       $i3_background
+client.background       $i3_color10
 
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 15
 gaps outer -4
 
 # Smart gaps (gaps used if only more than one container on the workspace)
@@ -378,6 +375,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
+	bindsym $mod+g mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -390,6 +388,7 @@ mode "$mode_gaps_inner" {
         bindsym Shift+minus gaps inner all minus 5
         bindsym Shift+0     gaps inner all set 0
 
+	bindsym $mod+g mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -402,6 +401,7 @@ mode "$mode_gaps_outer" {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
 
+	bindsym $mod+g mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }

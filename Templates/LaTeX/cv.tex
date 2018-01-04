@@ -1,0 +1,42 @@
+\documentclass[12pt,a4paper,sans]{moderncv}
+
+% -------------------------------------------------------------------------------
+% PACKAGES
+% -------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=1.5cm, margin=2.5cm]{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+% -------------------------------------------------------------------------------
+% COLORS
+% -------------------------------------------------------------------------------
+
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{blue}{HTML}{3970AB}
+\definecolor{gray}{HTML}{B9B9B9}
+\definecolor{mint}{HTML}{50B48A}
+
+% -------------------------------------------------------------------------------
+% NEW COMMANDS
+% -------------------------------------------------------------------------------
+
+\newcommand\skill[1]{ 
+  \begin{tikzpicture}
+    \foreach [count=\i] \x/\y in {#1}
+    {
+      \draw[fill=gray, gray] (0,\i) rectangle (\y,\i+0.4);
+      \draw[fill=white,mint](0,\i) rectangle (\x,\i+0.4);
+    }
+  \end{tikzpicture}
+}
+\newcommand{\givenskill}{}
+
+% -------------------------------------------------------------------------------
+% PERSONAL INFORMATION
+% -------------------------------------------------------------------------------
+
+\firstname{Tuan-Dat}
+\familyname{Tran}
+\email{tran.tuan-dat@mailbox.org}
+\social[github]{TuDatTr}
+% \quote{Be the change you  to see in the world}

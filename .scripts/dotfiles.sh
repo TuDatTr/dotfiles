@@ -1,18 +1,13 @@
 #!/bin/bash
-
+1;5002;0c
 # A script to manage my dotfiles and copy them to my git
 dotfiles=$HOME/workspace/Git/TuDatTr/dotfiles
 
 # -avv for debugging purposes
-# -v for normal use
+# -a for normal use
 copy(){
 #    rsync -avv $HOME/$1 $dotfiles/$1
     rsync -a $HOME/$1 $dotfiles/$1
-}
-
-# For Debugging purposes
-copy_test(){
-    echo rsync -avv $HOME/$1 $dotfiles/$1
 }
 
 # i3 gaps
@@ -44,7 +39,5 @@ printf "\nCopying emacs configs...\n"
 copy .emacs
 copy .emacs.d/
 
-
-
-
-
+# Latex templates
+copy Templates/

@@ -54,8 +54,10 @@ PATH=$PATH:~/.local/bin
 # User alias
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
+alias e="emacs"
 alias emacs="emacs -nw"
 alias rm="rm -i"
-
+alias dir="du -hd 1"
+alias hiss="history | grep"
 
 source $ZSH/oh-my-zsh.sh
