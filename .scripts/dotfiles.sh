@@ -37,7 +37,7 @@ copy .zshrc
 # printf "You must also add '~/.local/bin' to your path."
 printf "\nCopying emacs configs...\n"
 copy .emacs
-copy .emacs.d/
+copy .emacs.d/snippets/
 
 # Latex templates
 copy Templates/
