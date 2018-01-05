@@ -17,42 +17,42 @@
 ;; Copy and Paste
 ;; https://github.com/Boruch-Baum
 (defun my-copy-to-xclipboard(arg)
-      (interactive "P")
-      (cond
-       ((not (use-region-p))
-	 (message "Nothing to yank to X-clipboard"))
-        ((and (not (display-graphic-p))
-	      (/= 0 (shell-command-on-region
-		    (region-beginning) (region-end) "xsel -i -b")))
-	 (error "Is program `xsel' installed?"))
-        (t
-	 (when (display-graphic-p)
-            (call-interactively 'clipboard-kill-ring-save))
-          (message "Yanked region to X-clipboard")
-          (when arg
-            (kill-region  (region-beginning) (region-end)))
-          (deactivate-mark))))
-    
+  (interactive "P")
+  (cond
+   ((not (use-region-p))
+    (message "Nothing to yank to X-clipboard"))
+   ((and (not (display-graphic-p))
+	 (/= 0 (shell-command-on-region
+		(region-beginning) (region-end) "xsel -i -b")))
+    (error "Is program `xsel' installed?"))
+   (t
+    (when (display-graphic-p)
+      (call-interactively 'clipboard-kill-ring-save))
+    (message "Yanked region to X-clipboard")
+    (when arg
+      (kill-region  (region-beginning) (region-end)))
+    (deactivate-mark))))
+
 (defun my-cut-to-xclipboard()
-      (interactive)
-      (my-copy-to-xclipboard t))
-    
+  (interactive)
+  (my-copy-to-xclipboard t))
+
 (defun my-paste-from-xclipboard()
-      "Uses shell command `xsel -o' to paste from x-clipboard. With
+  "Uses shell command `xsel -o' to paste from x-clipboard. With
     one prefix arg, pastes from X-PRIMARY, and with two prefix args,
     pastes from X-SECONDARY."
-      (interactive)
-      (if (display-graphic-p)
-	  (clipboard-yank)
-	(let*
-	   ((opt (prefix-numeric-value current-prefix-arg))
-          (opt (cond
-		((=  1 opt) "b")
-           ((=  4 opt) "p")
-           ((= 16 opt) "s"))))
-	 (insert (shell-command-to-string (concat "xsel -o -" opt))))))
+  (interactive)
+  (if (display-graphic-p)
+      (clipboard-yank)
+    (let*
+	((opt (prefix-numeric-value current-prefix-arg))
+	 (opt (cond
+	       ((=  1 opt) "b")
+	       ((=  4 opt) "p")
+	       ((= 16 opt) "s"))))
+      (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 
-
+;; elpy-mode functions
 (defun pyexec ()
   "Execute the python program in an external terminal."
   (interactive)
@@ -60,7 +60,7 @@
     (shell-command (concat "termite --hold -e \"python " buffer-file-name "\""))
     )
   )
-
+;; CC-mode functions
 (defun cppexec ()
   "Execute the python program in an external terminal."
   (interactive)
@@ -69,11 +69,11 @@
     (shell-command (concat "termite --hold -e \"./a.out\""))
     )
   )
-;; Latex
+;; Latex-mode functions
 (fset 'next-section
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
 (fset 'prev-section
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
 
 ;; Theme
 (custom-set-variables
@@ -84,6 +84,11 @@
  '(custom-safe-themes
    (quote
     ("66881e95c0eda61d34aa7f08ebacf03319d37fe202d68ecf6a1dbfd49d664bc3" default)))
+ '(dp-pairs
+   (quote
+    (("(" ")" nil)
+     ("[" "]" nil)
+     ("{" "}" dp-brace-post-handler))))
  '(elpy-dedicated-shells t)
  '(elpy-shell-display-buffer-after-send t)
  '(global-font-lock-mode t)
@@ -107,9 +112,7 @@
 ;; Startup
 ;; Load Theme
 (load-theme 'forest-blue t)
-;; General stuff
-(show-paren-mode 1)
-(menu-bar-mode -1)
+
 ;; Python
 (elpy-enable)
 (defalias 'workon 'pyvenv-workon)
@@ -117,10 +120,13 @@
 (eval-after-load 'elpy
   '(define-key elpy-mode-map (kbd "C-c C-c") 'pyexec)
   )
+
 ;; C++
 (eval-after-load 'cc-mode
   '(define-key c++-mode-map (kbd "C-c C-c") 'cppexec))
+
 ;; LaTeX
+(require 'tex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -128,27 +134,23 @@
   '(define-key LaTeX-mode-map (kbd "C-c n") 'next-section))
 (eval-after-load 'latex
   '(define-key LaTeX-mode-map (kbd "C-c p") 'prev-section))
-;; Tex To PDF
-(require 'tex)
-(TeX-global-PDF-mode t)
+
 ;; Yasnippet
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"  ;; personal snippets/copied ones
 	)
       )
-(yas-global-mode t)
-;; flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-;; dummyparents
-(eval-after-load "dummyparens-autoloads"
-  '(progn
-     (if (require 'dummyparens nil t)
-         (global-dummyparens-mode)
-       (warn "dummyparens not found"))))
-;; Google-this
+
+
+;; Modes
+(show-paren-mode 1)
+(menu-bar-mode -1)
 (google-this-mode 1)
-;; Nyan-Mode
 (nyan-mode 1)
+(TeX-global-PDF-mode t)
+(yas-global-mode t)
+(global-dummyparens-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Custom Keybinds
 (global-set-key (kbd "C-c C-w") 'my-cut-to-xclipboard)
