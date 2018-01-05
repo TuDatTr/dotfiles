@@ -69,7 +69,6 @@
     (shell-command (concat "termite --hold -e \"./a.out\""))
     )
   )
-
 ;; Latex
 (fset 'next-section
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
