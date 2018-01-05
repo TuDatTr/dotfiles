@@ -1,4 +1,24 @@
 ;;; package --- summary
+;; auctex -- installed -- Integrated environment for *TeX*
+;; dummyparents -- installed -- paranthesis auto-pairing and wrapping
+;; elpy -- installed -- Emacs Python Development Environment
+;; flycheck -- installed -- On-the-fly syntax checking
+;; forest-blue-theme -- installed -- Emacs theme with a dark background
+;; google-this -- installed -- A set of functions and bindings to google under point
+;; nyan-mode -- installed -- Nyan Cat shows position in current buffer in mode-line.
+;; rainbow-mode -- installed -- Colorize color names in buffers
+;; company -- dependency -- Modular text completion framework
+;; dash -- dependency -- A modern list library for Emacs
+;; epl -- dependency -- Emacs Package Library
+;; find-file-in-project -- dependency -- Find file/directory for review Diff/Patch/Commit efficiently everywhere
+;; highlight-indentation -- dependency -- Minor modes for highlight indentation
+;; ivy -- dependency -- Incremental Vertical completYon
+;; pkg-info -- dependency -- Information about packages
+;; popup -- dependency -- Visual Popup User Interface
+;; pyvenv -- dependency -- Python virtual environment interface
+;; s -- dependency -- The long lost Emacs string manipulation library.
+;; yasnippet -- dependency -- Yet another snippet extension for Emacs.
+
 ;;; Code:
 (package-initialize)
 
@@ -7,15 +27,15 @@
   (require 'package)
   (add-to-list
    'package-archives
-   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   ; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
    '("melpa" . "http://melpa.milkbox.net/packages/")
    '("elpy" . "http://jorgenschaefer.github.io/packages/")
    )
   )
-;;; Commentary:
-;; Functions
-;; Copy and Paste
-;; https://github.com/Boruch-Baum
+;; Global functions
+
+; Copy and Paste
+; https://github.com/Boruch-Baum
 (defun my-copy-to-xclipboard(arg)
   (interactive "P")
   (cond
@@ -52,29 +72,6 @@
 	       ((= 16 opt) "s"))))
       (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 
-;; elpy-mode functions
-(defun pyexec ()
-  "Execute the python program in an external terminal."
-  (interactive)
-  (when buffer-file-name
-    (shell-command (concat "termite --hold -e \"python " buffer-file-name "\""))
-    )
-  )
-;; CC-mode functions
-(defun cppexec ()
-  "Execute the python program in an external terminal."
-  (interactive)
-  (when buffer-file-name
-    (shell-command (concat "termite -e \"g++ " buffer-file-name "\""))
-    (shell-command (concat "termite --hold -e \"./a.out\""))
-    )
-  )
-;; Latex-mode functions
-(fset 'next-section
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
-(fset 'prev-section
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
-
 ;; Theme
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -109,38 +106,49 @@
  '(highlight-indentation-face ((t (:background "green")))))
 
 
-;; Startup
-;; Load Theme
+;; Functions:
+; Load Theme
 (load-theme 'forest-blue t)
 
-;; Python
+; Python
 (elpy-enable)
 (defalias 'workon 'pyvenv-workon)
 (workon "~/.virtualenv/default")
-(eval-after-load 'elpy
-  '(define-key elpy-mode-map (kbd "C-c C-c") 'pyexec)
+
+(defun pyexec ()
+  "Execute the python program in an external terminal."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "termite --hold -e \"python " buffer-file-name "\""))
+    )
   )
 
-;; C++
-(eval-after-load 'cc-mode
-  '(define-key c++-mode-map (kbd "C-c C-c") 'cppexec))
+; C++
+(defun cppexec ()
+  "Execute the cpp program in an external terminal."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "termite -e \"g++ " buffer-file-name "\""))
+    (shell-command (concat "termite --hold -e \"./a.out\""))
+    )
+  )
 
-;; LaTeX
+; LaTeX
 (require 'tex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
-(eval-after-load 'latex
-  '(define-key LaTeX-mode-map (kbd "C-c n") 'next-section))
-(eval-after-load 'latex
-  '(define-key LaTeX-mode-map (kbd "C-c p") 'prev-section))
 
-;; Yasnippet
+(fset 'next-section
+      (lambda (&optional arg) "Next section." (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+(fset 'prev-section
+      (lambda (&optional arg) "Previous section" (interactive "p") (kmacro-exec-ring-item (quote ("\\sec" 0 "%d")) arg)))
+
+; Yasnippet
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"  ;; personal snippets/copied ones
 	)
       )
-
 
 ;; Modes
 (show-paren-mode 1)
@@ -157,6 +165,17 @@
 (global-set-key (kbd "C-c M-w") 'my-copy-to-xclipboard)
 (global-set-key (kbd "C-c M-y") 'my-paste-from-xclipboard)
 (global-set-key (kbd "C-x g") 'google-this-mode-submap)
+(eval-after-load 'latex
+  '(define-key LaTeX-mode-map (kbd "C-c n") 'next-section))
+(eval-after-load 'latex
+  '(define-key LaTeX-mode-map (kbd "C-c p") 'prev-section))
+(eval-after-load 'cc-mode
+  '(define-key c++-mode-map (kbd "C-c C-c") 'cppexec))
+(eval-after-load 'elpy
+  '(define-key elpy-mode-map (kbd "C-c C-c") 'pyexec)
+  )
+
+;;; Commentary:
 
 (provide '.emacs)
 ;;; .emacs ends here

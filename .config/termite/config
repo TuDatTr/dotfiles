@@ -1,4 +1,4 @@
-x[options]
+[options]
 #allow_bold = true
 #audible_bell = false
 #clickable_url = true
