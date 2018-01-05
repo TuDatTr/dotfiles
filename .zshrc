@@ -22,7 +22,11 @@ HIST_STAMPS="yyyy.mm.dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+    git
+    history
+    sudo
+    wd
+    web-search
 )
 
 # User configuration
@@ -55,13 +59,12 @@ PATH=$PATH:~/.local/bin
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
 alias e="emacs"
+alias nyan="nyancat"
 alias emacs="emacs -nw"
 alias rm="rm -i"
 alias dir="du -hd 1"
-alias hiss="history | grep"
 alias -s tex=emacs
 alias -s cpp=emacs
-alias -s py=emacs
 
 source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)
