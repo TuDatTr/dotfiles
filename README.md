@@ -1,4 +1,4 @@
-![shrug](https://i.imgur.com/QgBRNwy.png "shrug")
+![shrug](https://i.imgur.com/ZvJveuJ.png "shrug")
 # dotfiles
 These are my personal dotfiles.
 I'm using:
