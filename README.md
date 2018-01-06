@@ -59,6 +59,7 @@ M-x package-install rainbow-mode
 You can browse some more packages by entering this `M-x package-list-packages` in emacs.
 
 If you're using elpy you might want to do this.
+
 ```pip install --user ~/dotfiles/requirements.txt```
 
 ### Setups
@@ -66,7 +67,7 @@ Setting up some programs.
 #### Installing Nextcloud-Client
 ```
 wget https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-2.3.3-x86_64.AppImage -o ~/Downloads/
-chmod +x ~Downloads/Nextcloud-2.3.3-x86_64.AppImage
+chmod +x ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage
 sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 ```
 
@@ -78,3 +79,11 @@ rm -rf .i3/
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 ```
 
+# Author
+* Tuan-Dat Tran - [TuDatTr](https://github.com/tudattr/)
+
+# License
+This project is license under the GPL-3.0 License - see LICENSE file for details.
+
+# Acknowledgements
+* [unixporn - the home for *NIX customization!](https://www.reddit.com/r/unixporn/)
