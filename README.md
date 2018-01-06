@@ -1,4 +1,5 @@
-# dotfiles ![shrug](https://nextcloud.mos4.de/apps/theming/logo?v=5 "shrug")
+![shrug](https://nextcloud.mos4.de/apps/theming/logo?v=5 "shrug")
+# dotfiles
 These are my personal dotfiles.
 I'm using:
 * [Manjaro i3](https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/)
@@ -8,7 +9,7 @@ I'm using:
 1. Make a proper pip requirements.txt for elpy and .scripts/i3lock.py
 2. Making an own conky, conky_maia-like
 3. Adding common keybindings of Emacs, i3 and aliases of zsh
-4. Improve the README.md
+4. Improve the README.md or maybe make a wiki.
 
 ## Getting Started
 
