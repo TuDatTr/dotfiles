@@ -1,6 +1,6 @@
 ;;; package --- summary
 ;; auctex -- installed -- Integrated environment for *TeX*
-;; dummyparents -- installed -- paranthesis auto-pairing and wrapping
+;; dummyparens -- installed -- paranthesis auto-pairing and wrapping
 ;; elpy -- installed -- Emacs Python Development Environment
 ;; flycheck -- installed -- On-the-fly syntax checking
 ;; forest-blue-theme -- installed -- Emacs theme with a dark background

@@ -1,5 +1,7 @@
 #!/bin/bash
-1;5002;0c
+
+notify-send "Copying files..."
+
 # A script to manage my dotfiles and copy them to my git
 dotfiles=$HOME/workspace/Git/TuDatTr/dotfiles
 
@@ -31,6 +33,7 @@ copy .scripts/
 # zsh
 printf "\nCopying zsh configs...\n"
 copy .zshrc
+copy .warprc
 
 # Emacs
 # printf "For Emacs (with elpy) following python modules are needed: jedi rope importmagic autopep8 yapf flake8"
