@@ -1,6 +1,7 @@
 #Using Manjaro i3
 chsh -s /bin/zsh
 rm -rf ~/.*bash*
+sudo pacman -Syu
 sudo pacman -S emacs git zsh-theme-powerline9k powerline powerline-fonts
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/
