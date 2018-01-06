@@ -1,11 +1,22 @@
-#Using Manjaro i3
+# Using Manjaro i3
 chsh -s /bin/zsh
 rm -rf ~/.*bash*
 sudo pacman -Syu
-sudo pacman -S emacs git zsh-theme-powerline9k powerline powerline-fonts
+sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts
+yaourt -S i3lock-color
+pip install --user ~/dotfiles/requirements.txt
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/
-mv ~/.oh-my-zsh/themes/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
+cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
 git clone https://github.com/TuDatTr/dotfiles
 cp -r ./dotfiles .
 rm -rf .i3/
+
+# In Emacs
+M-x package-install auctex
+M-x package-install dummyparens
+M-x package-install elpy
+M-x package-install flycheck
+M-x package-install forest-blue-theme
+M-x package-install google-this
+M-x package-install nyan-mode
+M-x package-install rainbow-mode
