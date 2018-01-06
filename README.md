@@ -1,4 +1,4 @@
-![shrug](https://nextcloud.mos4.de/apps/theming/logo?v=5 "shrug")
+![shrug](https://i.imgur.com/QgBRNwy.png "shrug")
 # dotfiles
 These are my personal dotfiles.
 I'm using:
