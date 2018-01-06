@@ -1,5 +1,4 @@
-![shrug](https://i.imgur.com/ZvJveuJ.png "shrug")
-# dotfiles
+# dotfiles  ┐【￣～￣】┌
 These are my personal dotfiles.
 I'm using:
 * [Manjaro i3](https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/)
