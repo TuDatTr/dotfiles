@@ -1,4 +1,4 @@
-# dotfiles  ┐【￣～￣】┌
+# dotfiles       ┐【￣～￣】┌
 These are my personal dotfiles.
 I'm using:
 * [Manjaro i3](https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/)
@@ -75,7 +75,7 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 ```
 git clone https://github.com/TuDatTr/dotfiles
 cp -r ./dotfiles .
-rm -rf .i3/
+rm -rf ~/.i3/
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 ```
 
