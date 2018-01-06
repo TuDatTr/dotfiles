@@ -1,0 +1,9 @@
+#Using Manjaro i3
+chsh -s /bin/zsh
+rm -rf ~/.*bash*
+sudo pacman -S emacs git zsh-theme-powerline9k powerline powerline-fonts
+cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/
+mv ~/.oh-my-zsh/themes/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
+git clone https://github.com/TuDatTr/dotfiles
+cp -r ./dotfiles .
+rm -rf .i3/
