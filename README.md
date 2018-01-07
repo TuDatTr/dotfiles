@@ -2,6 +2,7 @@
 These are my personal dotfiles.
 I'm using:
 * [Manjaro i3](https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/)
+* [i3-gaps](https://github.com/Airblader/i3)
 * [GNU Emacs](https://www.gnu.org/software/emacs/)
 * [Z shell](http://zsh.sourceforge.net)
 * [Oh My Zsh](http://ohmyz.sh)
@@ -11,6 +12,7 @@ I'm using:
 2. Making an own conky, conky_maia-like
 3. Adding common keybindings of Emacs, i3 and aliases of zsh
 4. Improve the README.md or maybe make a wiki.
+5. Getting away from Manjaro i3 (?)
 
 ## Getting Started
 

@@ -21,11 +21,6 @@ copy .config/i3/
 printf "\nCopying Termite configs...\n"
 copy .config/termite/
 
-# Git
-printf "\nCopying Git configs...\n"
-copy .gitignore
-copy .gitconfig
-
 # Scripts
 printf "\nCopying Scripts...\n"
 copy .scripts/
