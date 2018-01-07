@@ -17,6 +17,8 @@ I'm using:
 ## Getting Started
 
 ### Prerequisites
+
+Pacman Install
 * [emacs](https://wiki.archlinux.org/index.php/Emacs) - A extensible, cusotmizable, free/libre text editor - and more.
 * [git](https://wiki.archlinux.org/index.php/git) - A free and open source distributed version control system.
 * [python-pip](https://pip.pypa.io/en/stable) - pip to install python packages (**p**ip **i**nstalls **p**ackages)
@@ -30,17 +32,25 @@ I'm using:
 * [veracrypt](https://veracrypt.codeplex.com) - (optional) A free disk encryption software based on TrueCrypt.
 * [keepassx2](https://keepass.info) - (optional) A free, open source, light-weight and easy-to-use password manager.
 * [evince](https://wiki.archlinux.org/index.php/GNOME/Document_viewer) - (optional, needed if you want to use auctex) pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin).  
+* [xorg-backlight](https://wiki.archlinux.org/index.php/backlight)
+* [pulseaudio-alsa](https://wiki.archlinux.org/index.php/PulseAudio) - (recommended)
+* [pulseaudio-bluetooth](https://wiki.archlinux.org/index.php/PulseAudio) - (recommended)
+* [nyancat](http://www.nyan.cat/) - (optional)
+* [cmus](https://wiki.archlinux.org/index.php/Cmus) - (optional) cli 
 
+Pacman Remove
 * [palemoon-bin](https://www.palemoon.org) - Not needed anymore, if you use Firefox.
 * [epdfview](https://github.com/jristz/epdfview) - Not needed anymore, if you use evince.
 
+Yaourt Install
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - Needed for ~/.scripts/i3lock.py
+* [cli-visualizer](https://github.com/dpayne/cli-visualizer) - Command line visualizer.
 
 ```
 sudo pacman -Syu
-sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2
-sudo pacman -R palemoon-bin
-yaourt -S i3lock-color
+sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus
+sudo pacman -R palemoon-bin epdfview
+yaourt -S i3lock-color cli-visualizer
 ```
 
 ### Setting up zsh
