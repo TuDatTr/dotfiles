@@ -13,25 +13,27 @@ I'm using:
 ## Getting Started
 
 ### Prerequisites
-* emacs
-* git 
-* python-pip
-* texlive-most 
-* firefox - Install whatever you like, but you might need to change it up in the .config/i3/config.
-* thunderbird - Install whatever you like, but you might need to change it up in the .config/i3/config.
-* termite - Prefered terminal emulator, since urxvt can't handle powerline well.
-* powerline-fonts - Powerline fonts for the Powerlevel9k-theme
-* awesome-terminal-fonts - Font with cool icons. Necessary for powerlevel9k.
-* zsh-theme-powerlevel9k - Powerlevel9k-theme for zsh
-* evince - pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin)
+* [https://wiki.archlinux.org/index.php/Emacs](Emacs) - A extensible, cusotmizable, free/libre text editor - and more.
+* [https://wiki.archlinux.org/index.php/git](git) - A free and open source distributed version control system.
+* [https://pip.pypa.io/en/stable](python-pip) - pip to install python packages (**p**ip **i**nstalls **p**ackages)
+* [https://wiki.archlinux.org/index.php/TeX_Live]texlive-most - A high-quality typesetting system.
+* [https://www.mozilla.org/en-US/firefox](firefox) - (optional) Install whatever you like, but you might need to change it up in the .config/i3/config.
+* [https://www.mozilla.org/en-US/thunderbird](thunderbird) - (optional)Install whatever you like, but you might need to change it up in the .config/i3/config.
+* [https://veracrypt.codeplex.com](veracrypt) - A free disk encryption software based on TrueCrypt.
+* [keepass.info](keepassx2) - A free, open source, light-weight and easy-to-use password manager.
+* [https://wiki.archlinux.org/index.php/termite](termite) - Prefered terminal emulator, since urxvt can't handle powerline well.
+* [https://github.com/powerline/fonts](powerline-fonts) - Powerline fonts for the Powerlevel9k-theme.
+* [https://github.com/gabrielelana/awesome-terminal-fonts](awesome-terminal-fonts) - Font with cool icons. Necessary for powerlevel9k.
+* [https://github.com/bhilburn/powerlevel9k](zsh-theme-powerlevel9k) - Powerlevel9k-theme for zsh.
+* [https://wiki.archlinux.org/index.php/GNOME/Document_viewer](evince) - pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin).
 
-* palemoon-bin - Not needed anymore, if you got Firefox.
+* [https://www.palemoon.org](palemoon-bin) - Not needed anymore, if you got Firefox.
 
-* i3lock-color - Needed for ~/.scripts/i3lock.py
+* [https://github.com/PandorasFox/i3lock-color](i3lock-color) - Needed for ~/.scripts/i3lock.py
 
 ```
 sudo pacman -Syu
-sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince
+sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2
 sudo pacman -R palemoon-bin
 yaourt -S i3lock-color
 ```
@@ -60,7 +62,7 @@ This enables simple package installation.
 ```
 
 Afterwards you can do this, to get some neat packages.  
-More information on the following packages can be found inside of my .emacs file.  
+More information on the following packages can be found inside of my **.emacs** file.  
 Open emacs and do the following:  
 (M = \<Alt\>/\<Meta\>)
 ```
@@ -78,7 +80,7 @@ You can browse some more packages by entering this `M-x package-list-packages` i
 
 ### Setups
 Setting up some programs.
-#### Installing Nextcloud-Client
+#### Installing Nextcloud-Client (optional)
 ```
 wget https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-2.3.3-x86_64.AppImage --P ~/Downloads/
 chmod +x ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage
