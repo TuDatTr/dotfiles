@@ -3,6 +3,8 @@ These are my personal dotfiles.
 I'm using:
 * [Manjaro i3](https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/)
 * [GNU Emacs](https://www.gnu.org/software/emacs/)
+* [Z shell](http://zsh.sourceforge.net)
+* [Oh My Zsh](http://ohmyz.sh)
 
 ## TODOS:
 1. Make a proper pip requirements.txt for elpy and .scripts/i3lock.py
