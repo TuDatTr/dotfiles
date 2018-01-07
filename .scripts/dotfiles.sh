@@ -1,7 +1,5 @@
 #!/bin/bash
 
-notify-send "Copying files..."
-
 # A script to manage my dotfiles and copy them to my git
 dotfiles=$HOME/workspace/Git/TuDatTr/dotfiles
 
@@ -11,6 +9,8 @@ copy(){
 #    rsync -avv $HOME/$1 $dotfiles/$1
     rsync -a $HOME/$1 $dotfiles/$1
 }
+
+notify-send "Copied dotfiles."
 
 # i3 gaps
 # Powerline fonts must be installed
