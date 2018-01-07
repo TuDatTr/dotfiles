@@ -16,18 +16,19 @@ I'm using:
 * [emacs](https://wiki.archlinux.org/index.php/Emacs) - A extensible, cusotmizable, free/libre text editor - and more.
 * [git](https://wiki.archlinux.org/index.php/git) - A free and open source distributed version control system.
 * [python-pip](https://pip.pypa.io/en/stable) - pip to install python packages (**p**ip **i**nstalls **p**ackages)
-* [texlive-most](https://wiki.archlinux.org/index.php/TeX_Live) - (optional)A high-quality typesetting system.
-* [firefox](https://www.mozilla.org/en-US/firefox) - (optional) Install whatever you like, but you might need to change it up in the .config/i3/config.
-* [thunderbid](https://www.mozilla.org/en-US/thunderbird) - (optional)Install whatever you like, but you might need to change it up in the .config/i3/config.
-* [veracrypt](https://veracrypt.codeplex.com) - A free disk encryption software based on TrueCrypt.
-* [keepassx2](keepass.info) - A free, open source, light-weight and easy-to-use password manager.
-* [termite][https://wiki.archlinux.org/index.php/termite) - Prefered terminal emulator, since urxvt can't handle powerline well.
+* [termite](https://wiki.archlinux.org/index.php/termite) - Prefered terminal emulator, since urxvt can't handle powerline well.
 * [powerline-fonts](https://github.com/powerline/fonts) - Powerline fonts for the Powerlevel9k-theme.
 * [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts) - Font with cool icons. Necessary for powerlevel9k.
 * [zsh-theme-powerlevel9k](https://github.com/bhilburn/powerlevel9k) - Powerlevel9k-theme for zsh.
-* [evince](https://wiki.archlinux.org/index.php/GNOME/Document_viewer) - pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin).
+* [texlive-most](https://wiki.archlinux.org/index.php/TeX_Live) - (optional)A high-quality typesetting system.
+* [firefox](https://www.mozilla.org/en-US/firefox) - (optional) Install whatever you like, but you might need to change it up in the .config/i3/config.
+* [thunderbid](https://www.mozilla.org/en-US/thunderbird) - (optional) Install whatever you like, but you might need to change it up in the .config/i3/config.
+* [veracrypt](https://veracrypt.codeplex.com) - (optional) A free disk encryption software based on TrueCrypt.
+* [keepassx2](https://keepass.info) - (optional) A free, open source, light-weight and easy-to-use password manager.
+* [evince](https://wiki.archlinux.org/index.php/GNOME/Document_viewer) - (optional, needed if you want to use auctex) pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin).  
 
-* [palemoon-bin](https://www.palemoon.org) - Not needed anymore, if you got Firefox.
+* [palemoon-bin](https://www.palemoon.org) - Not needed anymore, if you use Firefox.
+* [epdfview](https://github.com/jristz/epdfview) - Not needed anymore, if you use evince.
 
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - Needed for ~/.scripts/i3lock.py
 
