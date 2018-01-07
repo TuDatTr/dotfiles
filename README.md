@@ -21,7 +21,7 @@ I'm using:
 * thunderbird - Install whatever you like, but you might need to change it up in the .config/i3/config.
 * termite - Prefered terminal emulator, since urxvt can't handle powerline well.
 * powerline-fonts - Powerline fonts for the Powerlevel9k-theme
-* awesome-terminal-fonts - Font to display cool icons like: , ,  or . Necessary for powerlevel9k.
+* awesome-terminal-fonts - Font with cool icons. Necessary for powerlevel9k.
 * zsh-theme-powerlevel9k - Powerlevel9k-theme for zsh
 * evince - pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin)
 
@@ -36,7 +36,7 @@ sudo pacman -R palemoon-bin
 yaourt -S i3lock-color
 ```
 
-### Setting up zsh as default shell.
+### Setting up zsh
 ```
 chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  # Downloading/Installing oh-my-zsh
@@ -44,8 +44,8 @@ cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k  # copy
 rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if you wanna keep using bash
 ```
 
-### For Emacs
-If you have a clean emacs installation you need to add the following snippet to your ~/.emacs file first.
+### Setting up Emacs
+If you have a clean emacs installation, you need to add the following snippet to your ~/.emacs file first.  
 This enables simple package installation.
 ```
 (package-initialize)
@@ -59,10 +59,10 @@ This enables simple package installation.
   )
 ```
 
-Afterwards you can do this, to get some neat packages.
-More information on the following packages can be found inside of my .emacs file.
-Open emacs and do the following:
-(M = <Alt>/<Meta>)
+Afterwards you can do this, to get some neat packages.  
+More information on the following packages can be found inside of my .emacs file.  
+Open emacs and do the following:  
+(M = \<Alt\>/\<Meta\>)
 ```
 M-x package-install auctex
 M-x package-install dummyparens
