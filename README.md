@@ -6,11 +6,12 @@ I'm using:
 * [GNU Emacs](https://www.gnu.org/software/emacs/)
 * [Z shell](http://zsh.sourceforge.net)
 * [Oh My Zsh](http://ohmyz.sh)
-* [GNU stow](https://www.gnu.org/software/stow
+* [GNU stow](https://www.gnu.org/software/stow)
 
 ## TODOS:
 1. Update this README for the migration to GNU stow and emacs prelude
 2. Making an own conky, conky_maia-like
+..*[conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
 3. Sorting the "Prerequisites" by importance
 4. Improve the README.md or maybe make a wiki.
 5. Getting away from Manjaro i3 (?)
