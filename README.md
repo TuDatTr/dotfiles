@@ -6,11 +6,12 @@ I'm using:
 * [GNU Emacs](https://www.gnu.org/software/emacs/)
 * [Z shell](http://zsh.sourceforge.net)
 * [Oh My Zsh](http://ohmyz.sh)
+* [GNU stow](https://www.gnu.org/software/stow
 
 ## TODOS:
-1. Make a proper pip requirements.txt for elpy and .scripts/i3lock.py
+1. Update this README for the migration to GNU stow and emacs prelude
 2. Making an own conky, conky_maia-like
-3. Adding common keybindings of Emacs, i3 and aliases of zsh
+3. Sorting the "Prerequisites" by importance
 4. Improve the README.md or maybe make a wiki.
 5. Getting away from Manjaro i3 (?)
 
@@ -37,6 +38,7 @@ Pacman Install
 * [pulseaudio-bluetooth](https://wiki.archlinux.org/index.php/PulseAudio) - (recommended)
 * [nyancat](http://www.nyan.cat/) - (optional)
 * [cmus](https://wiki.archlinux.org/index.php/Cmus) - (optional) cli 
+* [stow](https://www.gnu.org/software/stow/) - To manage dotfiles
 
 Pacman Remove
 * [palemoon-bin](https://www.palemoon.org) - Not needed anymore, if you use Firefox.
@@ -104,8 +106,8 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 
 #### Finally *"installing"* the dotfiles.
 ```
-git clone https://github.com/TuDatTr/dotfiles
-cp -r ./dotfiles/.* ~/.
+git clone https://github.com/TuDatTr/dotfiles .dotfiles
+stow 
 rm -rf ~/.i3/
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 ```
