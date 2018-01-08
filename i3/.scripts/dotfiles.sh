@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A script to manage my dotfiles and copy them to my git
-dotfiles=$HOME/workspace/Git/TuDatTr/dotfiles
+dotfiles=$HOME/.dotfiles
 
 # -avv for debugging purposes
 # -a for normal use
