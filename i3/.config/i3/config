@@ -135,6 +135,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
 exec --no-startup-id nextcloud
+exec --no-startup-id emacs --daemon
 
 ###############################################################################
 ################################# Keybindings #################################

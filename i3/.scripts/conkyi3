@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "{\"version\":1}"
 echo "[[]"
-exec conky -c /home/tuan/.scripts/conkyrc
+exec conky -c ~/.scripts/conkyrc

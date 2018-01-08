@@ -58,9 +58,8 @@ PATH=$PATH:~/.local/bin
 # User alias
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
-alias e="emacs"
+alias e="emacsclient -t"
 alias nyan="nyancat"
-alias emacs="emacs -nw"
 alias rm="rm -i"
 alias dir="du -hd 1"
 alias -s tex=emacs

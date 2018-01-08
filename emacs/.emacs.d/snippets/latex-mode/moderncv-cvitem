@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: moderncv-cvitem
-# key: cvi
-# --
-\cvitem{${1:item}}{}
-$0
