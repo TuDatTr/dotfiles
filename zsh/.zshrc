@@ -62,7 +62,6 @@ alias e="emacsclient -t"
 alias nyan="nyancat"
 alias rm="rm -i"
 alias dir="du -h -d 1"
-alias gcsm="git commit -S -m"
 alias -s tex=emacs
 alias -s cpp=emacs
 

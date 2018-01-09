@@ -11,7 +11,7 @@ I'm using:
 ## TODOS: ##
 1. Update this README for the migration to GNU stow and emacs prelude
 2. Making an own conky, conky_maia-like
-..*[conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
+..* [conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
 3. Sorting the "Prerequisites" by importance
 4. Improve the README.md or maybe make a wiki.
 5. Getting away from Manjaro i3 (?)
