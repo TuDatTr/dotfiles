@@ -1,1 +1,3 @@
-../.dotfiles/emacs/.emacs.d/.projectile
+/elpa
+/savefile
+/.cask

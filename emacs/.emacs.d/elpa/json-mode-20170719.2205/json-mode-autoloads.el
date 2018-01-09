@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "json-mode" "json-mode.el" (23122 58446 548492
-;;;;;;  43000))
+;;;### (autoloads nil "json-mode" "json-mode.el" (23124 14387 428933
+;;;;;;  928000))
 ;;; Generated autoloads from json-mode.el
 
 (defconst json-mode-standard-file-ext '(".json" ".jsonld") "\

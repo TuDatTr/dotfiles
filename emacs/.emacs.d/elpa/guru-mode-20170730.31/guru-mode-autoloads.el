@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "guru-mode" "guru-mode.el" (23122 58412 744920
-;;;;;;  55000))
+;;;### (autoloads nil "guru-mode" "guru-mode.el" (23124 14359 795468
+;;;;;;  795000))
 ;;; Generated autoloads from guru-mode.el
 
 (autoload 'guru-mode "guru-mode" "\

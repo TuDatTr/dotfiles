@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "ov" "ov.el" (23122 58413 548642 716000))
+;;;### (autoloads nil "ov" "ov.el" (23124 14360 665472 895000))
 ;;; Generated autoloads from ov.el
 
 (autoload 'ov-clear "ov" "\

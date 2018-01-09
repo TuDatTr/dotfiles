@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "editorconfig" "editorconfig.el" (23122 58400
-;;;;;;  22368 445000))
+;;;### (autoloads nil "editorconfig" "editorconfig.el" (23124 14349
+;;;;;;  225418 981000))
 ;;; Generated autoloads from editorconfig.el
 
 (autoload 'editorconfig-find-current-editorconfig "editorconfig" "\
@@ -45,7 +45,7 @@ mode is not listed in `editorconfig-exclude-modes'.
 ;;;***
 
 ;;;### (autoloads nil "editorconfig-conf-mode" "editorconfig-conf-mode.el"
-;;;;;;  (23122 58400 5701 696000))
+;;;;;;  (23124 14349 205418 887000))
 ;;; Generated autoloads from editorconfig-conf-mode.el
 
 (autoload 'editorconfig-conf-mode "editorconfig-conf-mode" "\
@@ -58,7 +58,7 @@ Major mode for editing .editorconfig files.
 ;;;***
 
 ;;;### (autoloads nil "editorconfig-core" "editorconfig-core.el"
-;;;;;;  (23122 58399 999034 996000))
+;;;;;;  (23124 14349 198752 189000))
 ;;; Generated autoloads from editorconfig-core.el
 
 (autoload 'editorconfig-core-get-nearest-editorconfig "editorconfig-core" "\
@@ -91,7 +91,7 @@ hash object instead.
 ;;;***
 
 ;;;### (autoloads nil "editorconfig-fnmatch" "editorconfig-fnmatch.el"
-;;;;;;  (23122 58399 989034 947000))
+;;;;;;  (23124 14349 188752 142000))
 ;;; Generated autoloads from editorconfig-fnmatch.el
 
 (autoload 'editorconfig-fnmatch-p "editorconfig-fnmatch" "\
@@ -115,7 +115,7 @@ be used:
 ;;;***
 
 ;;;### (autoloads nil nil ("editorconfig-core-handle.el" "editorconfig-pkg.el")
-;;;;;;  (23122 58400 29035 145000))
+;;;;;;  (23124 14349 235419 28000))
 
 ;;;***
 

@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "geiser" "geiser.el" (23122 58448 295449 580000))
+;;;### (autoloads nil "geiser" "geiser.el" (23124 14388 708940 75000))
 ;;; Generated autoloads from geiser.el
 
 (defconst geiser-elisp-dir (file-name-directory load-file-name) "\
@@ -113,7 +113,7 @@ Disable Geiser's mode (useful in Scheme buffers)." t)
 ;;;;;;  "geiser-log.el" "geiser-menu.el" "geiser-mit.el" "geiser-mode.el"
 ;;;;;;  "geiser-pkg.el" "geiser-popup.el" "geiser-racket.el" "geiser-reload.el"
 ;;;;;;  "geiser-repl.el" "geiser-syntax.el" "geiser-table.el" "geiser-version.el"
-;;;;;;  "geiser-xref.el") (23122 58448 658841 405000))
+;;;;;;  "geiser-xref.el") (23124 14389 55608 407000))
 
 ;;;***
 

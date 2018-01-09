@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "makey" "makey.el" (23122 58396 899019 650000))
+;;;### (autoloads nil "makey" "makey.el" (23124 14346 532072 955000))
 ;;; Generated autoloads from makey.el
 
 (autoload 'makey-initialize-key-groups "makey" "\
