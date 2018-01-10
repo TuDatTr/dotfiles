@@ -64,6 +64,6 @@ alias rm="rm -i"
 alias dir="du -h -d 1"
 alias -s tex=emacs
 alias -s cpp=emacs
-
+alias org="e ~/Nextcloud/orgs/man.org"
 source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)
