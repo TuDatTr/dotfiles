@@ -1,57 +1,204 @@
-* Emacs Configuration
+#+TITLE: Emacs configure
+#+AUTHOR: Tuan-Dat Tran
+#+DATE: <2018-01-11 Do>
+#+EMAIL: tran.tuan-dat@mailbox.org
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:t todo:t |:t
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
 
+* Packages
+** Installed packages:
+- aggressive-indent  
+- anaconda-mode      
+- auctex             
+- dash               
+- eclim              
+- epl                
+- f                  
+- flycheck           
+- forest-blue-theme  
+- google-this        
+- highlight-indentation
+- ivy                
+- ox-twbs            
+- pkg-info           
+- popup              
+- pythonic           
+- rainbow-delimiters 
+- rainbow-mode       
+- s                  
+- smartparens        
+- yasnippet          
+
+** Package Archives
+Adding the melpa package repository to Emacs.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 (add-to-list 'package-archives 
-             '("melpa" . "https://melpa.org/packages/")
-)
+    '("melpa" . "http://melpa.org/packages/"))
 #+END_SRC
-
-** Theme
+* Themes
+Using the [[https://github.com/olkinn/forest-blue-emacs][Forest Blue]]-Theme.
+I chose this theme, since it natively uses "unspecified-bg".
 #+BEGIN_SRC emacs-lisp
-;; Add themes inside "~/.emacs.d/themes/" to loaded themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'forest-blue t)
 #+END_SRC
 
-*** customize-theme
+* Functions
+** Cut/Copy and Paste by Boruch Baum
+*** Copy
+Copy the marked area to the clipboard.
 #+BEGIN_SRC emacs-lisp
-(custom-set-faces
- '(font-latex-bold-face ((t (:foreground "brightcyan"))))
- '(font-latex-sedate-face ((t (:foreground "brightcyan"))))
- '(font-lock-comment-face ((t (:foreground "color-142"))))
- '(font-lock-doc-face ((t (:foreground "color-83"))))
- '(font-lock-keyword-face ((t (:foreground "brightcyan" :weight bold))))
- '(font-lock-type-face ((t (:foreground "green"))))
- '(highlight-indentation-face ((t (:background "green")))))
-
+(defun copy-to-xclipboard(arg)
+  (interactive "P")
+  (cond
+   ((not (use-region-p))
+    (message "Nothing to yank to X-clipboard"))
+   ((and (not (display-graphic-p))
+	 (/= 0 (shell-command-on-region
+		(region-beginning) (region-end) "xsel -i -b")))
+    (error "Is program `xsel' installed?"))
+   (t
+    (when (display-graphic-p)
+      (call-interactively 'clipboard-kill-ring-save))
+    (message "Yanked region to X-clipboard")
+    (deactivate-mark))))
 #+END_SRC
 
-** Own functions
+*** Cut
+Cut the marked area to the clipboard.
 #+BEGIN_SRC emacs-lisp
-
+(defun cut-to-xclipboard(arg)
+  (interactive "P")
+  (cond
+   ((not (use-region-p))
+    (message "Nothing to yank to X-clipboard"))
+   ((and (not (display-graphic-p))
+	 (/= 0 (shell-command-on-region
+		(region-beginning) (region-end) "xsel -i -b")))
+    (error "Is program `xsel' installed?"))
+   (t
+    (when (display-graphic-p)
+    (call-interactively 'clipboard-kill-ring-save))
+    (message "Yanked region to X-clipboard")
+    (kill-region  (region-beginning) (region-end))
+    (deactivate-mark))))
 #+END_SRC
-** Keybindings
 
-** Plugins
-
-*** Smartparens
+*** Paste
+Paste from the clipboard.
 #+BEGIN_SRC emacs-lisp
-(require 'smartparens-config)
+(defun paste-from-xclipboard()
+  "Uses shell command `xsel -o' to paste from x-clipboard. With
+    one prefix arg, pastes from X-PRIMARY, and with two prefix args,
+    pastes from X-SECONDARY."
+  (interactive)
+  (if (display-graphic-p)
+      (clipboard-yank)
+    (let*
+	((opt (prefix-numeric-value current-prefix-arg))
+	 (opt (cond
+	       ((=  1 opt) "b")
+	       ((=  4 opt) "p")
+	       ((= 16 opt) "s"))))
+      (insert (shell-command-to-string (concat "xsel -o -" opt))))))
 #+END_SRC
 
-*** LaTeX/AuCeX
+** Personal functions
+Go back to indentation, if you are at the indentation, go to beginning of the line instead.
+#+BEGIN_SRC emacs-lisp
+  (defun back-to-indentation-or-beginning () 
+  "Go back to indentation, if at indentation go to beginning of line"
+  (interactive)
+   (if (= (point) (progn (back-to-indentation) (point)))
+       (beginning-of-line)))
+#+END_SRC
+* Mode customisation
+** Window Modes
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+#+END_SRC
+
+** Python
+#+BEGIN_SRC emacs-lisp
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+#+END_SRC
+** LaTeX
 #+BEGIN_SRC emacs-lisp
 (require 'tex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(setq TeX-close-quote "")
-(setq TeX-open-quote "")
-(setq-default TeX-Master nil) 
+(setq-default TeX-master nil)
 #+END_SRC
 
-** Mode-Hooks
+** Org
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 'smartparens-strict-mode)
+(require 'ox-twbs)
 #+END_SRC
-   
+
+Use Evince as default pdf viewer.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook
+      '(lambda ()
+         (delete '("\\.pdf\\'" . default) org-file-apps)
+         (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))))
+#+END_SRC
+
+Activate Syntax Highlighting in Org-mode.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 
+      '(lambda () 
+         (setq org-src-fontify-natively t)))
+
+#+END_SRC
+
+Add rainbow-delimiters in org-mode
+(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+** Ivy
+#+BEGIN_SRC emacs-lisp
+(ivy-mode 1)
+#+END_SRC
+** Parenthesis
+#+BEGIN_SRC emacs-lisp
+(require 'paren)
+(setq show-paren-style 'parenthesis)
+(show-paren-mode +1)
+#+END_SRC
+** Highlight line
+Globaly highlight the current line in a slightly darker shade of grey.
+#+BEGIN_SRC emacs-lisp
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#333333")
+(set-face-foreground 'highlight nil)
+#+END_SRC
+** Yasnippet
+#+BEGIN_SRC emacs-lisp
+(require 'yasnippet)
+(setq yas-snippet-dirs
+  '("~/.emacs.d/snippets/"))
+(yas-global-mode 1)
+#+END_SRC
+
+** Personal mode
+#+BEGIN_SRC emacs-lisp
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-a") 'back-to-indentation-or-beginning)
+    (define-key map (kbd "C-c M-w") 'copy-to-xclipboard)
+    (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
+    (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)
+#+END_SRC
