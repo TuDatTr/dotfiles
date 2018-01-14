@@ -7,7 +7,7 @@ I'm using:
 * [Z shell](http://zsh.sourceforge.net)
 * [Oh My Zsh](http://ohmyz.sh)
 * [GNU stow](https://www.gnu.org/software/stow)
-
+* [Materia Theme](https://github.com/nana-4/materia-theme)
 ## TODOS: ##
 1. Update this README for the migration to GNU stow and clemacs
 2. Making an own conky, conky_maia-like
@@ -17,6 +17,7 @@ I'm using:
 5. Getting away from Manjaro i3 (?)
 6. Emacs Markdown preview is buggy, find another way
 7. Make this my main branch
+8. Maybe convert this readme into emacs org mode
 
 ## Getting Started ##
 
@@ -44,6 +45,7 @@ Pacman Install
 * [stow](https://www.gnu.org/software/stow/) - To manage dotfiles
 * [aspell-en]() - Language for flycheck
 * [aspell-de]() -Language for flycheck
+* [lxappearance](https://lxde.org) - Feature-rich GTK+ theme switcher of the LXDE Desktop
 
 Pacman Remove
 * [palemoon-bin](https://www.palemoon.org) - Not needed anymore, if you use Firefox.
@@ -52,12 +54,12 @@ Pacman Remove
 Yaourt Install
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - Needed for ~/.scripts/i3lock.py
 * [cava](https://github.com/karlstav/cava) - **C**onsole-based **A**udio **V**isualizer for **A**LSA (MPD and Pulseaudio)
-
+* [materia-theme](https://github.com/nana-4/materia-theme)
 ``` shell
 sudo pacman -Syu
-sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus
+sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus lxappearance
 sudo pacman -R palemoon-bin epdfview
-yaourt -S i3lock-color cava
+yaourt -S i3lock-color cava materia-theme
 ```
 
 ### Setting up zsh ###
