@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Template of polls for FS
+# key: fspoll
+# --
+\begin{tabular}{ccc}
+  \toprule
+  Ja & Nein & Enthaltung \\\\
+  \midrule
+  3 & 1 & 9 \\\\
+  \bottomrule
+\end{tabular}	

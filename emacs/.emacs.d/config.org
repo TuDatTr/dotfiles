@@ -11,43 +11,68 @@
 #+SELECT_TAGS: export
 
 * Packages
-** Installed packages:
-- aggressive-indent  
-- anaconda-mode      
-- auctex             
-- dash               
-- eclim              
-- epl                
-- f                  
-- flycheck           
-- forest-blue-theme  
-- google-this        
-- highlight-indentation
-- ivy                
-- ox-twbs            
-- pkg-info           
-- popup              
-- pythonic           
-- rainbow-delimiters 
-- rainbow-mode       
-- s                  
-- smartparens        
-- yasnippet          
-
 ** Package Archives
 Adding the melpa package repository to Emacs.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 (add-to-list 'package-archives 
     '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+#+END_SRC
+** Installed packages:
+  - aggressive-indent - Minor mode to aggressively keep your code always indented
+  - anaconda-mode - Code navigation, documentation lookup and completion for Python
+  - auctex - Integrated environment for *TeX*
+  - counsel - Various completion functions using Ivy
+  - eclim - An interface to the Eclipse IDE.
+  - flycheck - On-the-fly syntax checking
+  - forest-blue-theme - Emacs theme with a dark background.
+  - google-this - A set of functions and bindings to google under point.
+  - ivy - Incremental Vertical completYon
+  - material-theme - A Theme based on the colors of the Google Material Design
+  - ox-twbs - Bootstrap compatible HTML Back-End for Org
+  - rainbow-delimiters - Highlight brackets according to their depth
+  - rainbow-mode - Colorize color names in buffers
+  - smartparens - Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
+  - swiper - Isearch with an overview. Oh, man!
+  - yasnippet - Yet another snippet extension for Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package aggressive-indent)
+(use-package anaconda-mode)
+;; (use-package auctex) throws error with use-package
+(use-package counsel)
+(use-package eclim)
+(use-package flycheck)
+(use-package google-this)
+(use-package ivy)
+(use-package material-theme)
+(use-package ox-twbs)
+(use-package rainbow-delimiters)
+(use-package rainbow-mode)
+(use-package smartparens)
+(use-package swiper)
+(use-package yasnippet)
 #+END_SRC
 * Themes
-Using the [[https://github.com/olkinn/forest-blue-emacs][Forest Blue]]-Theme.
-I chose this theme, since it natively uses "unspecified-bg".
+Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
-(load-theme 'forest-blue t)
+(load-theme 'material t)
 #+END_SRC
 
+Changes the Emacs background to the terminals defaults. (Generally)
+#+BEGIN_SRC emacs-lisp
+(add-hook 'window-setup-hook 
+      '(lambda () 
+         (set-face-background 'default "unspecified-bg")))
+#+END_SRC
 * Functions
 ** Cut/Copy and Paste by Boruch Baum
 *** Copy
@@ -117,26 +142,37 @@ Go back to indentation, if you are at the indentation, go to beginning of the li
    (if (= (point) (progn (back-to-indentation) (point)))
        (beginning-of-line)))
 #+END_SRC
-* Mode customisation
+
+Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window 
+mode tho.
+#+BEGIN_SRC emacs-lisp
+(defun transparent-terminal ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+#+END_SRC
+* Modes
 ** Window Modes
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
 #+END_SRC
 
 ** Python
+Using Anaconda-mode as default python development mode
 #+BEGIN_SRC emacs-lisp
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 #+END_SRC
 ** LaTeX
+Some default settings for LaTeX-Mode.
+AucTeX is needed.
 #+BEGIN_SRC emacs-lisp
 (require 'tex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 #+END_SRC
-
 ** Org
+Enable a Twitter Bootstrap mode as an export mode for Org-mode.
 #+BEGIN_SRC emacs-lisp
 (require 'ox-twbs)
 #+END_SRC
@@ -154,14 +190,15 @@ Activate Syntax Highlighting in Org-mode.
 (add-hook 'org-mode-hook 
       '(lambda () 
          (setq org-src-fontify-natively t)))
-
 #+END_SRC
 
 Add rainbow-delimiters in org-mode
-(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
-** Ivy
 #+BEGIN_SRC emacs-lisp
-(ivy-mode 1)
+(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+#+END_SRC
+** Ivy/Counsel/Swiper
+#+BEGIN_SRC emacs-lisp
+(counsel-mode 1)
 #+END_SRC
 ** Parenthesis
 #+BEGIN_SRC emacs-lisp
@@ -173,7 +210,7 @@ Add rainbow-delimiters in org-mode
 Globaly highlight the current line in a slightly darker shade of grey.
 #+BEGIN_SRC emacs-lisp
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#333333")
+(set-face-background 'hl-line "#141b1e")
 (set-face-foreground 'highlight nil)
 #+END_SRC
 ** Yasnippet

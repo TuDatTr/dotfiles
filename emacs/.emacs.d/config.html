@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Emacs Configs</title>
-<!-- 2018-01-13 Sa 14:55 -->
+<title>Emacs configure</title>
+<!-- 2018-01-13 Sa 16:37 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Org-mode">
@@ -192,7 +192,7 @@ $(function() {
 </head>
 <body>
 <div id="content" class="container">
-<div class="row"><div class="col-md-9"><h1 class="title">Emacs Configs</h1>
+<div class="row"><div class="col-md-9"><h1 class="title">Emacs configure</h1>
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Packages</h2>
@@ -244,8 +244,12 @@ $(function() {
 <li>yasnippet          
 </li>
 </ul>
+</div>
+</div>
 
-
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Package Archives</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 Adding the melpa package repository to Emacs.
 </p>
@@ -263,11 +267,22 @@ Adding the melpa package repository to Emacs.
 <h2 id="sec-2"><span class="section-number-2">2</span> Themes</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Using the <a href="https://github.com/olkinn/forest-blue-emacs">Forest Blue</a>-Theme 
+Using the <a href="https://github.com/cpaulik/emacs-material-theme">Material</a>-Theme.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(load-theme 'forest-blue t)
+<pre class="src src-emacs-lisp">(load-theme 'material t)
+</pre>
+</div>
+
+<p>
+Changes the Emacs background to the terminals defaults. (Generally)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'window-setup-hook 
+      '(lambda () 
+	 (set-face-background 'default "unspecified-bg")))
 </pre>
 </div>
 </div>
@@ -282,6 +297,9 @@ Using the <a href="https://github.com/olkinn/forest-blue-emacs">Forest Blue</a>-
 </div><div id="outline-container-sec-3-1-1" class="outline-4">
 <h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Copy</h4>
 <div class="outline-text-4" id="text-3-1-1">
+<p>
+Copy the marked area to the clipboard.
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(defun copy-to-xclipboard(arg)
@@ -306,6 +324,9 @@ Using the <a href="https://github.com/olkinn/forest-blue-emacs">Forest Blue</a>-
 <div id="outline-container-sec-3-1-2" class="outline-4">
 <h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Cut</h4>
 <div class="outline-text-4" id="text-3-1-2">
+<p>
+Cut the marked area to the clipboard.
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(defun cut-to-xclipboard(arg)
@@ -331,6 +352,9 @@ Using the <a href="https://github.com/olkinn/forest-blue-emacs">Forest Blue</a>-
 <div id="outline-container-sec-3-1-3" class="outline-4">
 <h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Paste</h4>
 <div class="outline-text-4" id="text-3-1-3">
+<p>
+Paste from the clipboard.
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(defun paste-from-xclipboard()
@@ -368,45 +392,30 @@ Go back to indentation, if you are at the indentation, go to beginning of the li
      (beginning-of-line)))
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Personal mode to overwrite Emacs' default keybindings</h3>
-<div class="outline-text-3" id="text-3-3">
+
+<p>
+Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window 
+mode tho.
+</p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(defvar my-keys-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-a") 'back-to-indentation-or-beginning)
-    (define-key map (kbd "C-c M-w") 'copy-to-xclipboard)
-    (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
-    (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
-    map)
-  "my-keys-minor-mode keymap.")
-
-(define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings override annoying major modes."
-  :init-value t
-  :lighter " my-keys")
+<pre class="src src-emacs-lisp">(defun transparent-terminal ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
 </pre>
 </div>
 </div>
 </div>
 </div>
 <div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Mode customization</h2>
+<h2 id="sec-4"><span class="section-number-2">4</span> Mode customisation</h2>
 <div class="outline-text-2" id="text-4">
 </div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Global Modes</h3>
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Window Modes</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-hl-line-mode 1)
-(my-keys-minor-mode 1)
-(ivy-mode 1)
-(show-paren-mode +1)
-(menu-bar-mode -1)
-(yas-global-mode 1)
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
 </pre>
 </div>
 </div>
@@ -470,9 +479,13 @@ Activate Syntax Highlighting in Org-mode.
 </div>
 
 <p>
-Add rainbow-delimiteres in org-mode
-(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+Add rainbow-delimiters in org-mode
 </p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+</pre>
+</div>
 </div>
 </div>
 <div id="outline-container-sec-4-5" class="outline-3">
@@ -480,7 +493,8 @@ Add rainbow-delimiteres in org-mode
 <div class="outline-text-3" id="text-4-5">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"></pre>
+<pre class="src src-emacs-lisp">(ivy-mode 1)
+</pre>
 </div>
 </div>
 </div>
@@ -491,16 +505,21 @@ Add rainbow-delimiteres in org-mode
 
 <pre class="src src-emacs-lisp">(require 'paren)
 (setq show-paren-style 'parenthesis)
+(show-paren-mode +1)
 </pre>
 </div>
 </div>
 </div>
 <div id="outline-container-sec-4-7" class="outline-3">
-<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Hightlight Line</h3>
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Highlight line</h3>
 <div class="outline-text-3" id="text-4-7">
+<p>
+Globaly highlight the current line in a slightly darker shade of grey.
+</p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(set-face-background 'hl-line "#333333")
+<pre class="src src-emacs-lisp">(global-hl-line-mode 1)
+(set-face-background 'hl-line "#333333")
 (set-face-foreground 'highlight nil)
 </pre>
 </div>
@@ -514,6 +533,32 @@ Add rainbow-delimiteres in org-mode
 <pre class="src src-emacs-lisp">(require 'yasnippet)
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets/"))
+(yas-global-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-9" class="outline-3">
+<h3 id="sec-4-9"><span class="section-number-3">4.9</span> Personal mode</h3>
+<div class="outline-text-3" id="text-4-9">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-a") 'back-to-indentation-or-beginning)
+    (define-key map (kbd "C-c M-w") 'copy-to-xclipboard)
+    (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
+    (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)
 </pre>
 </div>
 </div>
@@ -525,6 +570,7 @@ Add rainbow-delimiteres in org-mode
 <li><a href="#sec-1">1. Packages</a>
 <ul class="nav">
 <li><a href="#sec-1-1">1.1. Installed packages:</a></li>
+<li><a href="#sec-1-2">1.2. Package Archives</a></li>
 </ul>
 </li>
 <li><a href="#sec-2">2. Themes</a></li>
@@ -538,19 +584,19 @@ Add rainbow-delimiteres in org-mode
 </ul>
 </li>
 <li><a href="#sec-3-2">3.2. Personal functions</a></li>
-<li><a href="#sec-3-3">3.3. Personal mode to overwrite Emacs' default keybindings</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Mode customization</a>
+<li><a href="#sec-4">4. Mode customisation</a>
 <ul class="nav">
-<li><a href="#sec-4-1">4.1. Global Modes</a></li>
+<li><a href="#sec-4-1">4.1. Window Modes</a></li>
 <li><a href="#sec-4-2">4.2. Python</a></li>
 <li><a href="#sec-4-3">4.3. LaTeX</a></li>
 <li><a href="#sec-4-4">4.4. Org</a></li>
 <li><a href="#sec-4-5">4.5. Ivy</a></li>
 <li><a href="#sec-4-6">4.6. Parenthesis</a></li>
-<li><a href="#sec-4-7">4.7. Hightlight Line</a></li>
+<li><a href="#sec-4-7">4.7. Highlight line</a></li>
 <li><a href="#sec-4-8">4.8. Yasnippet</a></li>
+<li><a href="#sec-4-9">4.9. Personal mode</a></li>
 </ul>
 </li>
 </ul>
@@ -560,7 +606,7 @@ Add rainbow-delimiteres in org-mode
 <footer id="postamble" class="">
 <div><p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-01-11 Do&gt;</span></span></p>
 <p class="author">Author: Tuan-Dat Tran</p>
-<p class="date">Created: 2018-01-13 Sa 14:55</p>
+<p class="date">Created: 2018-01-13 Sa 16:37</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org-mode</a> 8.2.10)</p>
 </div>
 </footer>

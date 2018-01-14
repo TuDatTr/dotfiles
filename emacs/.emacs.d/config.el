@@ -2,8 +2,36 @@
 (require 'package)
 (add-to-list 'package-archives 
     '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
 
-(load-theme 'forest-blue t)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package aggressive-indent)
+(use-package anaconda-mode)
+;; (use-package auctex) throws error with use-package
+(use-package counsel)
+(use-package eclim)
+(use-package flycheck)
+(use-package google-this)
+(use-package ivy)
+(use-package material-theme)
+(use-package ox-twbs)
+(use-package rainbow-delimiters)
+(use-package rainbow-mode)
+(use-package smartparens)
+(use-package swiper)
+(use-package yasnippet)
+
+(load-theme 'material t)
+
+(add-hook 'window-setup-hook 
+      '(lambda () 
+         (set-face-background 'default "unspecified-bg")))
 
 (defun copy-to-xclipboard(arg)
   (interactive "P")
@@ -57,6 +85,10 @@
  (if (= (point) (progn (back-to-indentation) (point)))
      (beginning-of-line)))
 
+(defun transparent-terminal ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
 (menu-bar-mode -1)
 
 (add-hook 'python-mode-hook 'anaconda-mode)
@@ -78,14 +110,16 @@
       '(lambda () 
          (setq org-src-fontify-natively t)))
 
-(ivy-mode 1)
+(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+
+(counsel-mode 1)
 
 (require 'paren)
 (setq show-paren-style 'parenthesis)
 (show-paren-mode +1)
 
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#333333")
+(set-face-background 'hl-line "#141b1e")
 (set-face-foreground 'highlight nil)
 
 (require 'yasnippet)
