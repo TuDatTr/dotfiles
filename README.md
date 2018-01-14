@@ -9,13 +9,14 @@ I'm using:
 * [GNU stow](https://www.gnu.org/software/stow)
 
 ## TODOS: ##
-1. Update this README for the migration to GNU stow and emacs prelude
+1. Update this README for the migration to GNU stow and clemacs
 2. Making an own conky, conky_maia-like
 ..* [conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
 3. Sorting the "Prerequisites" by importance
 4. Improve the README.md or maybe make a wiki.
 5. Getting away from Manjaro i3 (?)
 6. Emacs Markdown preview is buggy, find another way
+7. Make this my main branch
 
 ## Getting Started ##
 
@@ -25,7 +26,7 @@ Pacman Install
 * [emacs](https://wiki.archlinux.org/index.php/Emacs) - A extensible, cusotmizable, free/libre text editor - and more.
 * [git](https://wiki.archlinux.org/index.php/git) - A free and open source distributed version control system.
 * [python-pip](https://pip.pypa.io/en/stable) - pip to install python packages (**p**ip **i**nstalls **p**ackages)
-* [termite](https://wiki.archlinux.org/index.php/termite) - Prefered terminal emulator, since urxvt can't handle powerline well.
+* [termite](https://wiki.archlinux.org/index.php/termite) - Preferred terminal emulator, since urxvt can't handle power-line well.
 * [powerline-fonts](https://github.com/powerline/fonts) - Powerline fonts for the Powerlevel9k-theme.
 * [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts) - Font with cool icons. Necessary for powerlevel9k.
 * [zsh-theme-powerlevel9k](https://github.com/bhilburn/powerlevel9k) - Powerlevel9k-theme for zsh.
@@ -50,13 +51,13 @@ Pacman Remove
 
 Yaourt Install
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - Needed for ~/.scripts/i3lock.py
-* [cli-visualizer](https://github.com/dpayne/cli-visualizer) - Command line visualizer.
+* [cava](https://github.com/karlstav/cava) - **C**onsole-based **A**udio **V**isualizer for **A**LSA (MPD and Pulseaudio)
 
 ``` shell
 sudo pacman -Syu
 sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus
 sudo pacman -R palemoon-bin epdfview
-yaourt -S i3lock-color cli-visualizer
+yaourt -S i3lock-color cava
 ```
 
 ### Setting up zsh ###
@@ -68,7 +69,7 @@ rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if y
 ```
 
 ### Setting up Emacs ###
-Setting up Emacs for Prelude is easy.
+I tried to make this as easy as possible. All packages should be installed automatically. I'm not sure whether it works or not 
 
 ``` shell
 curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
@@ -103,4 +104,4 @@ pip install -r --user ~/dotfiles/requirements.txt
 This project is license under the GPL-3.0 License - see LICENSE file for details.
 
 # Acknowledgements #
-* [unixporn - the home for *NIX customization!](https://www.reddit.com/r/unixporn/)
+* [unixporn - the home for *NIX customisation!](https://www.reddit.com/r/unixporn/)
