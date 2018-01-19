@@ -8,10 +8,11 @@ I'm using:
 * [Oh My Zsh](http://ohmyz.sh)
 * [GNU stow](https://www.gnu.org/software/stow)
 * [Materia Theme](https://github.com/nana-4/materia-theme)
+
 ## TODOS: ##
 1. Update this README for the migration to GNU stow and clemacs
 2. Making an own conky, conky_maia-like
-..* [conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
+  * [conky](https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings)
 3. Sorting the "Prerequisites" by importance
 4. Improve the README.md or maybe make a wiki.
 5. Getting away from Manjaro i3 (?)
@@ -55,6 +56,7 @@ Yaourt Install
 * [i3lock-color](https://github.com/PandorasFox/i3lock-color) - Needed for ~/.scripts/i3lock.py
 * [cava](https://github.com/karlstav/cava) - **C**onsole-based **A**udio **V**isualizer for **A**LSA (MPD and Pulseaudio)
 * [materia-theme](https://github.com/nana-4/materia-theme)
+
 ``` shell
 sudo pacman -Syu
 sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus lxappearance
@@ -73,10 +75,6 @@ rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if y
 ### Setting up Emacs ###
 I tried to make this as easy as possible. All packages should be installed automatically. I'm not sure whether it works or not 
 
-``` shell
-curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-```
-
 ### Setups ###
 Setting up some programs.
 #### Installing Nextcloud-Client (optional) ####
@@ -89,7 +87,9 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 #### Finally *"installing"* the dotfiles. ####
 ``` shell
 git clone https://github.com/TuDatTr/dotfiles .dotfiles
-stow
+stow emacs
+stow i3
+stow zsh
 rm -rf ~/.i3/
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 ```

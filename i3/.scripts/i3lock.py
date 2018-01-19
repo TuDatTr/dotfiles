@@ -1,4 +1,4 @@
-import datetime
+import time
 import os
 
 from PIL import Image
@@ -106,7 +106,14 @@ def lock_config():
                                    lock_pic)
 
 
-def log_command(command):
+def lock():
+    'Locks the System'
+    command = lock_config()
+
+    os.system(command)
+
+
+def log(start_time):
     write_mode = ''
     home = os.path.expanduser('~')
     log_file_path = "{}/{}".format(home, ".scripts/lock.log")
@@ -116,23 +123,18 @@ def log_command(command):
     else:
         write_mode = 'w'
 
+    program_duration = time.time() - start_time
     with open(log_file_path, write_mode) as f:
-        f.write("[{}] {}\n".format(str(datetime.datetime.now()), command))
+        f.write("[{}] {} seconds runtime.\n".format(time.asctime(), program_duration))
         f.close()
 
-
-def lock():
-    'Locks the System'
-    command = lock_config()
-
-    log_command(command)
-
-    os.system(command)
-
-
+        
 if __name__ == '__main__':
+    start_time = time.time()
     screenshot()
 
     pixelate()
 
     lock()
+
+    log(start_time)

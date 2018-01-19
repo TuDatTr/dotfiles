@@ -33,6 +33,10 @@
       '(lambda () 
          (set-face-background 'default "unspecified-bg")))
 
+(f-mkdir "~/.emacs-saves")
+(setq auto-save-file-name-transforms
+  '((".*" "~/.emacs-saves/" t)))
+
 (defun copy-to-xclipboard(arg)
   (interactive "P")
   (cond
@@ -91,10 +95,13 @@
 
 (menu-bar-mode -1)
 
+(ac-config-default)
+
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
 (require 'tex)
+(require 'auto-complete-auctex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -113,10 +120,11 @@
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
 
 (counsel-mode 1)
+(global-set-key "\C-s" 'swiper)
 
 (require 'paren)
 (setq show-paren-style 'parenthesis)
-(show-paren-mode +1)
+(show-paren-mode 1)
 
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#141b1e")
@@ -142,3 +150,5 @@
   :lighter " my-keys")
 
 (my-keys-minor-mode 1)
+
+(add-hook 'conf-mode 'rainbow-mode)

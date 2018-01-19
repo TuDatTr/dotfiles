@@ -11,6 +11,7 @@
 #+SELECT_TAGS: export
 
 * Packages
+A list of installed packages and details about them.
 ** Package Archives
 Adding the melpa package repository to Emacs.
 #+BEGIN_SRC emacs-lisp
@@ -73,8 +74,18 @@ Changes the Emacs background to the terminals defaults. (Generally)
       '(lambda () 
          (set-face-background 'default "unspecified-bg")))
 #+END_SRC
+* Emacs behavior
+Save auto-save files in ~/.emacs-save
+#+BEGIN_SRC emacs-lisp
+(f-mkdir "~/.emacs-saves")
+(setq auto-save-file-name-transforms
+  '((".*" "~/.emacs-saves/" t)))
+#+END_SRC
+
 * Functions
+All the functions I use.
 ** Cut/Copy and Paste by Boruch Baum
+A nice way to copy and paste contents comfortably inside and out of emacs.
 *** Copy
 Copy the marked area to the clipboard.
 #+BEGIN_SRC emacs-lisp
@@ -144,7 +155,8 @@ Go back to indentation, if you are at the indentation, go to beginning of the li
 #+END_SRC
 
 Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window 
-mode tho.
+mode though.
+Function is not currently used since I still have to figure out how to make it work with emacs in daemon mode
 #+BEGIN_SRC emacs-lisp
 (defun transparent-terminal ()
   (unless (display-graphic-p (selected-frame))
@@ -155,7 +167,11 @@ mode tho.
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
 #+END_SRC
+** Autocomplete
+#+BEGIN_SRC emacs-lisp
+(ac-config-default)
 
+#+END_SRC
 ** Python
 Using Anaconda-mode as default python development mode
 #+BEGIN_SRC emacs-lisp
@@ -167,6 +183,7 @@ Some default settings for LaTeX-Mode.
 AucTeX is needed.
 #+BEGIN_SRC emacs-lisp
 (require 'tex)
+(require 'auto-complete-auctex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -199,12 +216,13 @@ Add rainbow-delimiters in org-mode
 ** Ivy/Counsel/Swiper
 #+BEGIN_SRC emacs-lisp
 (counsel-mode 1)
+(global-set-key "\C-s" 'swiper)
 #+END_SRC
 ** Parenthesis
 #+BEGIN_SRC emacs-lisp
 (require 'paren)
 (setq show-paren-style 'parenthesis)
-(show-paren-mode +1)
+(show-paren-mode 1)
 #+END_SRC
 ** Highlight line
 Globaly highlight the current line in a slightly darker shade of grey.
@@ -221,7 +239,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
 (yas-global-mode 1)
 #+END_SRC
 
-** Personal mode
+** Personal
 #+BEGIN_SRC emacs-lisp
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
@@ -239,3 +257,9 @@ Globaly highlight the current line in a slightly darker shade of grey.
 
 (my-keys-minor-mode 1)
 #+END_SRC
+
+** Conf
+#+BEGIN_SRC emacs-lisp
+(add-hook 'conf-mode 'rainbow-mode)
+#+END_SRC
+
