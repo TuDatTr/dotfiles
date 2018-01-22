@@ -2,4 +2,9 @@
 \#*\#
 *.log
 .#*
+emacs/.emacs.d/ac-comphist.dat
+emacs/.emacs.d/anaconda-mode/*
+emacs/.emacs.d/auto-save-list/*
 emacs/.emacs.d/elpa/*
+emacs/.emacs.d/recentf
+emacs/.emacs.d/tramp

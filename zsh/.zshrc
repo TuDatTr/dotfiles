@@ -66,5 +66,7 @@ alias -s tex=emacs
 alias -s cpp=emacs
 alias org="e ~/Nextcloud/orgs/man.org"
 alias neofetch="neofetch --block_range 0 16"
+alias diff="diff -s"
+
 source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)

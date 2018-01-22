@@ -13,7 +13,13 @@
 
 (use-package aggressive-indent)
 (use-package anaconda-mode)
-;; (use-package auctex) throws error with use-package
+(use-package auto-complete)
+(use-package auto-complete-auctex
+:defer t
+:ensure t)
+(use-package auctex
+:defer t
+:ensure t)
 (use-package counsel)
 (use-package eclim)
 (use-package flycheck)
@@ -116,6 +122,10 @@
 (add-hook 'org-mode-hook 
       '(lambda () 
          (setq org-src-fontify-natively t)))
+
+(add-hook 'org-mode-hook 
+      '(lambda ()
+         (setq org-pretty-entities t)))
 
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
 

@@ -13,7 +13,7 @@
 * Packages
 A list of installed packages and details about them.
 ** Package Archives
-Adding the melpa package repository to Emacs.
+   Adding the melpa package repository to Emacs.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 (add-to-list 'package-archives 
@@ -21,23 +21,8 @@ Adding the melpa package repository to Emacs.
 (package-initialize)
 #+END_SRC
 ** Installed packages:
-  - aggressive-indent - Minor mode to aggressively keep your code always indented
-  - anaconda-mode - Code navigation, documentation lookup and completion for Python
-  - auctex - Integrated environment for *TeX*
-  - counsel - Various completion functions using Ivy
-  - eclim - An interface to the Eclipse IDE.
-  - flycheck - On-the-fly syntax checking
-  - forest-blue-theme - Emacs theme with a dark background.
-  - google-this - A set of functions and bindings to google under point.
-  - ivy - Incremental Vertical completYon
-  - material-theme - A Theme based on the colors of the Google Material Design
-  - ox-twbs - Bootstrap compatible HTML Back-End for Org
-  - rainbow-delimiters - Highlight brackets according to their depth
-  - rainbow-mode - Colorize color names in buffers
-  - smartparens - Automatic insertion, wrapping and paredit-like navigation with user defined pairs.
-  - swiper - Isearch with an overview. Oh, man!
-  - yasnippet - Yet another snippet extension for Emacs.
-
+   A require for all my installed packages, so that they are automatically installed
+   in case I want to setup my emacs on another pc he same way as always
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -46,9 +31,15 @@ Adding the melpa package repository to Emacs.
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package aggressive-indent)
+;; (use-package aggressive-indent) is a dep
 (use-package anaconda-mode)
-;; (use-package auctex) throws error with use-package
+(use-package auctex
+:defer t
+:ensure t)
+(use-package auto-complete)
+(use-package auto-complete-auctex
+:defer t
+:ensure t)
 (use-package counsel)
 (use-package eclim)
 (use-package flycheck)
@@ -60,10 +51,10 @@ Adding the melpa package repository to Emacs.
 (use-package rainbow-mode)
 (use-package smartparens)
 (use-package swiper)
-(use-package yasnippet)
+;; (use-package yasnippet) is a dep
 #+END_SRC
 * Themes
-Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
+  Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
 (load-theme 'material t)
 #+END_SRC
@@ -75,7 +66,7 @@ Changes the Emacs background to the terminals defaults. (Generally)
          (set-face-background 'default "unspecified-bg")))
 #+END_SRC
 * Emacs behavior
-Save auto-save files in ~/.emacs-save
+  Save auto-save files in ~/.emacs-save
 #+BEGIN_SRC emacs-lisp
 (f-mkdir "~/.emacs-saves")
 (setq auto-save-file-name-transforms
@@ -83,7 +74,7 @@ Save auto-save files in ~/.emacs-save
 #+END_SRC
 
 * Functions
-All the functions I use.
+  All the functions I use.
 ** Cut/Copy and Paste by Boruch Baum
 A nice way to copy and paste contents comfortably inside and out of emacs.
 *** Copy
@@ -202,17 +193,25 @@ Use Evince as default pdf viewer.
          (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))))
 #+END_SRC
 
-Activate Syntax Highlighting in Org-mode.
+Enable syntax highlighting in Org-mode.
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 
       '(lambda () 
          (setq org-src-fontify-natively t)))
 #+END_SRC
 
+Enable automatic translation of special characters
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 
+      '(lambda ()
+         (setq org-pretty-entities t)))
+#+END_SRC
+
 Add rainbow-delimiters in org-mode
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
+
 ** Ivy/Counsel/Swiper
 #+BEGIN_SRC emacs-lisp
 (counsel-mode 1)
