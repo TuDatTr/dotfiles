@@ -107,3 +107,5 @@ This project is license under the GPL-3.0 License - see LICENSE file for details
 
 # Acknowledgements #
 * [unixporn - the home for *NIX customisation!](https://www.reddit.com/r/unixporn/)
+* [uiGradients - Beautiful colored gradients](https://uigradients.com)
+* [terminal.sexy - Terminal Color Scheme Designer](http://terminal.sexy/)
