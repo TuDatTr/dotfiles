@@ -173,8 +173,6 @@ Using Anaconda-mode as default python development mode
 Some default settings for LaTeX-Mode.
 AucTeX is needed.
 #+BEGIN_SRC emacs-lisp
-(require 'tex)
-(require 'auto-complete-auctex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -182,7 +180,7 @@ AucTeX is needed.
 ** Org
 Enable a Twitter Bootstrap mode as an export mode for Org-mode.
 #+BEGIN_SRC emacs-lisp
-(require 'ox-twbs)
+;; (require 'ox-twbs)
 #+END_SRC
 
 Use Evince as default pdf viewer.
@@ -212,6 +210,24 @@ Add rainbow-delimiters in org-mode
 (add-hook 'org-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 
+Handy shortcuts
+#+BEGIN_SRC emacs-lisp
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cl" 'org-store-link)
+(setq org-log-done t)
+#+END_SRC
+
+Enabled languages:
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+'org-babel-load-languages
+'( (python . t)
+   (sh . t)
+   (emacs-lisp . t)
+   (C . t)
+ ))
+#+END_SRC
+
 ** Ivy/Counsel/Swiper
 #+BEGIN_SRC emacs-lisp
 (counsel-mode 1)
@@ -219,7 +235,7 @@ Add rainbow-delimiters in org-mode
 #+END_SRC
 ** Parenthesis
 #+BEGIN_SRC emacs-lisp
-(require 'paren)
+;; (require 'paren)
 (setq show-paren-style 'parenthesis)
 (show-paren-mode 1)
 #+END_SRC
@@ -232,7 +248,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
 #+END_SRC
 ** Yasnippet
 #+BEGIN_SRC emacs-lisp
-(require 'yasnippet)
+;; (require 'yasnippet)
 (setq yas-snippet-dirs
   '("~/.emacs.d/snippets/"))
 (yas-global-mode 1)

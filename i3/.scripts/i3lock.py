@@ -5,26 +5,27 @@ from PIL import Image
 
 
 def screenshot():
-    os.system('import -window root /tmp/i3lock.png')
+    ss_time = time.time()
+    os.system('scrot /tmp/i3lock.png')
+    print('Screenshot: {}'.format(time.time() - ss_time))
 
-
+    
 def pixelate():
+    pxl_time = time.time()
     pixelSize = 12
 
     image = Image.open('/tmp/i3lock.png')
-    image_x = image.size[0]
-    image_y = image.size[1]
 
-    image = image.resize((int(image_x / pixelSize), int(image_y / pixelSize)),
-                         Image.NEAREST)
+    image_x, image_y = image.size
 
-    image_x = image.size[0]
-    image_y = image.size[1]
-
+    image = image.resize((int(image_x / pixelSize), int(image_y / pixelSize)), Image.NEAREST)
+    image_x, image_y = image.size
+    
     image = image.resize((image_x * pixelSize, image_y * pixelSize),
                          Image.NEAREST)
 
     image.save('/tmp/i3lock.png')
+    print('pixelate: {}'.format(time.time() - pxl_time))
 
 
 def getResolution():
@@ -34,7 +35,7 @@ def getResolution():
 
 def lock_config():
     'Generation of a customized lock command'
-
+    lock_time = time.time()
     # constants
     lock_core = 'i3lock'
     default_fontsize = 32
@@ -60,13 +61,13 @@ def lock_config():
     # time
     lock_time_pos = '--timepos="{}:{}"'.format(clock_x, clock_y)
     lock_time_size = '--timesize={}'.format(default_fontsize * 2)
-    time = "{} {}".format(lock_time_pos, lock_time_size)
+    l_time = "{} {}".format(lock_time_pos, lock_time_size)
     # date
     lock_date_pos = '--datepos="{}:{}"'.format(date_x, date_y)
     lock_date_size = '--datesize={}'.format(default_fontsize)
     date = "{} {}".format(lock_date_pos, lock_date_size)
     # done
-    datetime = "{} {}".format(time, date)
+    datetime = "{} {}".format(l_time, date)
 
     # Indicator config
     # Indicator inner
@@ -102,6 +103,7 @@ def lock_config():
     # background
     lock_pic = '-i /tmp/i3lock.png'
 
+    print('pixelate: {}'.format(time.time() - lock_time))
     return "{} {} {} {} {}".format(lock_core, clock, datetime, indicator,
                                    lock_pic)
 
@@ -132,9 +134,6 @@ def log(start_time):
 if __name__ == '__main__':
     start_time = time.time()
     screenshot()
-
     pixelate()
-
     lock()
-
     log(start_time)
