@@ -73,7 +73,7 @@ rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if y
 ```
 
 ### Setting up Emacs ###
-I tried to make this as easy as possible. All packages should be installed automatically. I'm not sure whether it works or not 
+I tried to make this as easy as possible. All packages should be installed automatically.
 
 ### Setups ###
 Setting up some programs.
@@ -85,6 +85,8 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 ```
 
 #### Finally *"installing"* the dotfiles. ####
+Take a look at already existing files and delete them if necessary.
+
 ``` shell
 git clone https://github.com/TuDatTr/dotfiles .dotfiles
 stow emacs
@@ -93,12 +95,6 @@ stow zsh
 rm -rf ~/.i3/
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 ```
-If you're using elpy you might want to do this.
-
-``` pip
-pip install -r --user ~/dotfiles/requirements.txt
-```
-
 # Author #
 * Tuan-Dat Tran - [TuDatTr](https://github.com/tudattr/)
 
