@@ -82,9 +82,9 @@ chmod +x ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage
 sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 #+END_SRC
 
-#### Finally *"installing"* the dotfiles. ####
+**** "installing" the dotfiles.
 Take a look at already existing files and delete them if necessary.
-Like ~~/.i3/~
+Like ~$HOME/.i3/~
 #+BEGIN_SRC sh
 git clone https://github.com/TuDatTr/dotfiles .dotfiles
 stow emacs
