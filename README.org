@@ -8,7 +8,7 @@ I'm using:
  - [[https://github.com/nana-4/materia-theme][Materia Theme]]
  - [[http://zsh.sourceforge.net][Z shell]]
 
-*TODOS: 
+** TODOS:
 
  1. Update this README for the migration to GNU stow and clemacs
  2. Making an own [[https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings][conky]], conky_maia-like
@@ -69,10 +69,10 @@ rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if y
 #+END_SRC
 
 
-*** Setting up Emacs 
+*** Setting up Emacs
 I tried to make this as easy as possible. All packages should be installed automatically.
 
-*** Setups 
+*** Setups
 Setting up some programs.
 **** Installing Nextcloud-Client (optional)
 
@@ -84,7 +84,7 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 
 #### Finally *"installing"* the dotfiles. ####
 Take a look at already existing files and delete them if necessary.
-Like ~\~/.i3/~
+Like ~~/.i3/~
 #+BEGIN_SRC sh
 git clone https://github.com/TuDatTr/dotfiles .dotfiles
 stow emacs
