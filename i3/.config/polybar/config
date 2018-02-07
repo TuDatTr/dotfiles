@@ -6,7 +6,7 @@ foreground-alt = ${xrdb:color15:#eef}
 black = ${xrdb:color0:#233}
 red = ${xrdb:color1:#f90}
 green = ${xrdb:color2:#8c4}
-yellow = ${xrdb:colo3:#fc0}
+yellow = ${xrdb:color3:#fc0}
 blue = ${xrdb:color4:#0af}
 magenta = ${xrdb:color5:#e16}
 cyan = ${xrdb:color6:#098}
@@ -43,7 +43,7 @@ font-3 = FontAwesome:style=Regular:pixelsize=10
 
 modules-left = i3
 modules-center = date
-modules-right = volume xbacklight xkeyboard wlan battery powermenu
+modules-right = volume xbacklight xkeyboard		 wlan battery powermenu
 
 tray-position = right
 tray-padding = 2
@@ -67,7 +67,7 @@ label-layout-underline = ${colors.magenta}
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.magenta}
-label-indicator-underline = ${colors.megenta}
+label-indicator-underline = ${colors.magenta}
 
 [module/i3]
 type = internal/i3
