@@ -61,7 +61,6 @@ alias mkvirtenv="python -m virtualenv --system-site-packages"
 alias e="emacsclient -t"
 alias nyan="nyancat"
 alias rm="rm -i"
-alias dir="du -h -d 1"
 alias -s tex=emacs
 alias -s cpp=emacs
 alias org="e ~/Nextcloud/orgs/man.org"

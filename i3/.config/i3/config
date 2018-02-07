@@ -41,14 +41,14 @@ bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
 ################################################################################################
 
 # Workspace names
-set $ws1 
-set $ws2 
-set $ws3 
-set $ws4 
-set $ws5 
-set $ws6 
-set $ws7 
-set $ws8 
+set $ws1 1: 
+set $ws2 2: 
+set $ws3 3: 
+set $ws4 4: 
+set $ws5 5: 
+set $ws6 6: 
+set $ws7 7: 
+set $ws8 8: 
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -122,7 +122,8 @@ exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
 exec --no-startup-id Nextcloud
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
-exec_always --no-startup-id polybar beep
+exec --no-startup-id polybar beep
+exec --no-startup-id setxkbmap gb,de
 ###############################################################################
 ################################# Keybindings #################################
 ###############################################################################

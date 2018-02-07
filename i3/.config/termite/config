@@ -38,7 +38,7 @@ cursor_shape = ibeam
 # "off", "left" or "right"
 scrollbar = off
 
-[colors]
+
 [colors]
 
 # special
