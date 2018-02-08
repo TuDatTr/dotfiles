@@ -15,7 +15,7 @@ I'm using:
 
 ** Getting Started
 *** Prerequisites
-****Pacman Install
+**** Pacman Install
 ***** System
       - lightdm
 ****** General
