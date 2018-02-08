@@ -4,61 +4,87 @@ I'm using:
  - [[https://www.gnu.org/software/emacs/][GNU Emacs]]
  - [[https://www.gnu.org/software/stow][GNU stow]]
  - [[https://github.com/Airblader/i3][i3-gaps]]
- - [[https://manjaro.org/2017/03/07/manjaro-i3-community-edition-17-0-released/][Manjaro i3]]
+ - [[https://www.archlinux.org/][Arch Linux]]
  - [[https://github.com/nana-4/materia-theme][Materia Theme]]
  - [[http://zsh.sourceforge.net][Z shell]]
 
 ** TODOS:
 
- 1. Update this README for the migration to GNU stow and clemacs
- 2. Making an own [[https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings][conky]], conky_maia-like
- 3. Sorting the "Prerequisites" by importance
- 4. Getting away from Manjaro i3 (?)
- 5. Emacs Markdown preview is buggy, find another way, this would be fixed by a org-mode README
- 6. Maybe convert this readme into emacs org mode
+ 1) Making an own [[https://github.com/brndnmtthws/conky/wiki/Configuraion-Settings][conky]], conky_maia-like
+ 2) Sorting the "Prerequisites" by importance
 
 ** Getting Started
 *** Prerequisites
+****Pacman Install
+***** System
+      - lightdm
+****** General
+       - wget
+       - udisks2
+       - exfat-utils
+****** Terminal 
+       - zsh
+       - termite
+****** Audio
+       - libmad
+       - alsa-utils
+       - pulseaudio-alsa
+****** Bluetooth
+       - blueman
+       - pulseaudio-bluetooth
+****** Networking
+       - networkmanager
+       - networkmanager-openvpn
+       - networkmanager-openconnect
+       - network-manager-applet
+****** Energymanagement/Laptop
+       - acpi
+       - acpid
+       - xorg-xmodmap
+       - xorg-xbacklight
+****** Keyring
+       - libgnome-keyring
+       - gnome-keyring
+***** Essentials
+      - nyancat
+      - stow
+      - git
+      - openssh
+      - thunderbird
+      - python-pip
+      - xsel
+***** Lifestyle
+      - emacs
+      - texlive-most
+      - evince
+      - thunderbird
+      - scrot
+      - aspell-en
+***** Pretty stuff (i.e. ricing, pretty cli-apps)
+      - cmus
+      - lxappearance
+      - conky
+      - arc-icon-theme
+****** oh-my-zsh
+       - powerline-fonts
+       - awesome-terminal-fonts
+       - zsh-theme-powerlevel9k
+***** Security/Privacy
+      - veracrypt
+      - keepassx2
 
-Pacman Install
- - [[https://wiki.archlinux.org/index.php/Emacs][emacs]] - A extensible, cusotmizable, free/libre text editor - and more.
- - [[https://wiki.archlinux.org/index.php/git][git]] - A free and open source distributed version control system.
- - [[https://pip.pypa.io/en/stable][python-pip]] - pip to install python packages (**p**ip **i**nstalls **p**ackages)
- - [[https://wiki.archlinux.org/index.php/termite][termite]] - Preferred terminal emulator, since urxvt can't handle power-line well.
- - [[https://github.com/powerline/fonts][powerline-fonts]] - Powerline fonts for the Powerlevel9k-theme.
- - [[https://github.com/gabrielelana/awesome-terminal-fonts][awesome-terminal-fonts]] - Font with cool icons. Necessary for powerlevel9k.
- - [[https://github.com/bhilburn/powerlevel9k][zsh-theme-powerlevel9k]] - Powerlevel9k-theme for zsh.
- - [[https://wiki.archlinux.org/index.php/TeX_Live][texlive-most]] - (optional)A high-quality typesetting system.
- - [[https://www.mozilla.org/en-US/firefox][firefox]] - (optional) Install whatever you like, but you will need to make a change in the .config/i3/config. Let's see if waterfox is better.
- - [[https://www.mozilla.org/en-US/thunderbird][thunderbid]] - (optional) Install whatever you like, but you might need to change it up in the .config/i3/config.
- - [[https://veracrypt.codeplex.com][veracrypt]] - (optional) A free disk encryption software based on TrueCrypt.
- - [[https://keepass.info][keepassx2]] - (optional) A free, open source, light-weight and easy-to-use password manager.
- - [[https://wiki.archlinux.org/index.php/GNOME/Document_viewer][evince]] - (optional, prefered if you use auctex) pdf viewer, default to view compiled LaTeX-files with auctex(emacs plugin).
- - [[https://wiki.archlinux.org/index.php/backlight][xorg-backlight]] - The backlight controlling tool I use
- - [[https://wiki.archlinux.org/index.php/PulseAudio][pulseaudio-alsa]] - (recommended)
- - [[https://wiki.archlinux.org/index.php/PulseAudio][pulseaudio-bluetooth]] - (recommended)
- - [[http://www.nyan.cat/][nyancat]] - (mandatory) That's what the internet is all about.
- - [[https://wiki.archlinux.org/index.php/Cmus][cmus]] - (optional) cli music player
- - [[https://www.gnu.org/software/stow/][stow]] - To manage dotfiles
- - aspell-en - Language for flycheck
- - aspell-de -Language for flycheck
- - [[https://lxde.org][lxappearance]] - Feature-rich GTK+ theme switcher of the LXDE Desktop
-
-Pacman Remove
- - [[https://www.palemoon.org][palemoon-bin]] - Not needed anymore, if you use Firefox.
- - [[https://github.com/jristz/epdfview][epdfview]] - Not needed anymore, if you use evince.
-
-Yaourt Install
- - [[https://github.com/PandorasFox/i3lock-color][i3lock-color]] - Needed for ~/.scripts/i3lock.py
- - [[https://github.com/karlstav/cava][cava]] - *C* onsole-based *A* udio *V* isualizer for *A* LSA (MPD and Pulseaudio)
- - [[https://github.com/nana-4/materia-theme][materia-theme]] -  A Material Design theme for GNOME/GTK+ based desktop environments
-
-#+BEGIN_SRC sh
-sudo pacman -Syu
-sudo pacman -S emacs git termite python-pip zsh-theme-powerlevel9k powerline-fonts awesome-terminal-fonts texlive-most firefox thunderbird evince veracrypt keepassx2 xorg-xbacklight pulseaudio-alsa pulseaudio-bluetooth nyancat cmus lxappearance
-sudo pacman -R palemoon-bin epdfview
-yaourt -S i3lock-color cava materia-theme
-#+END_SRC
+**** Yaourt Install
+***** System
+      - lightdm-mini-greeter
+      - i3-gaps
+      - i3lock-color
+***** Lifestyle
+      - waterfox-bin
+      - nextcloud-client
+***** Pretty stuff (i.e. ricing, pretty cli-apps)
+      - cava
+      - materia-theme
+      - neofetch
 
 *** Setting up zsh
 #+BEGIN_SRC sh
@@ -75,7 +101,6 @@ I tried to make this as easy as possible. All packages should be installed autom
 *** Setups
 Setting up some programs.
 **** Installing Nextcloud-Client (optional)
-
 #+BEGIN_SRC sh
 wget https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-2.3.3-x86_64.AppImage --P ~/Downloads/
 chmod +x ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage
@@ -84,7 +109,6 @@ sudo ln -s ~/Downloads/Nextcloud-2.3.3-x86_64.AppImage /usr/bin/nextcloud
 
 **** "installing" the dotfiles.
 Take a look at already existing files and delete them if necessary.
-Like ~$HOME/.i3/~
 #+BEGIN_SRC sh
 git clone https://github.com/TuDatTr/dotfiles .dotfiles
 stow emacs

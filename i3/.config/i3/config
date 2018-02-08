@@ -88,8 +88,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 assign [class="Firefox"] $ws2
 assign [class="Spotify"] $ws7
 assign [class="Thunderbird"] $ws3
-assign [class="Keepassx2"] $ws8
-assign [class="Veracrypt"] $ws8
+assign [class="Keepassx2"] $ws9
+assign [class="Veracrypt"] $ws9
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] flMoating enable border pixel 1
@@ -118,12 +118,9 @@ for_window [urgent=latest] focus
 ############################ Startup Applications #############################
 ############################################################################### 
 exec --no-startup-id ~/.scripts/startup.sh
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
+exec --no-startup-id nitrogen --restore; compton -b
 exec --no-startup-id Nextcloud
+exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
 exec --no-startup-id polybar beep -r
@@ -144,6 +141,11 @@ bindsym $mod+d exec --no-startup-id rofi -X -show run
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Application Shortcuts
 bindsym $mod+b exec env GTK_THEME=Materia:light waterfox
