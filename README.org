@@ -52,6 +52,7 @@ I'm using:
       - thunderbird
       - python-pip
       - xsel
+      - rofi
 ***** Lifestyle
       - emacs
       - texlive-most
@@ -77,6 +78,8 @@ I'm using:
       - lightdm-mini-greeter
       - i3-gaps
       - i3lock-color
+***** Essentials
+      - polybar
 ***** Lifestyle
       - waterfox-bin
       - nextcloud-client
@@ -84,7 +87,6 @@ I'm using:
       - cava
       - materia-theme
       - neofetch
-
 *** Setting up zsh
 #+BEGIN_SRC sh
 chsh -s /bin/zsh
