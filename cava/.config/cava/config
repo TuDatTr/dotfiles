@@ -104,11 +104,12 @@
 # not able to restore color definitions on exit, simply restart your terminal to restore colors.
 gradient = 1
 # Quepal
-; gradient_color_1 = '#11998e'
-; gradient_color_2 = '#38ef7d'
+gradient_color_1 = '#11998e'
+gradient_color_2 = '#38ef7d'
 # Teal Love
-gradient_color_1 = '#11FFBD'
-gradient_color_2 = '#AAFFA9'
+; gradient_color_1 = '#11FFBD'
+; gradient_color_2 = '#AAFFA9'
+
 [smoothing]
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.

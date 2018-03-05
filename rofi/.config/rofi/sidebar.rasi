@@ -34,8 +34,8 @@
 #window {
 	location:    north;
 	anchor:      north;
-	height:      20%;
-	width:       80%;
+	height:      22%;
+	width:       59%;
 	orientation: vertical;
 	children:    [mainbox];
 }

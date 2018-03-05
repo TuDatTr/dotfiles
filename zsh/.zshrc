@@ -37,7 +37,8 @@ alias -s cpp=e
 alias org="e ~/Nextcloud/orgs/man.org"
 alias neofetch="neofetch --block_range 0 16"
 alias diff="diff -s"
-
+alias ebudget="e ~/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias budget="ledger -f ~/Nextcloud/orgs/Budget/MyBudget.ledger"
 source $ZSH/oh-my-zsh.sh
 
 # Variables
@@ -45,3 +46,4 @@ export TERM="xterm-256color" # in case you are using urxvt, to bypass an error d
 export GPG_TTY=$(tty)
 export LC_ALL=en_GB.UTF-8
 PATH=$PATH:~/.local/bin
+

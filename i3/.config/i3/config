@@ -84,23 +84,13 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
-# Open applications on specific workspaces
-assign [class="Firefox"] $ws2
-assign [class="Spotify"] $ws7
-assign [class="Thunderbird"] $ws3
-assign [class="Keepassx2"] $ws9
-assign [class="Veracrypt"] $ws9
-
 # Open specific applications in floating mode
 for_window [title="alsamixer"] flMoating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
 for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
@@ -109,7 +99,6 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -117,14 +106,14 @@ for_window [urgent=latest] focus
 ###############################################################################
 ############################ Startup Applications #############################
 ############################################################################### 
-exec --no-startup-id ~/.scripts/startup.sh
+
+exec ~/.scripts/startup.sh
 exec --no-startup-id nitrogen --restore; compton -b
-exec --no-startup-id Nextcloud
-exec --no-startup-id xautolock -time 10 -locker "python ~/.scripts/i3lock.py"
+exec --no-startup-id nextcloud
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
 exec --no-startup-id polybar beep -r
-exec --no-startup-id setxkbmap gb,de
+exec --no-startup-id polybar boop -r
 ###############################################################################
 ################################# Keybindings #################################
 ###############################################################################

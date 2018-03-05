@@ -44,6 +44,7 @@ A list of installed packages and details about them.
 (use-package eclim)
 (use-package flycheck)
 (use-package google-this)
+(use-package ledger-mode)
 (use-package ivy)
 (use-package material-theme)
 (use-package ox-twbs)
@@ -253,6 +254,11 @@ Globaly highlight the current line in a slightly darker shade of grey.
   '("~/.emacs.d/snippets/"))
 (yas-global-mode 1)
 #+END_SRC
+
+** Ledger
+   #+BEGIN_SRC emacs-lisp
+
+   #+END_SRC
 
 ** Personal
 #+BEGIN_SRC emacs-lisp
