@@ -257,6 +257,27 @@ Globaly highlight the current line in a slightly darker shade of grey.
 
 ** Ledger
    #+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ledger-reports
+   (quote
+    (("budget" "ledger -f MyBudget.ledger bal Brieftasche$ Girokonto$")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
+ '(package-selected-packages
+   (quote
+    (ledger-mode smartparens rainbow-mode rainbow-delimiters ox-twbs material-theme google-this flycheck eclim counsel auto-complete-auctex auto-complete auctex anaconda-mode use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
    #+END_SRC
 

@@ -1,8 +1,8 @@
 [options]
-#allow_bold = true
+allow_bold = true
 #audible_bell = false
 #clickable_url = true
-#dynamic_title = true
+dynamic_title = true
 font = Dejavu Sans Mono 12
 #fullscreen = true
 #geometry = 640x480
@@ -12,8 +12,8 @@ mouse_autohide = true
 #scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
-scrollback_lines = 10000
-#search_wrap = true
+scrollback_lines = -1
+search_wrap = true
 #urgent_on_bell = true
 hyperlinks = true
 
@@ -21,7 +21,7 @@ hyperlinks = true
 #browser = xdg-open
 
 # "system", "on" or "off"
-#cursor_blink = system
+cursor_blink = system
 
 # "block", "underline" or "ibeam"
 cursor_shape = ibeam
@@ -45,7 +45,7 @@ scrollbar = off
 foreground      = #eceff1
 foreground_bold = #eceff1
 cursor          = #eceff1
-background      = rgba(38, 50, 56, 0.8)
+background      = rgba(38, 50, 56, 0.7)
 
 # black
 color0  = #263238

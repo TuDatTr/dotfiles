@@ -114,6 +114,7 @@ exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
 exec --no-startup-id polybar beep -r
 exec --no-startup-id polybar boop -r
+exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 ###############################################################################
 ################################# Keybindings #################################
 ###############################################################################

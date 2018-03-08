@@ -24,7 +24,7 @@ POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
 
 POWERLEVEL9K_TIME_BACKGROUND="black"
 POWERLEVEL9K_TIME_FOREGROUND="color7"
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S} "
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
 
 # Alias
 alias df="df -h"
@@ -37,8 +37,7 @@ alias -s cpp=e
 alias org="e ~/Nextcloud/orgs/man.org"
 alias neofetch="neofetch --block_range 0 16"
 alias diff="diff -s"
-alias ebudget="e ~/Nextcloud/orgs/Budget/MyBudget.ledger"
-alias budget="ledger -f ~/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias budget="e ~/Nextcloud/orgs/Budget/MyBudget.ledger"
 source $ZSH/oh-my-zsh.sh
 
 # Variables
