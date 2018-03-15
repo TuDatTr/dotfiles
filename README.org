@@ -4,7 +4,7 @@ I'm using:
  - [[https://www.gnu.org/software/emacs/][GNU Emacs]]
  - [[https://www.gnu.org/software/stow][GNU stow]]
  - [[https://github.com/Airblader/i3][i3-gaps]]
- - [[https://www.archlinux.org/][Arch Linux]]
+ - [[https://github.com/jaagr/polybar][Polybar]]
  - [[https://github.com/nana-4/materia-theme][Materia Theme]]
  - [[http://zsh.sourceforge.net][zsh]]
 
@@ -17,39 +17,13 @@ I'm using:
 **** Pacman Install
 ***** System
       - lightdm
-****** General
-       - wget
-       - udisks2
-       - exfat-utils
 ****** Terminal 
        - zsh
        - termite
-****** Audio
-       - libmad
-       - alsa-utils
-       - pulseaudio-alsa
-****** Bluetooth
-       - blueman
-       - pulseaudio-bluetooth
-****** Networking
-       - networkmanager
-       - networkmanager-openvpn
-       - networkmanager-openconnect
-       - network-manager-applet
-****** Energymanagement/Laptop
-       - acpi
-       - acpid
-       - xorg-xmodmap
-       - xorg-xbacklight
-****** Keyring
-       - libgnome-keyring
-       - gnome-keyring
 ***** Essentials
       - nyancat
       - stow
       - git
-      - openssh
-      - thunderbird
       - python-pip
       - xsel
       - rofi
@@ -57,7 +31,6 @@ I'm using:
       - emacs
       - texlive-most
       - evince
-      - thunderbird
       - scrot
       - aspell-en
 ***** Pretty stuff (i.e. ricing, pretty cli-apps)
@@ -69,20 +42,14 @@ I'm using:
        - powerline-fonts
        - awesome-terminal-fonts
        - zsh-theme-powerlevel9k
-***** Security/Privacy
-      - veracrypt
-      - keepassx2
 
 **** Yaourt Install
 ***** System
       - lightdm-mini-greeter
-      - i3-gaps
+      - i3-gaps (Moved into the official Arch community repo)
       - i3lock-color
 ***** Essentials
       - polybar
-***** Lifestyle
-      - waterfox-bin
-      - nextcloud-client
 ***** Pretty stuff (i.e. ricing, pretty cli-apps)
       - cava
       - materia-theme
@@ -92,14 +59,14 @@ I'm using:
 chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  # Downloading/Installing oh-my-zsh
 cp -r /usr/share/zsh-theme-powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k  # copying powerlevel9k-theme to the desired directory
-rm -rf ~/.*bash* # remove bash-stuff from your home directory.. don't do it if you wanna keep using bash
+rm -rf ~/.*bash* # remove bash related files from your home directory.. don't do it if you wanna keep using bash with this user
 #+END_SRC
 
 *** Setting up Emacs
 I tried to make this as easy as possible. All packages should be installed automatically.
-
+Config file is =.emacs.d/config.org=
 *** Font setup
-Full git [[https://github.com/powerline/fonts][here]].
+Stolen from [[https://github.com/powerline/fonts][here]].
 #+BEGIN_SRC sh
 git clone # clone
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -115,16 +82,12 @@ rm -rf fonts
 Take a look at already existing files and delete them if necessary.
 #+BEGIN_SRC sh
 git clone https://github.com/TuDatTr/dotfiles .dotfiles && cd .dotfiles
-stow cava
 stow emacs
-stow i3
-stow neofetch
-stow polybar
-stow rofi
-stow termite
 stow zsh
+stow config
 sudo ln -s ~/.scripts/pipes.sh /usr/local/bin/pipes
 #+END_SRC
+
 
 * Author
  - Tuan-Dat Tran - [[https://github.com/tudattr/][TuDatTr]]
@@ -136,4 +99,3 @@ This project is license under the GPL-3.0 License - see LICENSE file for details
  - [[https://www.reddit.com/r/unixporn/][unixporn - the home for *NIX customisation!]]
  - [[https://uigradients.com][uiGradients - Beautiful colored gradients]]
  - [[http://terminal.sexy/][terminal.sexy - Terminal Color Scheme Designer]]
- - [[https://github.com/powerline/fonts][powerline]]
