@@ -52,6 +52,7 @@ A list of installed packages and details about them.
 (use-package rainbow-mode)
 (use-package smartparens)
 (use-package swiper)
+(use-package powerline)
 ;; (use-package yasnippet) is a dep
 #+END_SRC
 
@@ -63,7 +64,7 @@ A list of installed packages and details about them.
  '(truncate-lines t))
 #+END_SRC
 
-* Themes
+* Appearance
   Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
 (load-theme 'material t)
@@ -75,6 +76,17 @@ Changes the Emacs background to the terminals defaults. (Generally)
       '(lambda () 
          (set-face-background 'default "unspecified-bg")))
 #+END_SRC
+
+Remove menubar
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+#+END_SRC
+
+Powerline for Emacs
+#+BEGIN_SRC emacs-lisp
+(powerline-center-theme)
+#+END_SRC
+
 * Emacs behavior
   Save auto-save files in ~/.emacs-save
 #+BEGIN_SRC emacs-lisp
@@ -82,8 +94,6 @@ Changes the Emacs background to the terminals defaults. (Generally)
 (setq auto-save-file-name-transforms
   '((".*" "~/.emacs-saves/" t)))
 #+END_SRC
-
-
 
 * Functions
   All the functions I use.
@@ -177,9 +187,6 @@ Copy word
 
 * Modes
 ** Window Modes
-#+BEGIN_SRC emacs-lisp
-(menu-bar-mode -1)
-#+END_SRC
 ** Autocomplete
 #+BEGIN_SRC emacs-lisp
 (ac-config-default)
@@ -278,19 +285,9 @@ Globaly highlight the current line in a slightly darker shade of grey.
 #+END_SRC
 
 ** Ledger
-   #+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(ledger-reports
-   (quote
-    (("balance" "%(binary) -f %(ledger-file) bal Brieftasche Girokonto")
-     ("bal" "%(binary) -f %(ledger-file) bal")
-     ("reg" "%(binary) -f %(ledger-file) reg")
-     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
-     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
- )
-
-   #+END_SRC
-
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/ledger.org")
+#+END_SRC
 ** Personal
 #+BEGIN_SRC emacs-lisp
 (defvar my-keys-minor-mode-map
