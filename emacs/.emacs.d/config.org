@@ -54,6 +54,15 @@ A list of installed packages and details about them.
 (use-package swiper)
 ;; (use-package yasnippet) is a dep
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(package-selected-packages
+   (quote
+    (powerline ledger-mode smartparens rainbow-mode rainbow-delimiters ox-twbs material-theme google-this flycheck eclim counsel auto-complete-auctex auto-complete auctex anaconda-mode use-package)))
+ '(truncate-lines t))
+#+END_SRC
+
 * Themes
   Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
@@ -73,6 +82,8 @@ Changes the Emacs background to the terminals defaults. (Generally)
 (setq auto-save-file-name-transforms
   '((".*" "~/.emacs-saves/" t)))
 #+END_SRC
+
+
 
 * Functions
   All the functions I use.
@@ -154,6 +165,16 @@ Function is not currently used since I still have to figure out how to make it w
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 #+END_SRC
+
+Copy word
+#+BEGIN_SRC emacs-lisp
+(defun copy-word (&optinal arg)
+"Copy words at point into kill-ring"
+(interactive "P")
+(copy-thing 'backward-word 'forward-word arg)
+)
+#+END_SRC
+
 * Modes
 ** Window Modes
 #+BEGIN_SRC emacs-lisp
@@ -199,6 +220,7 @@ Enable syntax highlighting in Org-mode.
          (setq org-src-fontify-natively t)))
 #+END_SRC
 
+Enable 
 Enable automatic translation of special characters
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 
@@ -258,25 +280,13 @@ Globaly highlight the current line in a slightly darker shade of grey.
 ** Ledger
    #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ledger-reports
    (quote
-    (("budget" "ledger -f MyBudget.ledger bal Brieftasche$ Girokonto$")
+    (("balance" "%(binary) -f %(ledger-file) bal Brieftasche Girokonto")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
- '(package-selected-packages
-   (quote
-    (ledger-mode smartparens rainbow-mode rainbow-delimiters ox-twbs material-theme google-this flycheck eclim counsel auto-complete-auctex auto-complete auctex anaconda-mode use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )
 
    #+END_SRC
@@ -289,6 +299,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
     (define-key map (kbd "C-c M-w") 'copy-to-xclipboard)
     (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
     (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
+    (define-key map (kbd "C-c w") 'copy-word)
     map)
   "my-keys-minor-mode keymap.")
 

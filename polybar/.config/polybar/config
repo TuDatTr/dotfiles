@@ -51,7 +51,7 @@ bottom = true
 radius = 6.0
 fixed-center = true
 
-background = ${colors.background}
+background = #00000000
 foreground = ${colors.foreground}
 
 line-size = 0

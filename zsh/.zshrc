@@ -38,6 +38,7 @@ alias org="e ~/Nextcloud/orgs/man.org"
 alias neofetch="neofetch --block_range 0 16"
 alias diff="diff -s"
 alias budget="e ~/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias q="exit"
 source $ZSH/oh-my-zsh.sh
 
 # Variables

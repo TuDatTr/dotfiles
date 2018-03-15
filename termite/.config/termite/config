@@ -1,9 +1,9 @@
 [options]
 allow_bold = true
-#audible_bell = false
-#clickable_url = true
-dynamic_title = true
-font = Dejavu Sans Mono 12
+audible_bell = false
+clickable_url = true
+#dynamic_title = false
+font = Droid Sans Mono for Powerline
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
