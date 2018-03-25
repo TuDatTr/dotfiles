@@ -37,7 +37,7 @@ font-3 = FontAwesome:style=Regular:pixelsize=10
 
 modules-left = spotify 
 modules-center = spotify-prev spotify-play spotify-stop spotify-next 
-modules-right = xkeyboard volume xbacklight wlan eth battery date
+modules-right = xkeyboard volume xbacklight wlan eth battery1 date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -78,7 +78,7 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 [module/xkeyboard]
-pptype = internal/xkeyboard
+type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
@@ -252,10 +252,41 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
+[module/battery1]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.yellow}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = 
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/battery2]
 type = internal/battery
 battery = BAT1
-adapter = ADP1
+adapter = ACP0
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>

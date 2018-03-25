@@ -46,4 +46,5 @@ export TERM="xterm-256color" # in case you are using urxvt, to bypass an error d
 export GPG_TTY=$(tty)
 export LC_ALL=en_GB.UTF-8
 PATH=$PATH:~/.local/bin
-
+export EDITOR='emacsclient -nw'
+export DEFAULT_EDITOR='emacsclient -nw'
