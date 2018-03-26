@@ -26,7 +26,7 @@ def spotify_running():
 def main():
     state = -1
     while spotify_running():
-        with open('/home/tuan/.scripts/playstate', 'r') as f:
+        with open('~/.scripts/playstate', 'r') as f:
             try:
                 file_state = int(f.readline().strip('\n'))
             except ValueError:
