@@ -113,16 +113,16 @@ click-left  = bash -c "playerctl next"
 [module/spotify-play]
 type = custom/script
 exec-if = pgrep -x spotify
-exec = python -u /home/tuan/.scripts/spotify-play.py
+exec = ~/.scripts/spotify-play.out
 tail = true
-click-left = bash -c "if [ `cat /home/tuan/.scripts/playstate` = 0 ]; then echo '1'>/home/tuan/.scripts/playstate;else echo '0'>/home/tuan/.scripts/playstate;fi"
+click-left = bash -c "if [ `cat /home/$USER/.scripts/playstate` = 0 ]; then echo '1'>/home/$USER/.scripts/playstate;else echo '0'>/home/$USER/.scripts/playstate;fi"
 
 [module/spotify-stop]
 type = custom/script
 exec-if = pgrep -x spotify
 exec = echo ""
 tail = true
-click-left = bash -c "playerctl stop && echo '0'>/home/tuan/.scripts/playstate"
+click-left = bash -c "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
 
 [module/i3]
 type = internal/i3

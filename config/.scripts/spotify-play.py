@@ -3,6 +3,7 @@ import subprocess
 import time
 import os
 
+
 def find_proc(proc_name):
     this_proc = "pythonspotify-play.py"
     proc_path = '/proc'
@@ -25,8 +26,9 @@ def spotify_running():
 
 def main():
     state = -1
+    home = os.path.expanduser("~")
     while spotify_running():
-        with open('~/.scripts/playstate', 'r') as f:
+        with open(home + '/.scripts/playstate', 'r') as f:
             try:
                 file_state = int(f.readline().strip('\n'))
             except ValueError:
