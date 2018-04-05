@@ -94,20 +94,27 @@ def lock_config():
     # Color of seperator | Color: dark-blue
     lock_sep_color = '--separatorcolor 0000D1FF'
     # Right Text
-    lock_right_text = '--veriftext="\.\.\."'
+    lock_right_text = '--veriftext="..."'
     # Wrong Text
     lock_wrong_text = '--wrongtext="Noope"'
+    # Text Size
+    lock_text_size = '--textsize=20'
     # Ring Position
-    lock_texts = '{} {}'.format(lock_right_text, lock_wrong_text)
-    lock_pos = '--indpos={}:{}'.format(int(clock_x)+350, int(clock_y+90))
+    lock_texts = '{} {} {}'.format(lock_right_text, lock_wrong_text,
+                                   lock_text_size)
+    lock_pos = '--indpos={}:{}'.format(int(clock_x)+380, int(clock_y+90))
     # Ring size
     ring_size = 40
     lock_radius = '--radius {}'.format(ring_size)
     lock_stats = '{} {}'.format(lock_pos, lock_radius)
-    indicator_outer_ring = "{} {} {} {} {} {} {} {}".format(lock_ring, lock_ring_w,
-                                                            lock_ring_v, lock_press,
-                                                            lock_del, lock_sep_color,
-                                                            lock_stats, lock_texts)
+    indicator_outer_ring = "{} {} {} {} {} {} {} {}".format(lock_ring,
+                                                            lock_ring_w,
+                                                            lock_ring_v,
+                                                            lock_press,
+                                                            lock_del,
+                                                            lock_sep_color,
+                                                            lock_stats,
+                                                            lock_texts)
     # done
     indicator = "{} {}".format(indicator_inner, indicator_outer_ring)
 
@@ -143,6 +150,7 @@ def log(start_time):
 
         
 if __name__ == '__main__':
+    
     start_time = time.time()
     screenshot()
     pixelate()

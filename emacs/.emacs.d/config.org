@@ -31,7 +31,6 @@ A list of installed packages and details about them.
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; (use-package aggressive-indent) is a dep
 (use-package anaconda-mode)
 (use-package auctex
 :defer t
@@ -50,20 +49,13 @@ A list of installed packages and details about them.
 (use-package ox-twbs)
 (use-package rainbow-delimiters)
 (use-package rainbow-mode)
+(use-package smart-compile)
 (use-package smartparens)
 (use-package swiper)
 (use-package powerline)
-;; (use-package yasnippet) is a dep
+(use-package php-mode)
+(use-package visual-regexp)
 #+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(package-selected-packages
-   (quote
-    (powerline ledger-mode smartparens rainbow-mode rainbow-delimiters ox-twbs material-theme google-this flycheck eclim counsel auto-complete-auctex auto-complete auctex anaconda-mode use-package)))
- '(truncate-lines t))
-#+END_SRC
-
 * Appearance
   Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
@@ -198,6 +190,25 @@ Using Anaconda-mode as default python development mode
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 #+END_SRC
+** C++
+My exec doesnt quite work yet.
+#+BEGIN_SRC emacs-lisp
+;;(defun my-exec ()
+;;  (interactive)
+;;  (let ((exe (smart-compile-string "%n")))
+;;    (with-current-buffer "*eshell*"
+;;      (goto-char (point-max))
+;;      (insert "./")
+;;      (insert exe)
+;;      (eshell-send-input))
+;;    (switch-to-buffer-other-window "*eshell*")))
+(add-hook
+  'c++-mode-hook
+    (lambda()
+      (local-set-key (kbd "C-c C-c") #'smart-compile)
+      (local-set-key (kbd "C-c /") #'comment-region)))
+#+END_SRC
+
 ** LaTeX
 Some default settings for LaTeX-Mode.
 AucTeX is needed.
@@ -207,11 +218,6 @@ AucTeX is needed.
 (setq-default TeX-master nil)
 #+END_SRC
 ** Org
-Enable a Twitter Bootstrap mode as an export mode for Org-mode.
-#+BEGIN_SRC emacs-lisp
-;; (require 'ox-twbs)
-#+END_SRC
-
 Use Evince as default pdf viewer.
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook
@@ -247,6 +253,13 @@ Handy shortcuts
 (setq org-log-done t)
 #+END_SRC
 
+GNU Plot
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 
+      '(lambda () 
+         (local-set-key (kbd "C-c c") #'org-plot/gnuplot)))
+#+END_SRC
+
 Enabled languages:
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
@@ -255,6 +268,7 @@ Enabled languages:
    (sh . t)
    (emacs-lisp . t)
    (C . t)
+   (gnuplot . t)
  ))
 #+END_SRC
 
@@ -284,11 +298,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
 (yas-global-mode 1)
 #+END_SRC
 
-** Ledger
-#+BEGIN_SRC emacs-lisp
-(org-babel-load-file "~/.emacs.d/ledger.org")
-#+END_SRC
-** Personal
+** Personal Global
 #+BEGIN_SRC emacs-lisp
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
@@ -297,6 +307,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
     (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
     (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
     (define-key map (kbd "C-c w") 'copy-word)
+    (define-key map (kbd "C-c r") 'vr/query-replace)
     map)
   "my-keys-minor-mode keymap.")
 

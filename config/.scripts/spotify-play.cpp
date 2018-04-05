@@ -53,8 +53,8 @@ string getfile(string file_path){
 
 bool spotify_running(){
   string dir = string("/proc/");
-  vector<string> procs = vector<string>();
-  getdir(dir, procs);
+  vector<string> processes = vector<string>();
+  getdir(dir, processes);
   string proc_name = string("");
   for (unsigned int i = 0; i < procs.size(); i++){
     proc_name = dir + procs[i] + "/cmdline";
@@ -66,6 +66,7 @@ bool spotify_running(){
 }
 
 int main(){
+  //
   struct passwd *pw = getpwuid(getuid());
   const char *homedir = pw->pw_dir;
   int state = -1;
@@ -73,6 +74,8 @@ int main(){
   string playstate_file = "";
   playstate_file += homedir + string("/.scripts/playstate");
   while (spotify_running()){
+    usleep(100000);
+    // cout << spotify_running() << endl;
     playstate = stoi(getfile(playstate_file));
     if(playstate != state){
       state = playstate;
@@ -85,6 +88,6 @@ int main(){
 	system("playerctl play");
       }
     }
-    usleep(100);
   }
+  cout << endl;
 }
