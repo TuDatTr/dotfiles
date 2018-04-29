@@ -6,3 +6,4 @@ emacs/.emacs.d/*
 config/.scripts/playstate
 !emacs/.emacs.d/snippets*
 !emacs/.emacs.d/config.org
+!emacs/.emacs.d/ledger.org

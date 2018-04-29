@@ -1,0 +1,13 @@
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(ledger-reports
+   (quote
+    (("schulden" "ledger -f /home/tuan/Nextcloud/orgs/Budget/MyBudget.ledger bal ^Schulden")
+     ("acclist" "ledger -f /home/tuan/Nextcloud/orgs/Budget/MyBudget.ledger accounts")
+     ("spendable" "%(binary) -f %(ledger-file) reg Girokonto$ Brieftasche$")
+     ("monthly" "%(binary) -f %(ledger-file) -M --period-sort \"amount\" reg ^Ausgaben")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)")))))
+#+END_SRC

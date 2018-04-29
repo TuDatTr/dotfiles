@@ -1,4 +1,4 @@
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 plugins=(
     git
@@ -30,21 +30,27 @@ POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
 alias e="emacsclient -t"
+alias ek="pkill emacs"
 alias ed="emacs --daemon"
 alias nyan="nyancat"
 alias rm="rm -i"
 alias -s tex=e
 alias -s cpp=e
-alias org="e ~/Nextcloud/orgs/man.org"
+alias -s org=e
 alias diff="diff -s"
-alias budget="e ~/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias budget="e $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
 alias q="exit"
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias steam='steam -silent %U'
 source $ZSH/oh-my-zsh.sh
 
 # Variables
 export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
 export GPG_TTY=$(tty)
 export LC_ALL=en_GB.UTF-8
-PATH=$PATH:~/.local/bin
-export EDITOR='emacsclient -nw'
-export DEFAULT_EDITOR='emacsclient -nw'
+PATH=$PATH:$HOME/.local/bin:/usr/lib/jvm/java-10-openjdk/bin
+export EDITOR='emacsclient -t'
+export DEFAULT_EDITOR='emacsclient -t'
+export VISUAL='emacsclient -ct'
+export VISUAL_EDITOR='emacsclient -ct'
+export STEAM_FRAME_FORCE_CLOSE=1

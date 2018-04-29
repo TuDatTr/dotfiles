@@ -16,7 +16,7 @@ A list of installed packages and details about them.
    Adding the melpa package repository to Emacs.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
     '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 #+END_SRC
@@ -55,6 +55,7 @@ A list of installed packages and details about them.
 (use-package powerline)
 (use-package php-mode)
 (use-package visual-regexp)
+(use-package nasm-mode)
 #+END_SRC
 * Appearance
   Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
@@ -64,8 +65,8 @@ A list of installed packages and details about them.
 
 Changes the Emacs background to the terminals defaults. (Generally)
 #+BEGIN_SRC emacs-lisp
-(add-hook 'window-setup-hook 
-      '(lambda () 
+(add-hook 'window-setup-hook
+      '(lambda ()
          (set-face-background 'default "unspecified-bg")))
 #+END_SRC
 
@@ -83,8 +84,11 @@ Powerline for Emacs
   Save auto-save files in ~/.emacs-save
 #+BEGIN_SRC emacs-lisp
 (f-mkdir "~/.emacs-saves")
+(setq backup-directory-alist
+  '((".*" . "~/.emacs-saves/")))
 (setq auto-save-file-name-transforms
   '((".*" "~/.emacs-saves/" t)))
+
 #+END_SRC
 
 * Functions
@@ -152,14 +156,14 @@ Paste from the clipboard.
 ** Personal functions
 Go back to indentation, if you are at the indentation, go to beginning of the line instead.
 #+BEGIN_SRC emacs-lisp
-  (defun back-to-indentation-or-beginning () 
+  (defun back-to-indentation-or-beginning ()
   "Go back to indentation, if at indentation go to beginning of line"
   (interactive)
    (if (= (point) (progn (back-to-indentation) (point)))
        (beginning-of-line)))
 #+END_SRC
 
-Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window 
+Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window
 mode though.
 Function is not currently used since I still have to figure out how to make it work with emacs in daemon mode
 #+BEGIN_SRC emacs-lisp
@@ -190,6 +194,15 @@ Using Anaconda-mode as default python development mode
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 #+END_SRC
+** Java
+#+BEGIN_SRC emacs-lisp
+(add-hook
+  'java-mode-hook
+    (lambda()
+      (local-set-key (kbd "C-c C-c") #'smart-compile)
+      (local-set-key (kbd "C-c /") #'comment-region)))
+#+END_SRC
+
 ** C++
 My exec doesnt quite work yet.
 #+BEGIN_SRC emacs-lisp
@@ -207,6 +220,11 @@ My exec doesnt quite work yet.
     (lambda()
       (local-set-key (kbd "C-c C-c") #'smart-compile)
       (local-set-key (kbd "C-c /") #'comment-region)))
+#+END_SRC
+
+** NASM
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
 #+END_SRC
 
 ** LaTeX
@@ -228,15 +246,15 @@ Use Evince as default pdf viewer.
 
 Enable syntax highlighting in Org-mode.
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 
-      '(lambda () 
+(add-hook 'org-mode-hook
+      '(lambda ()
          (setq org-src-fontify-natively t)))
 #+END_SRC
 
-Enable 
+Enable
 Enable automatic translation of special characters
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 
+(add-hook 'org-mode-hook
       '(lambda ()
          (setq org-pretty-entities t)))
 #+END_SRC
@@ -255,8 +273,8 @@ Handy shortcuts
 
 GNU Plot
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 
-      '(lambda () 
+(add-hook 'org-mode-hook
+      '(lambda ()
          (local-set-key (kbd "C-c c") #'org-plot/gnuplot)))
 #+END_SRC
 
@@ -269,6 +287,7 @@ Enabled languages:
    (emacs-lisp . t)
    (C . t)
    (gnuplot . t)
+   (latex . t)
  ))
 #+END_SRC
 
@@ -298,6 +317,10 @@ Globaly highlight the current line in a slightly darker shade of grey.
 (yas-global-mode 1)
 #+END_SRC
 
+** Ledger
+#+BEGIN_SRC emacs-lisp
+(org-babel-load-file "~/.emacs.d/ledger.org")
+#+END_SRC
 ** Personal Global
 #+BEGIN_SRC emacs-lisp
 (defvar my-keys-minor-mode-map
@@ -308,6 +331,7 @@ Globaly highlight the current line in a slightly darker shade of grey.
     (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
     (define-key map (kbd "C-c w") 'copy-word)
     (define-key map (kbd "C-c r") 'vr/query-replace)
+    (define-key map (kbd "M-/") 'comment-region)
     map)
   "my-keys-minor-mode keymap.")
 
@@ -323,4 +347,3 @@ Globaly highlight the current line in a slightly darker shade of grey.
 #+BEGIN_SRC emacs-lisp
 (add-hook 'conf-mode 'rainbow-mode)
 #+END_SRC
-
