@@ -45,7 +45,7 @@ scrollbar = off
 foreground      = #eceff1
 foreground_bold = #eceff1
 cursor          = #eceff1
-background      = rgba(38, 50, 56, 0.7)
+background      = rgba(38, 50, 56, 1.0)
 
 # black
 color0  = #263238
