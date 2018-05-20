@@ -49,7 +49,7 @@ def lock_config():
 
     # clock pos
     clock_x = left_margin
-    clock_y = int(res_y * (83 / 100))
+    clock_y = int(res_y * (90 / 100))
 
     date_x = left_margin
     date_y = clock_y + default_fontsize
@@ -98,11 +98,10 @@ def lock_config():
     # Wrong Text
     lock_wrong_text = '--wrongtext="Noope"'
     # Text Size
-    lock_text_size = '--textsize=20'
+    # lock_text_size = '--textsize=20'
     # Ring Position
-    lock_texts = '{} {} {}'.format(lock_right_text, lock_wrong_text,
-                                   lock_text_size)
-    lock_pos = '--indpos={}:{}'.format(int(clock_x)+380, int(clock_y+90))
+    lock_texts = '{} {}'.format(lock_right_text, lock_wrong_text)
+    lock_pos = '--indpos={}:{}'.format(int(clock_x)+370, int(clock_y))
     # Ring size
     ring_size = 40
     lock_radius = '--radius {}'.format(ring_size)
