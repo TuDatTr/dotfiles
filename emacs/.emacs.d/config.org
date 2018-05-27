@@ -43,24 +43,24 @@ A list of installed packages and details about them.
 (use-package eclim)
 (use-package flycheck)
 (use-package google-this)
-(use-package ledger-mode)
 (use-package ivy)
+(use-package ledger-mode)
 (use-package material-theme)
+(use-package ox-gfm)
 (use-package ox-twbs)
+(use-package php-mode)
+(use-package powerline)
 (use-package rainbow-delimiters)
 (use-package rainbow-mode)
 (use-package smart-compile)
 (use-package smartparens)
 (use-package swiper)
-(use-package powerline)
-(use-package php-mode)
 (use-package visual-regexp)
-(use-package nasm-mode)
 #+END_SRC
 * Appearance
   Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
 #+BEGIN_SRC emacs-lisp
-(load-theme 'material t)
+(load-theme 'monokai t)
 #+END_SRC
 
 Changes the Emacs background to the terminals defaults. (Generally)
@@ -90,6 +90,12 @@ Powerline for Emacs
   '((".*" "~/.emacs-saves/" t)))
 (setq custom-file "~/.emacs.d/config.el")
 #+END_SRC
+
+Delete trailing spaces before saving
+#+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+
 
 * Functions
   All the functions I use.

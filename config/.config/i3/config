@@ -90,7 +90,10 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [title="KeePassX$"] floating enable border normal
+for_window [title="Eddie - Settings"] floating enable border normal
+
 for_window [title="(?i)termite"] border pixel 3
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -113,7 +116,7 @@ for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"
 
 ###############################################################################
 ############################ Startup Applications #############################
-############################################################################### 
+###############################################################################
 
 exec --no-startup-id setxkbmap us,de
 exec --no-startup-id nitrogen --restore; compton -b
@@ -146,8 +149,8 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioPlay exec "if [ `cat /home/$USER/.scripts/playstate` = 0 ]; then echo '1'>/home/$USER/.scripts/playstate;else echo '0'>/home/$USER/.scripts/playstate;fi"
 bindsym XF86AudioStop exec "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
@@ -230,7 +233,7 @@ bindsym $mod+0 exec --no-startup-id "python ~/.scripts/i3lock.py"
 # Change the variable name at the place you want to match the color
 # of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
+# If you want your bar to have the same background color as your
 # terminal background change the line 362 from:
 # background  $i3_background
 # to:
@@ -261,7 +264,7 @@ client.focused          $term_color4  $term_color4  $term_color15 $term_color12
 client.focused_inactive $term_color8  $term_color8  $term_color15 $term_color10
 client.unfocused        $term_color8  $term_color8  $term_color15 $term_color10
 client.urgent           $term_color13 $term_color12 $term_color15 $term_color14
-client.placeholder      $term_color15 $term_color15 $term_color15 $term_color15 
+client.placeholder      $term_color15 $term_color15 $term_color15 $term_color15
 
 client.background       $term_color10
 
@@ -276,7 +279,7 @@ gaps outer -4
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 # smart_borders on
 
@@ -319,4 +322,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
