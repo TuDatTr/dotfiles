@@ -40,12 +40,10 @@ A list of installed packages and details about them.
 :defer t
 :ensure t)
 (use-package counsel)
-(use-package eclim)
 (use-package flycheck)
-(use-package google-this)
 (use-package ivy)
 (use-package ledger-mode)
-(use-package material-theme)
+(use-package molokai-theme)
 (use-package ox-gfm)
 (use-package ox-twbs)
 (use-package php-mode)
@@ -58,9 +56,9 @@ A list of installed packages and details about them.
 (use-package visual-regexp)
 #+END_SRC
 * Appearance
-  Using the [[https://github.com/cpaulik/emacs-material-theme][Material]]-Theme.
+  Using the Molokai-Theme.
 #+BEGIN_SRC emacs-lisp
-(load-theme 'monokai t)
+(load-theme 'molokai t)
 #+END_SRC
 
 Changes the Emacs background to the terminals defaults. (Generally)
@@ -89,13 +87,13 @@ Powerline for Emacs
 (setq auto-save-file-name-transforms
   '((".*" "~/.emacs-saves/" t)))
 (setq custom-file "~/.emacs.d/config.el")
+(setq auto-mode-alist (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
 #+END_SRC
 
 Delete trailing spaces before saving
 #+BEGIN_SRC emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
-
 
 * Functions
   All the functions I use.
@@ -185,6 +183,16 @@ Copy word
 (interactive "P")
 (copy-thing 'backward-word 'forward-word arg)
 )
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun insert-current-date () (interactive)
+ (insert (shell-command-to-string "echo -n $(date +%d.%m.%Y)")))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun insert-current-time () (interactive)
+ (insert (shell-command-to-string "echo -n $(date +%H:%M)")))
 #+END_SRC
 
 * Modes
@@ -289,11 +297,11 @@ Enabled languages:
 (org-babel-do-load-languages
 'org-babel-load-languages
 '( (python . t)
-   (sh . t)
    (emacs-lisp . t)
    (C . t)
    (gnuplot . t)
    (latex . t)
+   (shell . t)
  ))
 #+END_SRC
 
@@ -338,6 +346,8 @@ Globaly highlight the current line in a slightly darker shade of grey.
     (define-key map (kbd "C-c w") 'copy-word)
     (define-key map (kbd "C-c r") 'vr/query-replace)
     (define-key map (kbd "M-/") 'comment-region)
+    (define-key map (kbd "C-c d") 'insert-current-date)
+    (define-key map (kbd "C-c t") 'insert-current-time)
     map)
   "my-keys-minor-mode keymap.")
 

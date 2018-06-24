@@ -35,8 +35,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:style=Regular:pixelsize=10
 
-modules-left = spotify 
-modules-center = spotify-prev spotify-play spotify-stop spotify-next 
+modules-left = spotify
+modules-center = spotify-prev spotify-play spotify-stop spotify-next
 modules-right = xkeyboard volume xbacklight wlan eth battery1 date
 
 cursor-click = pointer
@@ -70,7 +70,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:style=Regular:pixelsize=10
 
-modules-left = 
+modules-left = airvpn
 modules-center = i3
 modules-right = powermenu
 
@@ -123,6 +123,13 @@ exec-if = pgrep -x spotify
 exec = echo ""
 tail = true
 click-left = bash -c "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
+
+[module/airvpn]
+type = custom/script
+exec-if =
+exec = "if [[ $(ip addr | grep tun) ]]; then echo 'VPN: connected'; else echo 'VPN: disconnectd'; fi"
+tail = true
+
 
 [module/i3]
 type = internal/i3
@@ -181,7 +188,7 @@ label-urgent-padding = 4
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> 
+format = <label>
 label =  %percentage%%
 label-underline = ${colors.yellow}
 
@@ -214,9 +221,9 @@ date =
 date-alt = " %Y-%m-%d"
 
 time = " %H:%M:%S"
-time-alt = 
+time-alt =
 
-format-prefix = 
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.magenta}
 
