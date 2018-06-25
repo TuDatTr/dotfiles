@@ -10,6 +10,7 @@ call vundle#begin()
    Plugin 'ledger/vim-ledger'
    Plugin 'terryma/vim-multiple-cursors'
    Plugin 'haya14busa/incsearch.vim'
+   Plugin 'esalter-va/vim-checklist'
 call vundle#end()
 
 " Functions
@@ -35,13 +36,23 @@ endfunction
 
 " Basics
 syntax on
+filetype indent plugin on
 set encoding=utf-8
 colorscheme monokai
 set autowrite
+set smartcase
+set spelllang=en_gb,de_de
+
+" Line Numbers
+set number
+set relativenumber
+
 " Tab behavior
 set expandtab
 set tabstop=4
-set shiftwidth=3
+set shiftwidth=4
+set softtabstop=4
+
 "" New window positions
 set splitbelow
 set splitright
@@ -72,10 +83,12 @@ autocmd FileType tex inoremap ;sssec \subsubsection{<x_x>}<Enter><Enter><x_x><Es
 autocmd FileType tex map <C-c><C-c> mx:silent !pdflatex % && evince %<.pdf &<Enter>ggGG`x
 
 "" Ledger
-autocmd FileType ledger inoremap ;a <C-R>=strftime("%Y/%m/%d")<Enter> * <x_x><Enter><Space><Space><Space><Space><x_x><Space><Space><Space><Space><x_x><Enter><Enter><x_x><Esc>3k0<Tab><Tab>
+autocmd FileType ledger inoremap ;a <C-R>=strftime("%Y/%m/%d")<Enter> * <x_x><Enter><Space><Space><Space><Space><x_x><Space><Space><Space><Space><x_x><Enter><Enter><x_x><Esc>3k0
 autocmd FileType ledger map <C-R>b :! ledger -f % reg Brieftasche$<Enter>
 autocmd FileType ledger map <C-R>g :! ledger -f % reg Girokonto$<Enter>
 autocmd FileType ledger map <C-R>p :! ledger -f % reg PayPal$<Enter>
 
 "" Markdown
-autocmd FileType markdown,rmd map map <C-c><C-c> mx:silet !pandoc -f % -t latex %<.pdf && evince %<.pdf &<Enter>ggGG`x
+autocmd FileType markdown,rmd map <C-c><C-c> mx:silent !pandoc % --pdf-engine=xelatex -o %<.pdf && evince %<.pdf &<Enter>ggGG`x
+autocmd FileType markdown,rmd map <C-c>t :ChecklistToggleCheckbox<Enter>
+autocmd FileType markdown,rmd inoremap ;h ---<Enter><Tab>title: <x_x><Enter>author: Tuan-Dat Tran<Enter><Esc>0i---<Enter><x_x><Esc>4k0

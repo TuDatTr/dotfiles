@@ -26,6 +26,8 @@ POWERLEVEL9K_TIME_BACKGROUND="black"
 POWERLEVEL9K_TIME_FOREGROUND="color7"
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S}"
 
+POWERLEVEL9k_SHORTEN_STRATEGY="trunctuate_middle"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # Alias
 alias df="df -h"
 alias mkvirtenv="python -m virtualenv --system-site-packages"
@@ -43,7 +45,7 @@ alias budget="e $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
 alias vudget="vim $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
 alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias steam='steam -silent %U'
+alias steam='steam -silent %U' 
 alias vrc='vim ~/.vimrc'
 alias erc='e ~/.emacs.d/config.org'
 source $ZSH/oh-my-zsh.sh
