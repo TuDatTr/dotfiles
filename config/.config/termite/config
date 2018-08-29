@@ -22,9 +22,8 @@ hyperlinks = true
 
 # "system", "on" or "off"
 cursor_blink = system
-
 # "block", "underline" or "ibeam"
-cursor_shape = ibeam
+cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 #filter_unmatched_urls = true
@@ -42,39 +41,40 @@ scrollbar = off
 [colors]
 
 # special
-foreground      = #f1ebeb
-foreground_bold = #f1ebeb
-cursor          = #f1ebeb
+foreground      = #f8f8f2
+foreground_bold = #f8f8f2
+cursor          = #f8f8f2
 background      = #272822
 
 # black
-color0  = #48483e
-color8  = #76715e
+color0  = #272822
+color8  = #75715e
 
 # red
-color1  = #dc2566
-color9  = #fa2772
+color1  = #f92672
+color9  = #f92672
 
 # green
-color2  = #8fc029
-color10 = #a7e22e
+color2  = #a6e22e
+color10 = #a6e22e
 
 # yellow
-color3  = #d4c96e
-color11 = #e7db75
+color3  = #f4bf75
+color11 = #f4bf75
 
 # blue
-color4  = #55bcce
-color12 = #66d9ee
+color4  = #66d9ef
+color12 = #66d9ef
 
 # magenta
-color5  = #9358fe
-color13 = #ae82ff
+color5  = #ae81ff
+color13 = #ae81ff
 
 # cyan
-color6  = #56b7a5
-color14 = #66efd5
+color6  = #a1efe4
+color14 = #a1efe4
 
 # white
-color7  = #acada1
-color15 = #cfd0c2
+color7  = #f8f8f2
+color15 = #f9f8f5
+

@@ -121,13 +121,13 @@ for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"
 ###############################################################################
 
 exec --no-startup-id setxkbmap us,de
+exec --no-startup-id setxkbmap -option ctrl:swapcaps
 exec --no-startup-id nitrogen --restore; compton -b
 exec --no-startup-id nextcloud
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
 exec --no-startup-id polybar beep -r
 exec --no-startup-id polybar boop -r
-exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- python ~/.scripts/i3lock.py
 
@@ -154,11 +154,15 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86AudioPlay exec "if [ `cat /home/$USER/.scripts/playstate` = 0 ]; then echo '1'>/home/$USER/.scripts/playstate;else echo '0'>/home/$USER/.scripts/playstate;fi"
-bindsym XF86AudioStop exec "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
+# bindsym XF86AudioPlay exec "if [ `cat /home/$USER/.scripts/playstate` = 0 ]; then echo '1'>/home/$USER/.scripts/playstate;else echo '0'>/home/$USER/.scripts/playstate;fi"
+# bindsym XF86AudioStop exec "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
+bindsym XF86AudioPlay exec "playerctl play-pause; cmus-remote -u"
+bindsym XF86AudioStop exec "playerctl stop; cmus-remote -s"
+bindsym XF86AudioNext exec "playerctl next; cmus-remote -n"
+bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 
 # Application Shortcuts
-bindsym $mod+b exec firefox
+bindsym $mod+b exec env GTK_THEME=Materia:dark firefox
 bindsym $mod+e exec source ~/.zshrc && termite -e 'ranger'
 bindsym $mod+m exec thunderbird
 

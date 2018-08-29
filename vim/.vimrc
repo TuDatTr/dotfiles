@@ -4,35 +4,31 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-   Plugin 'VundleVim/Vundle.vim'
-   Plugin 'vim-pandoc/vim-pandoc'
-   Plugin 'vim-pandoc/vim-pandoc-syntax'
-   Plugin 'ledger/vim-ledger'
-   Plugin 'terryma/vim-multiple-cursors'
-   Plugin 'haya14busa/incsearch.vim'
-   Plugin 'esalter-va/vim-checklist'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 
+" Filetypes
+au BufNewFile,BufRead *.md set filetype=md
+au BufNewFile,BufRead *.tex set filetype=tex
+au BufNewFile,BufRead config set filetype=config
 " Functions
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-function! s:RunShellCommand(cmdline)
-  echo a:cmdline
-  let expanded_cmdline = a:cmdline
-  for part in split(a:cmdline, ' ')
-     if part[0] =~ '\v[%#<]'
-        let expanded_part = fnameescape(expand(part))
-        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-     endif
-  endfor
-  botright new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:    ' . a:cmdline)
-  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-  call setline(3,substitute(getline(2),'.','=','g'))
-  execute '$read !'. expanded_cmdline
-  setlocal nomodifiable
-  1
-endfunction
+
+" Arch defaults
+
+"" Move the swap file location to protect against CVE-2017-1000382
+if exists('$XDG_CACHE_HOME')
+    let &g:directory=$XDG_CACHE_HOME
+else
+    let &g:directory=$HOME . '/.cache'
+endif
+let &g:directory.='/vim/swap//'
+"" Create swap directory if it doesn't exist
+if ! isdirectory(expand(&g:directory))
+    silent! call mkdir(expand(&g:directory), 'p', 0700)
+endif
 
 " Basics
 syntax on
@@ -41,11 +37,12 @@ set encoding=utf-8
 colorscheme monokai
 set autowrite
 set smartcase
-set spelllang=en_gb,de_de
-
+set incsearch
+set hlsearch
+set nofoldenable
 " Line Numbers
-set number
-set relativenumber
+"set number
+"set relativenumber
 
 " Tab behavior
 set expandtab
@@ -57,38 +54,57 @@ set softtabstop=4
 set splitbelow
 set splitright
 
-
 " Remaps
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nmap 0 ^
+
+" Latex
+let g:tex_nospell=1
 " Shortcuts
-inoremap <Tab><Tab> <Esc>/<x_x><Enter>c5l
-vnoremap <Tab><Tab> <Esc>/<x_x><Enter>c5l
-map <Tab><Tab> <Esc>/<x_x><Enter>c5l
+map <Space><Tab> <Esc>/<x_x><Enter>c5l
+inoremap <Space><Tab> <Esc>/<x_x><Enter>c5l
+vnoremap <Space><Tab> <Esc>/<x_x><Enter>c5l
 inoremap ;; <x_x>
+imap jj <Esc>
+inoremap ;date <C-R>=strftime("%Y/%m/%d")<Enter> 
+inoremap ;time <C-R>=strftime("%H:%M:%S")<Enter> 
+" Diaeresis for e.g. german
+inoremap "a ä
+inoremap "o ö
+inoremap "u ü
+inoremap "A Ä
+inoremap "U Ü
+inoremap "O Ö
+inoremap ;ss ß
+inoremap ;euro €
 
-"" Latex
-autocmd FileType tex inoremap ;l \item
-autocmd FileType tex inoremap ;beg \begin{<o_o>}<Enter><x_x><Enter>\end{<o_o>}<Enter><Enter><x_x><Esc>4k0:MultipleCursorsFind<Space><o_o><Enter>c
-autocmd FileType tex inoremap ;sec \section{<x_x>}<Enter><Enter><x_x><Esc>2k<Tab><Tab>
-autocmd FileType tex inoremap ;ssec \subsection{<x_x>}<Enter><Enter><x_x><Esc>2k<Tab><Tab>
-autocmd FileType tex inoremap ;sssec \subsubsection{<x_x>}<Enter><Enter><x_x><Esc>2k<Tab><Tab>
-""" Compile to pdf and open it in evince
-autocmd FileType tex map <C-c><C-c> mx:silent !pdflatex % && evince %<.pdf &<Enter>ggGG`x
+" This callback will be executed when the entire command is completed
+function! BackgroundCommandClose(channel)
+    " Read the output from the command into the quickfix window
+    unlet g:backgroundCommandOutput
+endfunction
 
-"" Ledger
-autocmd FileType ledger inoremap ;a <C-R>=strftime("%Y/%m/%d")<Enter> * <x_x><Enter><Space><Space><Space><Space><x_x><Space><Space><Space><Space><x_x><Enter><Enter><x_x><Esc>3k0
-autocmd FileType ledger map <C-R>b :! ledger -f % reg Brieftasche$<Enter>
-autocmd FileType ledger map <C-R>g :! ledger -f % reg Girokonto$<Enter>
-autocmd FileType ledger map <C-R>p :! ledger -f % reg PayPal$<Enter>
+function! RunBackgroundCommand(command)
+    " Make sure we're running VIM version 8 or higher.
+    if v:version < 800
+        echoerr 'RunBackgroundCommand requires VIM version 8 or higher'
+        return
+    endif
+    if exists('g:backgroundCommandOutput')
+        echo 'Already running task in background'
+    else
+        echo 'Running task in background'
+        " Launch the job.
+        " Notice that we're only capturing out, and not err here. This is because, for some reason, the callback
+        " will not actually get hit if we write err out to the same file. Not sure if I'm doing this wrong or?
+        let g:backgroundCommandOutput = tempname()
+        call job_start(a:command, {'close_cb': 'BackgroundCommandClose', 'out_io': 'file', 'out_name': g:backgroundCommandOutput})
+    endif
+endfunction
 
-"" Markdown
-autocmd FileType markdown,rmd map <C-c><C-c> mx:silent !pandoc % --pdf-engine=xelatex -o %<.pdf && evince %<.pdf &<Enter>ggGG`x
-autocmd FileType markdown,rmd map <C-c>t :ChecklistToggleCheckbox<Enter>
-autocmd FileType markdown,rmd inoremap ;h ---<Enter><Tab>title: <x_x><Enter>author: Tuan-Dat Tran<Enter><Esc>0i---<Enter><x_x><Esc>4k0
+" So we can use :BackgroundCommand to call our function.
+command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
+

@@ -35,9 +35,9 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:style=Regular:pixelsize=10
 
-modules-left = spotify
-modules-center = spotify-prev spotify-play spotify-stop spotify-next
-modules-right = xkeyboard volume xbacklight wlan eth battery1 date
+modules-left = volume xkeyboard 
+modules-center = date
+modules-right = 
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -72,7 +72,7 @@ font-3 = FontAwesome:style=Regular:pixelsize=10
 
 modules-left = airvpn
 modules-center = i3
-modules-right = powermenu
+modules-right = xbacklight wlan eth battery1 powermenu
 
 cursor-click = pointer
 cursor-scroll = ns-resize

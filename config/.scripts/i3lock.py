@@ -66,8 +66,12 @@ def lock_config():
     lock_date_pos = '--datepos="{}:{}"'.format(date_x, date_y)
     lock_date_size = '--datesize={}'.format(default_fontsize)
     date = "{} {}".format(lock_date_pos, lock_date_size)
+    # date color
+    datecolor = '--datecolor=777777ff'
+    timecolor = '--timecolor=777777ff'
+    color = '{} {}'.format(datecolor, timecolor)
     # done
-    datetime = "{} {}".format(l_time, date)
+    datetime = "{} {} {}".format(l_time, date, color)
 
     # Indicator config
     # Indicator inner
