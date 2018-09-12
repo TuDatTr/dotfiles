@@ -27,43 +27,47 @@ POWERLEVEL9k_SHORTEN_STRATEGY="trunctuate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 # Alias
-alias matrix="cmatrix"
-alias df="df -h"
-alias mkvirtenv="python -m virtualenv --system-site-packages"
-alias e="emacsclient -t"
-alias ek="pkill emacs"
-alias ej="emacs --daemon"
-alias nyan="nyancat"
-alias rm="rm -I"
-alias -s tex=vim
 alias -s cpp=vim
 alias -s org=vim
-alias diff="diff -s"
-alias stunden="et $HOME/Nextcloud/Arbeit/Stunden/Stundenzettel.xlsx &; disown %1;"
+alias -s tex=vim
 alias budget="emacs -nw $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
-alias vudget="vim $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias df="df -h"
+alias diff="diff -s"
+alias e="emacsclient -t"
+alias ej="emacs --daemon"
+alias ek="pkill emacs"
+alias erc='emacs -nw ~/.emacs.d/config.org'
+alias matrix="cmatrix"
+alias mkvirtenv="python -m virtualenv --system-site-packages"
+alias mp3='youtube-dl  --embed-thumbnail -x --audio-format mp3 -o "./%(title)s.%(ext)s"'
+alias nyan="nyancat"
+alias pastebin='vim ~/Nextcloud/pastebin.txt'
 alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias rm="rm -I"
 alias steam='steam'
-alias vrc='vim ~/.vimrc'
-alias erc='emacs -nw ~/.emacs.d/config.org'
-alias mp3='youtube-dl  -x --audio-format mp3 -o "./%(title)s.%(ext)s"'
-alias zrc='vim ~/.zshrc'
+alias stunden="et $HOME/Nextcloud/Arbeit/Stunden/Stundenzettel.xlsx &; disown %1;"
 alias vpn_eu='sudo openvpn  --config Downloads/AirVPN_Europe_UDP-443.ovpn'
 alias vpn_us='sudo openvpn  --config Downloads/AirVPN_America_UDP-443.ovpn'
+alias vrc='vim ~/.vimrc'
+alias vudget="vim $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
+alias watch='watch --color'
+alias zrc='vim ~/.zshrc'
+
+
 source $ZSH/oh-my-zsh.sh
 
 # Variables
-export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
-export GPG_TTY=$(tty)
-export LC_ALL=en_GB.UTF-8
 PATH=$PATH:$HOME/.local/bin:/usr/lib/jvm/java-10-openjdk/bin
-export EDITOR='vim'
 export DEFAULT_EDITOR=$EDITOR
+export EDITOR='vim'
+export GOPATH="$HOME/workspace/go/"
+export GPG_TTY=$(tty)
+export HIGHLIGHT_DATADIR="~/.config/highlight/"
+export LC_ALL=en_GB.UTF-8
+export STEAM_FRAME_FORCE_CLOSE=1
+export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
 export VISUAL=$EDITOR
 export VISUAL_EDITOR=$EDITOR
-export STEAM_FRAME_FORCE_CLOSE=1
-export HIGHLIGHT_DATADIR="~/.config/highlight/"
-export GOPATH="$HOME/workspace/go/"
 
 # Functions

@@ -9,7 +9,7 @@ def screenshot():
     os.system('scrot /tmp/i3lock.png')
     print('Screenshot: {}'.format(time.time() - ss_time))
 
-    
+
 def pixelate():
     pxl_time = time.time()
     pixelSize = 12
@@ -20,9 +20,9 @@ def pixelate():
 
     image = image.resize((int(image_x / pixelSize), int(image_y / pixelSize)), Image.NEAREST)
     image_x, image_y = image.size
-    
+
     image = image.resize((image_x * pixelSize, image_y * pixelSize),
-                         Image.NEAREST)
+            Image.NEAREST)
 
     image.save('/tmp/i3lock.png')
     print('pixelate: {}'.format(time.time() - pxl_time))
@@ -82,7 +82,7 @@ def lock_config():
     # Color of the circle if wrong | Color: transparent
     lock_wrong_color = '--insidewrongcolor 00000000 '
     indicator_inner = "{} {} {}".format(lock_rest_color, lock_wrong_color,
-                                        lock_ver_color)
+            lock_ver_color)
 
     # indicator_outer_ring
     # Default Color of the ring | Color: torquoise
@@ -111,13 +111,13 @@ def lock_config():
     lock_radius = '--radius {}'.format(ring_size)
     lock_stats = '{} {}'.format(lock_pos, lock_radius)
     indicator_outer_ring = "{} {} {} {} {} {} {} {}".format(lock_ring,
-                                                            lock_ring_w,
-                                                            lock_ring_v,
-                                                            lock_press,
-                                                            lock_del,
-                                                            lock_sep_color,
-                                                            lock_stats,
-                                                            lock_texts)
+            lock_ring_w,
+            lock_ring_v,
+            lock_press,
+            lock_del,
+            lock_sep_color,
+            lock_stats,
+            lock_texts)
     # done
     indicator = "{} {}".format(indicator_inner, indicator_outer_ring)
 
@@ -126,7 +126,7 @@ def lock_config():
 
     print('lock: {}'.format(time.time() - lock_time))
     return "{} {} {} {} {}".format(lock_core, clock, datetime, indicator,
-                                   lock_pic)
+            lock_pic)
 
 
 def lock():
@@ -134,6 +134,40 @@ def lock():
     command = lock_config()
 
     os.system(command)
+
+def proc_exists(proc_name):
+    proc_check = time.time()
+    this_proc = "i3lock.py"
+    proc_path = '/proc'
+    proc = next(os.walk('{}/'.format(proc_path)))[1]
+    counter = 0
+    for process in proc:
+        counter+=1
+        cmdline_path = '{}/{}/cmdline'.format(proc_path,process)
+        try:
+            with open(cmdline_path, 'r') as cmd:
+                proc_content = cmd.readline()
+                proc_content = '{}: {}'.format(counter, proc_content)
+                if proc_content: 
+                    if proc_name in proc_content:
+                        # print(proc_name)
+                        # print(proc_content)
+                        # print(proc_name in proc_content)
+                        if 'xss-lock' not in proc_content:
+                            # print('xss-lock' not in proc_content)
+                            if this_proc not in proc_content:
+                                # print(this_proc not in proc_content)
+                                print('Process Exists: {}'.format(time.time() - proc_check))
+                                return True
+        except FileNotFoundError:
+            pass
+    print('Process Exists: {}'.format(time.time() - proc_check))
+    return False
+
+
+
+def is_running():
+    return proc_exists("i3lock")
 
 
 def log(start_time):
@@ -151,11 +185,11 @@ def log(start_time):
         f.write("[{}] {} seconds runtime.\n".format(time.asctime(), program_duration))
         f.close()
 
-        
+
 if __name__ == '__main__':
-    
-    start_time = time.time()
-    screenshot()
-    pixelate()
-    lock()
-    log(start_time)
+    if not is_running():
+        start_time = time.time()
+        screenshot()
+        pixelate()
+        lock()
+        log(start_time)
