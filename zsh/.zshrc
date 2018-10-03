@@ -46,13 +46,13 @@ alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rm="rm -I"
 alias steam='steam'
-alias stunden="et $HOME/Nextcloud/Arbeit/Stunden/Stundenzettel.xlsx &; disown %1;"
 alias vpn_eu='sudo openvpn  --config Downloads/AirVPN_Europe_UDP-443.ovpn'
 alias vpn_us='sudo openvpn  --config Downloads/AirVPN_America_UDP-443.ovpn'
 alias vrc='vim ~/.vimrc'
 alias vudget="vim $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
 alias watch='watch --color'
 alias zrc='vim ~/.zshrc'
+alias wallpaper='~/.scripts/colorscheme.sh'
 
 
 source $ZSH/oh-my-zsh.sh
@@ -64,7 +64,7 @@ export EDITOR='vim'
 export GOPATH="$HOME/workspace/go/"
 export GPG_TTY=$(tty)
 export HIGHLIGHT_DATADIR="~/.config/highlight/"
-export LC_ALL=en_GB.UTF-8
+export LC_ALL=en_US.UTF-8
 export STEAM_FRAME_FORCE_CLOSE=1
 export TERM="xterm-256color" # in case you are using urxvt, to bypass an error during sshing
 export VISUAL=$EDITOR

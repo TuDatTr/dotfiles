@@ -120,9 +120,8 @@ for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"
 ############################ Startup Applications #############################
 ###############################################################################
 
-exec --no-startup-id setxkbmap us,de
-exec --no-startup-id setxkbmap -option ctrl:swapcaps
-exec --no-startup-id nitrogen --restore; compton -b
+exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:swapcaps
+exec --no-startup-id feh --bg-scale ~/Pictures/Iroh-at-Tree.png; compton -b
 exec --no-startup-id nextcloud
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie

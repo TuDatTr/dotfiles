@@ -7,7 +7,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 
 " Filetypes
@@ -15,8 +14,6 @@ au BufNewFile,BufRead *.md set filetype=md
 au BufNewFile,BufRead *.tex set filetype=tex
 au BufNewFile,BufRead config set filetype=config
 " Functions
-
-" Arch defaults
 
 "" Move the swap file location to protect against CVE-2017-1000382
 if exists('$XDG_CACHE_HOME')
@@ -33,8 +30,9 @@ endif
 " Basics
 syntax on
 filetype indent plugin on
+set background=dark
+colorscheme PaperColor
 set encoding=utf-8
-colorscheme monokai
 set autowrite
 set smartcase
 set incsearch
