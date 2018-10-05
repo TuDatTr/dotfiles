@@ -30,7 +30,7 @@ endif
 " Basics
 syntax on
 filetype indent plugin on
-set background=dark
+set background=light
 colorscheme PaperColor
 set encoding=utf-8
 set autowrite
@@ -66,7 +66,7 @@ map <Space><Tab> <Esc>/<x_x><Enter>c5l
 inoremap <Space><Tab> <Esc>/<x_x><Enter>c5l
 vnoremap <Space><Tab> <Esc>/<x_x><Enter>c5l
 inoremap ;; <x_x>
-imap jj <Esc>
+inoremap jj <Esc>
 inoremap ;date <C-R>=strftime("%Y/%m/%d")<Enter> 
 inoremap ;time <C-R>=strftime("%H:%M:%S")<Enter> 
 " Diaeresis for e.g. german

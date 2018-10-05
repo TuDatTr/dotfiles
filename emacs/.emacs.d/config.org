@@ -58,7 +58,7 @@ A list of installed packages and details about them.
 * Appearance
   Using the Molokai-Theme.
 #+BEGIN_SRC emacs-lisp
-(load-theme 'molokai t)
+(load-theme 'paper t)
 #+END_SRC
 
 Changes the Emacs background to the terminals defaults. (Generally)
