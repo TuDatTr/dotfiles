@@ -165,11 +165,11 @@ format = <label-state>
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #e60053
+label-mode-background = ${colors.black}
 
 label-focused = %name%
-label-focused-foreground = ${colors.white}
-label-focused-background = #566268
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
 label-focused-underline = ${colors.blue}
 label-focused-padding = 4
 
@@ -215,7 +215,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
 date-alt = " %Y-%m-%d"
@@ -323,9 +323,7 @@ animation-charging-framerate = 750
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
-
 format-spacing = 1
 
 label-open = 

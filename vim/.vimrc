@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 call vundle#end()
+filetype plugin indent on
 
 " Filetypes
 au BufNewFile,BufRead *.md set filetype=md
@@ -57,10 +58,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap J :bn<Enter>
+nnoremap K :bp<Enter>
 nmap 0 ^
 
 " Latex
-let g:tex_nospell=1
+"let g:tex_nospell=1
 " Shortcuts
 map <Space><Tab> <Esc>/<x_x><Enter>c5l
 inoremap <Space><Tab> <Esc>/<x_x><Enter>c5l
