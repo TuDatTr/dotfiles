@@ -214,3 +214,12 @@ Fachschaftsraum
 Ambient
 Lights
 Buildcount
+Stoppanweisung
+IF
+SKIP
+GOTO
+THEN
+GOTOSTART
+M1
+M2
+x

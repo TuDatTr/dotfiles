@@ -5,7 +5,7 @@
 imap <leader>ifm if<Space>__name__<Space>==<Space>'__main__':<Enter>
 
 " Compiling
-map <C-c><C-c> <Esc>:!python %<Enter>
+map <C-c><C-c> <Esc>:!clear; python %<Enter>
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
