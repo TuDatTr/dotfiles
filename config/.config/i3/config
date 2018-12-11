@@ -122,7 +122,8 @@ for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"
 ###############################################################################
 
 exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:swapcaps
-exec --no-startup-id /home/tuan/.fehbg; compton -b
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton -b
 exec --no-startup-id nextcloud
 exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
