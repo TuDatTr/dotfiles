@@ -43,7 +43,9 @@ alias mkvirtenv="python -m virtualenv --system-site-packages"
 alias mp3='youtube-dl  --embed-thumbnail -x --audio-format mp3 -o "./%(title)s.%(ext)s"'
 alias nyan="nyancat"
 alias pastebin='vim ~/Nextcloud/pastebin.txt'
+alias pb='vim ~/Nextcloud/pastebin.txt'
 alias q="exit"
+alias :q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rm="rm -I"
 alias steam='steam'
@@ -53,7 +55,6 @@ alias vrc='vim ~/.vimrc'
 alias vudget="vim $HOME/Nextcloud/orgs/Budget/MyBudget.ledger"
 alias watch='watch --color'
 alias zrc='vim ~/.zshrc'
-alias wallpaper='~/.scripts/colorscheme.sh'
 
 
 source $ZSH/oh-my-zsh.sh

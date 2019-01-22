@@ -23,5 +23,5 @@ vmap "" da"`<C-R>""'<Esc>
 " Compilation
 map <C-c><C-c> <Esc>:RunBackgroundCommand latexmk -pdf -silent <C-r>%<Enter>:redraw!<Enter>
 map <C-c><C-v> <Esc>:RunBackgroundCommand latexmk -c<Enter>
-map <C-c><C-d> <Esc>:silent exec "!okular <C-r>%<Del><Del><Del>pdf &>/dev/null &"<Enter>
+map <C-c><C-d> <Esc>:silent exec "!evince <C-r>%<Del><Del><Del>pdf &>/dev/null &"<Enter>
 

@@ -131,7 +131,7 @@ exec --no-startup-id polybar beep -r
 exec --no-startup-id polybar boop -r
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- python ~/.scripts/i3lock.py
-exec --no-startup-id kdeconnect-indicator
+# exec --no-startup-id kdeconnect-indicator
 
 ###############################################################################
 ################################# Keybindings #################################
