@@ -2,6 +2,7 @@
 \#*\#
 *.log
 .#*
+vim/.vim/bundle/*
 emacs/.emacs.d/*
 config/.scripts/playstate
 !emacs/.emacs.d/snippets*

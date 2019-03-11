@@ -25,9 +25,6 @@ new_window none
 new_float normal
 hide_edge_borders none
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec termite -e 'alsamixer'
-
 ################################################################################################
 ###################################### Workspace Settings ######################################
 ################################################################################################
@@ -42,6 +39,7 @@ set $ws6 6: 
 set $ws7 7: 
 set $ws8 8: 
 set $ws9 9: 
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -77,33 +75,16 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [title="File Transfer*"] floating enable
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [title="KeePassX$"] floating enable border normal
 for_window [title="Eddie - Settings"] floating enable border normal
 for_window [class="^Thunderbird$" title="^.*Event:"] floating enable
 
-# Give boarder to terminal windows
-for_window [class="(?i)termite"] border pixel 3
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
 # https://github.com/z3ntu/dotfiles/blob/master/i3/.config/i3/config
 # Steam
-for_window [class="^Steam$" title="^Friends$"] floating enable
-for_window [class="^Steam$" title="Steam - News"] floating enable
-for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Friends List$"] floating enable
+for_window [class="^Steam$" title="Steam"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
 for_window [class="^Steam$" title=".* - event started"] floating enable
 for_window [class="^Steam$" title=".* CD key"] floating enable
@@ -111,27 +92,19 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
-# Jetbrains
-for_window [class="^com-intellij-updater-Runner$" title="^Update$"] floating enable
-for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"] floating enable
-
-
 
 ###############################################################################
 ############################ Startup Applications #############################
 ###############################################################################
 
-exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:swapcaps
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps 
+exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/*
 exec --no-startup-id compton -b
 exec --no-startup-id nextcloud
-exec --no-startup-id emacs --daemon
 exec --no-startup-id udiskie
 exec --no-startup-id polybar beep -r
 exec --no-startup-id polybar boop -r
 exec --no-startup-id nm-applet
-exec --no-startup-id xss-lock -- python ~/.scripts/i3lock.py
-# exec --no-startup-id kdeconnect-indicator
 
 ###############################################################################
 ################################# Keybindings #################################
@@ -140,7 +113,7 @@ exec --no-startup-id xss-lock -- python ~/.scripts/i3lock.py
 bindsym $mod+Shift+s exec poweroff
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -156,8 +129,6 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-# bindsym XF86AudioPlay exec "if [ `cat /home/$USER/.scripts/playstate` = 0 ]; then echo '1'>/home/$USER/.scripts/playstate;else echo '0'>/home/$USER/.scripts/playstate;fi"
-# bindsym XF86AudioStop exec "playerctl stop && echo '0'>/home/$USER/.scripts/playstate"
 bindsym XF86AudioPlay exec "playerctl play-pause; cmus-remote -u"
 bindsym XF86AudioStop exec "playerctl stop; cmus-remote -s"
 bindsym XF86AudioNext exec "playerctl next; cmus-remote -n"
@@ -165,7 +136,8 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 
 # Application Shortcuts
 bindsym $mod+b exec firefox
-bindsym $mod+e exec termite -e ranger
+bindsym $mod+e exec i3-sensible-terminal -e ranger
+bindsym $mod+Shift+e exec spacefm
 bindsym $mod+m exec thunderbird
 
 bindsym Print exec --no-startup-id scrot
@@ -205,18 +177,10 @@ bindsym $mod+a focus parent
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-bindsym $mod+Alt+v exec ~/.vim-anywhere/bin/run
-#navigate workspaces next / previous
-bindsym $mod+Ctrl+semicolon workspace next
-bindsym $mod+Ctrl+j workspace prev
-# bindsym Alt+Tab workspace next
-
 # restart/exit i3
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exit
+bindsym Control+Shift+e exit
+bindsym Control+Shift+l exec dm-tool lock
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -228,13 +192,10 @@ mode "resize" {
         bindsym l resize grow width 5 px or 5 ppt
 
         # exit resize mode: Enter or Escape
-	bindsym $mod+g mode "default"
+        bindsym $mod+g mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
-}
-
-# Lock screen
-bindsym $mod+0 exec --no-startup-id "python ~/.scripts/i3lock.py"
+    }
 
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
@@ -248,24 +209,24 @@ bindsym $mod+0 exec --no-startup-id "python ~/.scripts/i3lock.py"
 # to:
 # background $term_background
 # Same logic applied to everything else.
- set_from_resource $term_background background
- set_from_resource $term_foreground foreground
- set_from_resource $term_color0     color0
- set_from_resource $term_color1     color1
- set_from_resource $term_color2     color2
- set_from_resource $term_color3     color3
- set_from_resource $term_color4     color4
- set_from_resource $term_color5     color5
- set_from_resource $term_color6     color6
- set_from_resource $term_color7     color7
- set_from_resource $term_color8     color8
- set_from_resource $term_color9     color9
- set_from_resource $term_color10    color10
- set_from_resource $term_color11    color11
- set_from_resource $term_color12    color12
- set_from_resource $term_color13    color13
- set_from_resource $term_color14    color14
- set_from_resource $term_color15    color15
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
 
 # Theme colors
 # class                 backgr.       border        text          indic.      child_border
@@ -299,35 +260,35 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-	bindsym $mod+g mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+bindsym o      mode "$mode_gaps_outer"
+bindsym i      mode "$mode_gaps_inner"
+bindsym $mod+g mode "default"
+bindsym Return mode "default"
+bindsym Escape mode "default"
 }
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+bindsym plus  gaps inner current plus 5
+bindsym minus gaps inner current minus 5
+bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+bindsym Shift+plus  gaps inner all plus 5
+bindsym Shift+minus gaps inner all minus 5
+bindsym Shift+0     gaps inner all set 0
 
-	bindsym $mod+g mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+bindsym $mod+g mode "default"
+bindsym Return mode "default"
+bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+bindsym plus  gaps outer current plus 5
+bindsym minus gaps outer current minus 5
+bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+bindsym Shift+plus  gaps outer all plus 5
+bindsym Shift+minus gaps outer all minus 5
+bindsym Shift+0     gaps outer all set 0
 
-	bindsym $mod+g mode "default"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+bindsym $mod+g mode "default"
+bindsym Return mode "default"
+bindsym Escape mode "default"
 }
