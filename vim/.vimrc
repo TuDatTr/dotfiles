@@ -69,15 +69,18 @@ nmap 0 ^
 inoremap ;date <C-R>=strftime("%Y/%m/%d")<Enter> 
 inoremap ;time <C-R>=strftime("%H:%M:%S")<Enter> 
 " Diaeresis for e.g. german
-inoremap ae ä
-inoremap oe ö
-inoremap ue ü
-inoremap Ae Ä
-inoremap Ue Ü
-inoremap Oe Ö
+inoremap a" ä
+inoremap o" ö
+inoremap u" ü
+inoremap A" Ä
+inoremap U" Ü
+inoremap O" Ö
+inoremap jk <Esc>
 inoremap <leader>s ß
 inoremap <leader>e €
 
+
+vnoremap jk <Esc>
 " This callback will be executed when the entire command is completed
 function! BackgroundCommandClose(channel)
     " Read the output from the command into the quickfix window

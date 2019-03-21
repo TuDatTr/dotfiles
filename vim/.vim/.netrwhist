@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/tuan/Nextcloud/Templates/LaTeX/Protokoll'
-let g:netrw_dirhist_2='/home/tuan/Nextcloud/Templates/LaTeX/Protokoll/INCL'
-let g:netrw_dirhist_3='/home/tuan/Nextcloud/Documents/Git/infrastruktur/mailing_lists'
-let g:netrw_dirhist_4='/home/tuan/.dotfiles/config/.config/termite'
-let g:netrw_dirhist_5='/home/tuan/Nextcloud/Protokolle/Rechenschaftsbericht'
-let g:netrw_dirhist_6='/etc/modules-load.d'

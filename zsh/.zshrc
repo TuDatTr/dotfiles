@@ -6,6 +6,7 @@ export GOPATH="$HOME/.go/"
 # Alias
 alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias pwgen='pwgen -y 20 1'
 alias xsel='xsel -ib'
 
 # Theme

@@ -2,9 +2,12 @@
 \#*\#
 *.log
 .#*
+config/.ssh/known_hosts
+vim/.vim/.netrwhist
 vim/.vim/bundle/*
 emacs/.emacs.d/*
 config/.scripts/playstate
+config/.ssh/known_hosts
 !emacs/.emacs.d/snippets*
 !emacs/.emacs.d/config.org
 !emacs/.emacs.d/ledger.org

@@ -97,7 +97,7 @@ for_window [title="^Steam Keyboard$"] floating enable
 ############################ Startup Applications #############################
 ###############################################################################
 
-exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps 
+exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps; setxkbmap -option grp:lalt_lshift_toggle
 exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/*
 exec --no-startup-id compton -b
 exec --no-startup-id nextcloud
