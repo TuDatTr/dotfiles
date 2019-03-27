@@ -7,7 +7,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'fatih/vim-go'
 Plugin 'vimwiki/vimwiki'
 call vundle#end()
 filetype plugin indent on

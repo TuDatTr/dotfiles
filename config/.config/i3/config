@@ -137,12 +137,12 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 # Application Shortcuts
 bindsym $mod+b exec firefox
 bindsym $mod+e exec i3-sensible-terminal -e ranger
-bindsym $mod+Shift+e exec spacefm
+bindsym $mod+Shift+e exec nautilus
 bindsym $mod+m exec thunderbird
 
-bindsym Print exec --no-startup-id scrot
-bindsym control+Shift+Print --release exec --no-startup-id scrot -f
-bindsym Shift+Print --release exec --no-startup-id scrot -s
+bindsym Print exec --no-startup-id  maim -f png ~/Pictures/Screenshots/$(date +%G-%m)/$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)_$(date +%G-%m-%d_%H-%M-%S).png
+bindsym control+Shift+Print --release exec --no-startup-id  maim -u -s -f png ~/Pictures/Screenshots/$(date +%G-%m)/$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)_$(date +%G-%m-%d_%H-%M-%S).png
+bindsym Shift+Print --release exec --no-startup-id maim -u -i $(xdotool getactivewindow) -f png ~/Pictures/Screenshots/$(date +%G-%m)/$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)_$(date +%G-%m-%d_%H-%M-%S).png
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # change focus
