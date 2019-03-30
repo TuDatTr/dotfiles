@@ -6,7 +6,7 @@ from PIL import Image
 
 def screenshot():
     ss_time = time.time()
-    os.system('scrot /tmp/i3lock.png')
+    os.system('maim -f png /tmp/i3lock.png')
     print('Screenshot: {}'.format(time.time() - ss_time))
 
 
