@@ -39,6 +39,7 @@ set smartcase
 set incsearch
 set hlsearch
 set nofoldenable
+set nospell
 " Line Numbers
 "set number
 "set relativenumber

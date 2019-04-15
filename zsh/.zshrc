@@ -1,6 +1,6 @@
 # Paths
 export ZSH="/home/tuan/.oh-my-zsh"
-export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 export GOPATH="$HOME/.go/"
 
 # Alias
