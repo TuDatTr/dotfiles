@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vimwiki/vimwiki'
+Plugin 'neoclide/coc.nvim'
 call vundle#end()
 filetype plugin indent on
 
@@ -75,12 +76,11 @@ inoremap u" ü
 inoremap A" Ä
 inoremap U" Ü
 inoremap O" Ö
-inoremap jk <Esc>
-inoremap <leader>s ß
-inoremap <leader>e €
+inoremap jj <Esc>
+inoremap ;s ß
+inoremap ;e €
 
 
-vnoremap jk <Esc>
 " This callback will be executed when the entire command is completed
 function! BackgroundCommandClose(channel)
     " Read the output from the command into the quickfix window
@@ -113,3 +113,6 @@ let g:vimwiki_list =[
             \{'path':'~/Documents/Collection/wiki'}, 
             \{'path_html':'~/Documents/Collection/wiki_html'}
                     \]
+
+" Pandoc
+let g:pandoc#modules#disabled = [ "spell" ]

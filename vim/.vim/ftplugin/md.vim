@@ -1,4 +1,6 @@
-setlocal spell spelllang=de_de
+" setlocal spell spelllang=de_de
+" set nospell
+
 
 
 " Begin Shortcuts

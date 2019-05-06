@@ -61,8 +61,8 @@ alignment = 'bl',
 --##  Font Settings  #############################
 -- Use Xft (anti-aliased font and stuff)
 use_xft = true,
---xftfont Liberation Mono:bold:size=9
-font = 'Roboto:size=10',
+--xftfont Hack Nerd Font Mono:style=Regular:size=11:hinting=full
+font = 'DejaVu Sans Mono for Powerline:size=11',
 
 -- Alpha of Xft font. Must be a value at or between 1 and 0 ###
 xftalpha = 1,
@@ -163,20 +163,20 @@ conky.text = [[
 # You can change bg-bottomleft-75.png to bg-bottomleft-50.png for 50% opacity
 # Or bg-bottomleft-25.png for 25% opacity
 # Or bg-bottomleft-0.png for fully transparent
-${goto 24}${font Roboto:Light:size=72}${color0}\
+${goto 24}${font Hack Nerd Font Mono:style=Regular:size=72:hinting=full}${color0}\
 ${time %H}${color}\
 \
 :\
 \
 ${time %M}${font}${color}
 \
-${goto 50}${font Roboto:Light:size=20}${voffset 12}${execi 300 LANG=de_DE.utf8 LC_TIME=de_DE.utf8 date +"%A"},${color}\
+${goto 50}${font Hack Nerd Font Mono:style=Regular:size=20:hinting=full}${voffset 12}${execi 300 LANG=de_DE.utf8 LC_TIME=de_DE.utf8 date +"%A"},${color}\
 ${color0} ${execi 300 LANG=de_DE.utf8 LC_TIME=de_DE.utf8 date +"%d"}${color}\
  ${execi 300 LANG=de_DE.utf8 LC_TIME=de_DE.utf8 date +"%B"}${font}${color}
 \
 
-${goto 24}\
-${font Roboto:Light:pixelsize=12}\
+${goto 20}\
+${font Hack Nerd Font Mono:style=Regular:size=12:hinting=full}\
 ${offset 20}${battery_percent}%\
 ${offset 45}$mem / $memmax\
 ${offset 45}${cpu cpu0}%
