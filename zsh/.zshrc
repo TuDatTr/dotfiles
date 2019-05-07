@@ -25,8 +25,5 @@ plugins=(
 # History
 HISTORY_IGNORE='sudo veracrypt *|veracrypt *'
 
-
-
 # Source
 source $ZSH/oh-my-zsh.sh
-

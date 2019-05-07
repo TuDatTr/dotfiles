@@ -1,4 +1,4 @@
-! special
+! Color
 *.foreground:   #98abb2
 *.background:   #181b28
 *.cursorColor:  #ffffff
