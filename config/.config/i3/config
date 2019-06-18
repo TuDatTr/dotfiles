@@ -99,14 +99,15 @@ for_window [title="^Steam Keyboard$"] floating enable
 ###############################################################################
 
 exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps; setxkbmap -option grp:lalt_lshift_toggle
-exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/gnome/*
+exec --no-startup-id feh --randomize --bg-fill /home/tuan/Pictures/Wallpaper/*
 exec --no-startup-id compton -b
-exec --no-startup-id nextcloud
+exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
 exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc
 exec --no-startup-id urxvtd
 exec --no-startup-id light-locker
-exec --no-startup-id synergyd
+exec --no-startup-id synergyc -f --no-tray --debug INFO --name genesis --enable-crypto 192.168.178.38:24800
+exec --no-startup-id /home/tuan/workspace/go/monthlyLedger/main /home/tuan/Templates/ledger/*
 # exec --no-startup-id polybar beep -r
 # exec --no-startup-id polybar boop -r
 # exec --no-startup-id nm-applet
@@ -141,6 +142,7 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 
 # Application Shortcuts
 bindsym $mod+b exec firefox
+bindsym $mod+p exec firefox --private-window https://mos4.de
 bindsym $mod+e exec urxvtc -e ranger
 bindsym $mod+Shift+e exec nautilus
 bindsym $mod+m exec thunderbird

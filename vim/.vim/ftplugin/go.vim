@@ -1,8 +1,5 @@
 " Shortcuts
 imap ;main package main<Enter><Enter>import (<Enter>"fmt"<Enter>)<Enter><Enter>func main() {<Enter>}<Esc>O
-imap { {<Enter>}<Esc>kA
-imap ( ()<Esc>i
-imap () ()
 
 
 " Compiling

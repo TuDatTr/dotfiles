@@ -5,10 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'vimwiki/vimwiki'
-Plugin 'neoclide/coc.nvim'
+Plugin 'sheerun/vim-polyglot'
 call vundle#end()
 filetype plugin indent on
 
@@ -62,13 +59,16 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap J :bn<Enter>
 nnoremap K :bp<Enter>
+noremap <leader>y "+y
+noremap <C-E> :tabedit<Space>
+noremap <F1> :ter<Enter>
 nmap 0 ^
 
 " Latex
 "let g:tex_nospell=1
 " Shortcuts
-inoremap ;date <C-R>=strftime("%Y/%m/%d")<Enter> 
-inoremap ;time <C-R>=strftime("%H:%M:%S")<Enter> 
+inoremap <leader>date <C-R>=strftime("%Y/%m/%d")<Enter> 
+inoremap <leader>time <C-R>=strftime("%H:%M:%S")<Enter> 
 " Diaeresis for e.g. german
 inoremap a" ä
 inoremap o" ö
@@ -79,7 +79,6 @@ inoremap O" Ö
 inoremap jj <Esc>
 inoremap ;s ß
 inoremap ;e €
-
 
 " This callback will be executed when the entire command is completed
 function! BackgroundCommandClose(channel)
@@ -107,12 +106,3 @@ endfunction
 
 " So we can use :BackgroundCommand to call our function.
 command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
-
-" Vimwiki
-let g:vimwiki_list =[
-            \{'path':'~/Documents/Collection/wiki'}, 
-            \{'path_html':'~/Documents/Collection/wiki_html'}
-                    \]
-
-" Pandoc
-let g:pandoc#modules#disabled = [ "spell" ]

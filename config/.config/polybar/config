@@ -12,6 +12,34 @@ magenta = ${xrdb:color5:#e16}
 cyan = ${xrdb:color6:#098}
 white = ${xrdb:color7:#cdd}
 
+[bar/systray]
+width = 100%
+height = 25
+
+radius = 6.0
+fixed-center = true
+
+tray-position = right
+tray-padding = 0
+
+background = #00000000
+foreground = ${colors.foreground}
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:style=Regular:pixelsize=10
+
+modules-left = 
+modules-center = i3
+modules-right = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
 
 [bar/beep]
 width = 100%
