@@ -5,11 +5,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap J :bn<CR>
 nnoremap K :bp<CR>
-nnoremap u :earlier<CR>
-nnoremap U :later<CR>
-noremap <leader>y "+y
+nnoremap <C-u> :earlier<CR>
+nnoremap <C-U> :later<CR>
+noremap Y "+y
 noremap <C-E> :tabedit<Space>
 noremap <F1> :ter<CR>
+noremap == ==j
 nmap 0 ^
 
 " Diaeresis for e.g. german
@@ -19,6 +20,5 @@ inoremap u" ü
 inoremap A" Ä
 inoremap U" Ü
 inoremap O" Ö
-inoremap jj <Esc>
-inoremap ;s ß
-inoremap ;e €
+inoremap <leader>s ß
+inoremap <leader>e €

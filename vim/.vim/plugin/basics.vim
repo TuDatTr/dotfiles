@@ -21,3 +21,6 @@ set splitright
 
 " Statusbar
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+
+" Window Management
+let &winheight = &lines * 7 / 10

@@ -3,6 +3,7 @@ import os
 
 from PIL import Image
 
+DEBUG = False
 
 def screenshot():
     ss_time = time.time()

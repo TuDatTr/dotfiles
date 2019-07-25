@@ -105,16 +105,16 @@ exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
 exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc
 exec --no-startup-id urxvtd
-exec --no-startup-id light-locker
 exec --no-startup-id synergyc -f --no-tray --debug INFO --name genesis --enable-crypto 192.168.178.38:24800
+exec --no-startup-id xss-lock -- python ~/.scripts/i3lock.py
 exec --no-startup-id /home/tuan/workspace/go/monthlyLedger/main /home/tuan/Templates/ledger/*
-# exec --no-startup-id polybar beep -r
-# exec --no-startup-id polybar boop -r
-# exec --no-startup-id nm-applet
 
 ###############################################################################
 ################################# Keybindings #################################
 ###############################################################################
+# Lock
+bindsym $mod+Shift+0 exec python ~/.scripts/i3lock.py
+
 # shutdown
 bindsym $mod+Shift+s exec poweroff
 
@@ -144,7 +144,6 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 bindsym $mod+b exec firefox
 bindsym $mod+p exec firefox --private-window https://mos4.de
 bindsym $mod+e exec urxvtc -e ranger
-bindsym $mod+Shift+e exec nautilus
 bindsym $mod+m exec thunderbird
 
 bindsym Print exec --no-startup-id  maim -f png ~/Pictures/Screenshots/$(date +%G-%m)/$(cat /proc/$(xdotool getwindowpid $(xdotool getwindowfocus))/comm)_$(date +%G-%m-%d_%H-%M-%S).png
@@ -187,7 +186,6 @@ bindsym $mod+Shift+minus move scratchpad
 # restart/exit i3
 bindsym $mod+Shift+r restart
 bindsym Control+Shift+e exit
-bindsym Control+Shift+l exec dm-tool lock
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"

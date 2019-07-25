@@ -1,7 +1,6 @@
 # Paths
 export ZSH="/home/tuan/.oh-my-zsh"
-export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin"
-export GOPATH="$HOME/.go/"
+export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 export LEDGER_FILE="/home/tuan/Documents/Finanzen/Ledger/MyBudget.ledger"
 
 # Alias
