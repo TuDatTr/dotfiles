@@ -4,9 +4,7 @@ export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 export LEDGER_FILE="/home/tuan/Documents/Finanzen/Ledger/MyBudget.ledger"
 
 # Alias
-alias background='feh --randomize --bg-fill /usr/share/backgrounds/*'
 alias gowinbuild='GOOS=windows GOARCH=amd64 go build'
-alias pwgen='pwgen -y 20 1'
 alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias xsel='xsel -ib'

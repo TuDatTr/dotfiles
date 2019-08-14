@@ -8,7 +8,7 @@ nnoremap K :bp<CR>
 nnoremap <C-u> :earlier<CR>
 nnoremap <C-U> :later<CR>
 noremap Y "+y
-noremap <C-E> :tabedit<Space>
+noremap <C-E> :tabedit **/*
 noremap <F1> :ter<CR>
 noremap == ==j
 nmap 0 ^

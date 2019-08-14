@@ -26,6 +26,7 @@ def pixelate():
             Image.NEAREST)
 
     image.save('/tmp/i3lock.png')
+    os.chmod('/tmp/i3lock.png', 0o666)
     print('pixelate: {}'.format(time.time() - pxl_time))
 
 

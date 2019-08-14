@@ -7,5 +7,10 @@ urxvt*scrollBar: false
 
 ! Plugins
 URxvt.perl-ext: default,matcher,resize-font,tabbed
+
+! Matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
+
+! Tabs
+URxvt.tabbed.new-button: false

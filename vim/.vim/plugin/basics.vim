@@ -15,7 +15,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-"" New window positions
+" New window positions
 set splitbelow
 set splitright
 
@@ -24,3 +24,7 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 " Window Management
 let &winheight = &lines * 7 / 10
+
+" Path
+set path+=**
+set wildmenu
