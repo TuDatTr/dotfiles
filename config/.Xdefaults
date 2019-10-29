@@ -1,12 +1,12 @@
 ! urxvt
 ! Fonts
-urxvt*font: xft:Hack Nerd Font Mono:style=Regular:size=11:hinting=full, xft:DejaVu Sans Mono for Powerline:size=11
+urxvt*font: xft:Hack Nerd Font Mono:style=Regular:size=11:hinting=full, xft:DejaVu Sans Mono for Powerline:size=11, xtf:Noto Color Emoji:style=Regular:size=11
 
 ! Behavior
 urxvt*scrollBar: false
 
 ! Plugins
-URxvt.perl-ext: default,matcher,resize-font,tabbed
+URxvt.perl-ext: default,matcher,resize-font,tabbed,keyboard-select
 
 ! Matcher
 URxvt.url-launcher: /usr/bin/xdg-open
@@ -14,3 +14,7 @@ URxvt.matcher.button: 1
 
 ! Tabs
 URxvt.tabbed.new-button: false
+
+! Keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keyboard-select.clipboard: true

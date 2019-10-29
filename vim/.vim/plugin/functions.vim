@@ -24,3 +24,10 @@ endfunction
 
 " So we can use :BackgroundCommand to call our function.
 command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
+
+function! GetCWD()
+    let l:cwd = system('pwd | rev |cut -d- -f1 | rev | xargs | sed "s/[[:space:]]/\\\\&/g\"')
+    echo l:cwd
+    call setline('.', l:cwd)
+    unlet l:cwd
+endfunction

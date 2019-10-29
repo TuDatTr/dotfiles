@@ -10,8 +10,10 @@ nnoremap <C-U> :later<CR>
 noremap Y "+y
 noremap <C-E> :tabedit **/*
 noremap <F1> :ter<CR>
+noremap <F12> :tabedit<CR>:ter<CR><C-w><C-w>:q<CR>
 noremap == ==j
 nmap 0 ^
+nmap ' `
 
 " Diaeresis for e.g. german
 inoremap a" ä
@@ -20,5 +22,5 @@ inoremap u" ü
 inoremap A" Ä
 inoremap U" Ü
 inoremap O" Ö
-inoremap <leader>s ß
-inoremap <leader>e €
+inoremap s" ß
+inoremap e" €
