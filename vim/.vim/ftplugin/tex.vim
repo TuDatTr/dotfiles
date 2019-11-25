@@ -8,9 +8,9 @@ inoremap ;it \begin{itemize}<Enter>\end{itemize}<Esc>k
 inoremap ;i \item{}<Space>
 inoremap "" "`"'<Esc>hha
 inoremap ;fp \begin{tabular}{ccc}<Enter>\toprule<Enter>Ja & Nein & Enthaltung \\ <Enter> \midrule<Enter> <x_x> & <x_x> & <x_x> \\<Enter>\bottomrule<Enter>\end{tabular}<Esc>0kk<Space><Tab>
-inoremap ;sec \section{}<Esc>hi
-inoremap ;ssec \subsection{}<Esc>hi
-inoremap ;sssec \subsubsection{}<Esc>hi
+inoremap ;sec \section{}<Esc>i
+inoremap ;ssec \subsection{}<Esc>i
+inoremap ;sssec \subsubsection{}<Esc>i
 
 " Surround stuff
 vnoremap <C-B> da\textbf{<C-R>"}<Esc>
