@@ -129,13 +129,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -X -show run
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; a=$(xbacklight | cut -d\. -f1)%; dunstify -r 1 'brightness up'\ \($a\)"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; a=$(xbacklight | cut -d\. -f1)%; dunstify -r 1 'brightness down'\ \($a\)"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) +5%; notify-send 'sound up'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) -5%; notify-send 'sound down'"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pactl info | grep 'Default Sink' | cut -d' ' -f3) toggle; notify-end 'sound muted'"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) -5%; b=$(amixer sget Master | grep -o \[0-9\]\\+% -m 1); dunstify -r 2 'sound down'\ \($b\)"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) +5%; b=$(amixer sget Master | grep -o \[0-9\]\\+% -m 1); dunstify -r 2 'sound up'\ \($b\)"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pactl info | grep 'Default Sink' | cut -d' ' -f3) toggle; dunstify -r 2 'sound muted'"
 bindsym XF86AudioPlay exec "playerctl play-pause; cmus-remote -u"
 bindsym XF86AudioStop exec "playerctl stop; cmus-remote -s"
 bindsym XF86AudioNext exec "playerctl next; cmus-remote -n"
@@ -165,8 +165,8 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split orientation
-bindsym $mod+c split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+c split h;exec dunstify -r 3 'tile horizontally'
+bindsym $mod+v split v;exec dunstify -r 3 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container

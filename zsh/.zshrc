@@ -1,7 +1,9 @@
 # Paths
 export ZSH="/home/tuan/.oh-my-zsh"
-export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools"
 export LEDGER_FILE="/home/tuan/Documents/Finanzen/Ledger/MyBudget.ledger"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_ROOT=/opt/dotnet
 
 # Alias
 alias gowinbuild='GOOS=windows GOARCH=amd64 go build'
