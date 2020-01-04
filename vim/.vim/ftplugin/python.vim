@@ -2,10 +2,10 @@
 
 
 " Shortcuts
-imap <leader>ifm if<Space>__name__<Space>==<Space>'__main__':<Enter>
+imap <leader>ifm if<Space>__name__<Space>==<Space>'__main__':<CR>
 
 " Compiling
-map <C-c><C-c> <Esc>:!clear; python %<Enter>
+map <C-c><C-c> <Esc>:!clear; python %<CR>
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
