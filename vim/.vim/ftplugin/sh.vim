@@ -1,3 +1,3 @@
 " Compilation
-map <C-c><C-c> <Esc>:!clear&./%<CR>
+map <C-c><C-c> <Esc>:!clear&./%<CR><CR>
 

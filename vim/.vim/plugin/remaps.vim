@@ -16,11 +16,11 @@ nmap 0 ^
 nmap ' `
 
 " Diaeresis for e.g. german
-inoremap a" ä
-inoremap o" ö
-inoremap u" ü
-inoremap A" Ä
-inoremap U" Ü
-inoremap O" Ö
-inoremap s" ß
-inoremap e" €
+inoremap a<leader> ä
+inoremap o<leader> ö
+inoremap u<leader> ü
+inoremap A<leader> Ä
+inoremap U<leader> Ü
+inoremap O<leader> Ö
+inoremap s<leader> ß
+inoremap e<leader> €

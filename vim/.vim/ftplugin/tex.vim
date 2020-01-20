@@ -24,7 +24,7 @@ vnoremap "" da"`<C-R>""'<Esc>
 ":command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
 ":command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - | fmt -csw78
 " Compilation
-noremap <C-c><C-c> <Esc>:!latexmk -pdf -silent "<C-r>%" &>/dev/null & disown <CR>:redraw!<CR>
-noremap <C-c><C-v> <Esc>:!latexmk -c &>/dev/null & disown <CR>
+noremap <C-c><C-c> <Esc>:!latexmk -pdf -silent "<C-r>%" &>/dev/null & disown <CR>:redraw!<CR><CR>
+noremap <C-c><C-v> <Esc>:!latexmk -c &>/dev/null & disown <CR><CR>
 noremap <C-c><C-d> <Esc>:!evince <C-r>%<Del><Del><Del>pdf &>/dev/null & disown <CR><CR>
 
