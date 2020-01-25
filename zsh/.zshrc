@@ -1,6 +1,6 @@
 # Paths
 export ZSH="/home/tuan/.oh-my-zsh"
-export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools"
+export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=/opt/dotnet
 

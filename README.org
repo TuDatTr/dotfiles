@@ -68,7 +68,6 @@ Config file is =.emacs.d/config.org=
 *** Font setup
 Stolen from [[https://github.com/powerline/fonts][here]].
 #+BEGIN_SRC sh
-git clone # clone
 git clone https://github.com/powerline/fonts.git --depth=1
 # install
 cd fonts
