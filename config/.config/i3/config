@@ -133,9 +133,9 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; a=$(xbacklight | cut -d\. 
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; a=$(xbacklight | cut -d\. -f1)%; dunstify -r 1 'brightness down'\ \($a\)"
 
 # Pulse Audio controls
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) -5%; b=$(amixer sget Master | grep -o \[0-9\]\\+% -m 1); dunstify -r 2 'sound down'\ \($b\)"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $(pactl info | grep 'Default Sink' | cut -d' ' -f3) +5%; b=$(amixer sget Master | grep -o \[0-9\]\\+% -m 1); dunstify -r 2 'sound up'\ \($b\)"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pactl info | grep 'Default Sink' | cut -d' ' -f3) toggle; dunstify -r 2 'sound muted'"
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.scripts/sound.sh down
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.scripts/sound.sh up
+bindsym XF86AudioMute exec --no-startup-id ~/.scripts/sound.sh toggle
 bindsym XF86AudioPlay exec "playerctl play-pause; cmus-remote -u"
 bindsym XF86AudioStop exec "playerctl stop; cmus-remote -s"
 bindsym XF86AudioNext exec "playerctl next; cmus-remote -n"
