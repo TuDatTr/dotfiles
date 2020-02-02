@@ -1,0 +1,32 @@
+\documentclass[12pt,a4paper,ngerman,notitlepage]{article}
+
+% PACKAGES
+\usepackage[ngerman]{babel}
+\usepackage{datetime} % Correct Date Formating
+\usepackage[a4paper, left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{latexsym} % Blankboxes
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{titling} % mktitleformatting
+
+% SHORTCUTS
+\newcommand{\module}{Platzhalter}
+\newcommand{\blattnr}{PlatzhalterNr}
+
+% INFO
+\author{Tuan-Dat Tran}
+\title{\module\\\blattnr}
+
+% FORMATTING
+\setlength{\droptitle}{-3cm}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+
+% BEGINNING
+\begin{document}
+\maketitle
+\end{document}
