@@ -1,6 +1,6 @@
 ! urxvt
 ! Fonts
-urxvt*font: xft:Hack Nerd Font Mono:style=Regular:size=11:hinting=full, xft:DejaVu Sans Mono for Powerline:size=11
+urxvt*font: xft:Hack Nerd Font Mono:style=Regular:size=11:hinting=full, xft:DejaVu Sans Mono for Powerline:size=11,SourceHanSans-Regular
 
 ! Behavior
 urxvt*scrollBar: false

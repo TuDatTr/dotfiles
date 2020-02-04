@@ -8,6 +8,7 @@ set smartcase
 set incsearch
 set hlsearch
 set nospell
+set hidden
 
 " Tab behavior
 set expandtab
