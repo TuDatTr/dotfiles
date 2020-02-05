@@ -1,8 +1,9 @@
 " Basics
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 " Shortcuts
-abbrev funct func<Space>Test(t<Space>*testing.T)<Space>{<CR>}<Esc>kwwi
-abbrev trun t.Run("", func(t *testing.T)<Space>{<CR>})<Esc>%la
+abbrev funct func Test(t *testing.T) {<CR>}<Esc>kwwi
+abbrev trun t.Run("", func(t *testing.T) {<CR>})<Esc>%la
+abbrev terr t.Errorf("got %d, want %d", got, want)
 abbrev fori for i := 0; i < ; i++{<CR>}<Esc>k2f;i
 
 " Compiling

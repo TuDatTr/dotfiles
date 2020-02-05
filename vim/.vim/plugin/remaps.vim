@@ -5,6 +5,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap J :bn<CR>
 nnoremap K :bp<CR>
+map <C-B> <Esc>:b<space>
 nnoremap <C-u> :earlier<CR>
 nnoremap <C-U> :later<CR>
 noremap Y "+y
