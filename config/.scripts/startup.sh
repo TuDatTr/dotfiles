@@ -1,5 +1,9 @@
 #!/bin/bash
 
+lower_battery_threshold=10
+KBD="";
+oldKBD="";
+
 function kb_routine {
     oldKBD="$KBD";
     case "$(xset -q | grep -A 0 'LED' | cut -c59-67)" in
@@ -18,13 +22,10 @@ function kb_routine {
 
 function battery_routine {
     capacity=$(< /sys/class/power_supply/BAT0/capacity)
-    if [[ $capacity -lt 5 ]]; then
-        echo $capacity
+    if [[ $capacity -lt lower_battery_threshold ]]; then
+        notify-send "$capacity";
     fi
 }
-
-KBD="";
-oldKBD="";
 
 while :
 do

@@ -152,13 +152,8 @@ def proc_exists(proc_name):
                 proc_content = '{}: {}'.format(counter, proc_content)
                 if proc_content: 
                     if proc_name in proc_content:
-                        # print(proc_name)
-                        # print(proc_content)
-                        # print(proc_name in proc_content)
                         if 'xss-lock' not in proc_content:
-                            # print('xss-lock' not in proc_content)
                             if this_proc not in proc_content:
-                                # print(this_proc not in proc_content)
                                 print('Process Exists: {}'.format(time.time() - proc_check))
                                 return True
         except FileNotFoundError:

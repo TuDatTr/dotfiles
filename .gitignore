@@ -3,6 +3,7 @@
 \#*\#
 *API*
 *.bak
+.*.git/
 config/.local/share/ranger/*
 !config/.local/share/ranger/bookmarks
 config/.mozilla/*

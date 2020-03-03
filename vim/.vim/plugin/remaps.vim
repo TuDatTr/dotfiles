@@ -9,7 +9,7 @@ map <C-B> <Esc>:b<space>
 nnoremap <C-u> :earlier<CR>
 nnoremap <C-U> :later<CR>
 noremap Y "+y
-noremap <C-E> :tabedit **/*
+noremap <C-E> :e **/*
 noremap <F12> :tabedit<CR>:ter<CR><C-w><C-w>:q<CR>
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
