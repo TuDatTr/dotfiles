@@ -108,7 +108,7 @@ exec --no-startup-id urxvtd
 exec --no-startup-id synergyc -f --no-tray --debug INFO --name genesis --enable-crypto 192.168.178.38:24800
 exec --no-startup-id dunst
 exec --no-startup-id ~/.scripts/startup.sh
-exec --no-startup-id /home/tuan/workspace/go/monthlyLedger/main /home/tuan/Templates/ledger/*
+exec --no-startup-id llk
 
 ###############################################################################
 ################################# Keybindings #################################

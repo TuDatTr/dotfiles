@@ -2,13 +2,12 @@ runtime macros/matchit.vim
 filetype on
 
 call plug#begin()
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go'
-Plug 'SirVer/ultisnips'
 call plug#end()
+
+let g:match_ignorecase = 1
 
 let g:polyglot_disabled = ['latex']
 
