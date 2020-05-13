@@ -7,6 +7,7 @@ export SecList=$HOME/Local/PenTesting/SecLists/
 
 # Alias
 alias q="exit"
+alias b="byobu"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias xsel='xsel -ib'
 alias msfconsole="msfconsole -x \"db_connect metasploit@msf\""
