@@ -3,7 +3,6 @@ syntax on
 filetype indent plugin on
 set background=light
 set encoding=utf-8
-set autowrite
 set smartcase
 set incsearch
 set hlsearch

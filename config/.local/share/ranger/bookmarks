@@ -4,9 +4,10 @@ o:/home/tuan/.dotfiles/config
 m:/run/media/tuan
 a:/home/tuan/Documents/Arbeit
 l:/home/tuan/Local
-c:/home/tuan/Documents/CTF/picoCTF
+c:/home/tuan/Documents/CTF
 t:/home/tuan/Templates
 w:/home/tuan/workspace_l/Projects
-k:/home/tuan
+k:/home/tuan/Documents/CTF/TryHackMe/VulnUniversity
 q:/home/tuan/.nextcloud/Quick Drop
-':/home/tuan/.vim
+':/usr/share/byobu/keybindings
+e:/home/tuan/Documents/CTF/TryHackMe/Ice/2_Recon

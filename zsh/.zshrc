@@ -1,13 +1,15 @@
 # Paths
-export ZSH="/home/tuan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export DOTNET_ROOT=/opt/dotnet
+export SecList=$HOME/Local/PenTesting/SecLists/
+
 
 # Alias
 alias q="exit"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias xsel='xsel -ib'
+alias msfconsole="msfconsole -x \"db_connect metasploit@msf\""
 
 # Theme
 ZSH_THEME="agnoster"
