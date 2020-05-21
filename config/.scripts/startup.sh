@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+
+type xset >/dev/null 2>&1 || { echo >&2 "I require xset but it's not installed.  Aborting."; exit 1; }
 
 lower_battery_threshold=10
 KBD="";
@@ -15,7 +17,7 @@ function kb_routine {
     esac
 
     if [ "$KBD" != "$oldKBD" ]; then
-        notify-send "$KBD";
+        dunstify -r 1 "$KBD";
     fi
 
 }
@@ -23,7 +25,7 @@ function kb_routine {
 function battery_routine {
     capacity=$(< /sys/class/power_supply/BAT0/capacity)
     if [[ $capacity -lt lower_battery_threshold ]]; then
-        notify-send "$capacity";
+        dunstify "$capacity";
     fi
 }
 

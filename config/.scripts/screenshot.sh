@@ -1,5 +1,9 @@
 #!/bin/sh
 
+type maim >/dev/null 2>&1 || { echo >&2 "I require maim but it's not installed.  Aborting."; exit 1; }
+type dunstify >/dev/null 2>&1 || { echo >&2 "I require dunstify but it's not installed.  Aborting."; exit 1; }
+type xclip >/dev/null 2>&1 || { echo >&2 "I require xclip but it's not installed.  Aborting."; exit 1; }
+type xdotool >/dev/null 2>&1 || { echo >&2 "I require xdotool but it's not installed.  Aborting."; exit 1; }
 
 d=$HOME/Pictures/Screenshots/$(date +%G-%m);
 case $1 in
