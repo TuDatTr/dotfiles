@@ -15,3 +15,12 @@ URxvt.matcher.button: 1
 ! Keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keyboard-select.clipboard: true
+
+! Term
+urxvt*transparent: true
+urxvt*shading: 20
+urxvt*blurRadius: 15
+
+! Xft
+Xft.dpi: 92
+Xft.antialias: 1

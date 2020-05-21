@@ -151,7 +151,7 @@ bindsym $mod+m exec thunderbird
 bindsym Control+Print exec --no-startup-id ~/.scripts/screenshot.sh screen
 
 # Window
-bindsym Mod1+Print --release exec --no-startup-id ~/.scripts/screenshot.sh window 
+bindsym Mod1+Sys_Req --release exec --no-startup-id ~/.scripts/screenshot.sh window
 
 # Area
 bindsym Print --release exec --no-startup-id ~/.scripts/screenshot.sh area
