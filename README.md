@@ -13,7 +13,21 @@ Main tools I am currently using are:
 
 ## Getting started
 
-Todo (along with cleanup)
+To make full use of the dotfiles we need to install the following packages via pacman:
+
+`pacman -Syu zsh gvim byobu conky firefox rxvt-unicode dunst highlight i3-gaps neofetch ranger rofi`
+
+And the following packages from the AUR:
+`yay -S cava polybar`
+
+### zsh setup
+
+```sh
+chsh -s /bin/zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cp -r /usr/share/zsh-theme-powerlevel9k $HOME/.oh-my-zsh/themes/powerlevel9k
+rm -rf $HOME/.*bash* # optional, but removes all bash related stuff from the home directory
+```
 
 ### Font setup
 
@@ -42,4 +56,4 @@ stow config
 
 ## License
 
-This project is license under the GPL-3.0 License - see LICENSE file for details.
+This project is licensed under the GPL-3.0 License - see LICENSE file for details.
