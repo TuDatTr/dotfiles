@@ -191,4 +191,4 @@ if __name__ == '__main__':
         screenshot()
         pixelate()
         lock()
-        log(start_time)
+        # log(start_time)
