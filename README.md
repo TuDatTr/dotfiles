@@ -17,7 +17,7 @@ Todo (along with cleanup)
 
 ### Font setup
 
-Since we use a powerline font we need to install the necessary fonts.
+Since we're using a powerline font we need to install them first.
 
 ```sh
 git clone https://github.com/powerline/fonts.git --depth=1

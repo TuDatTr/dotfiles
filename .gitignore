@@ -3,8 +3,9 @@
 \#*\#
 *API*
 *.bak
-*.pdf
-.*.git/
+config/.config/ranger/*
+!config/.config/ranger/rc.conf
+!config/.config/ranger/rifle.conf
 config/.local/share/ranger/*
 !config/.local/share/ranger/bookmarks
 config/.mozilla/*
@@ -17,6 +18,8 @@ emacs/.emacs.d/*
 !emacs/.emacs.d/config.org
 !emacs/.emacs.d/ledger.org
 !emacs/.emacs.d/snippets*
+.*.git/
 *.log
+*.pdf
 vim/.vim/bundle/*
 vim/.vim/.netrwhist
