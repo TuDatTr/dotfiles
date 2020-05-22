@@ -1,9 +1,3 @@
----
-    title: .dotfiles
-    author: Tuan-Dat Tran
-    date: 2020-05-22
-...
-
 # .dotfiles
 
 These are my personal dotfiles.
