@@ -1,7 +1,7 @@
 u:/home/tuan/Documents/Uni/Studium
 p:/home/tuan/Documents/Protokolle/FSE
 o:/home/tuan/.dotfiles/config
-m:/run/media/tuan
+m:/run/media
 a:/home/tuan/Documents/Arbeit
 l:/home/tuan/Local
 c:/home/tuan/Documents/CTF
@@ -9,5 +9,5 @@ t:/home/tuan/Templates
 w:/home/tuan/workspace_l/Projects
 k:/home/tuan/Documents/CTF/TryHackMe/VulnUniversity
 q:/home/tuan/.nextcloud/Quick Drop
-':/home/tuan/.local/share/ranger
+':/home/tuan/workspace_l/Projects/hhkb_iso_1u4
 e:/home/tuan/Documents/CTF/TryHackMe/Ice/2_Recon
