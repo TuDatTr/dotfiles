@@ -15,7 +15,6 @@ function isMuted() {
 defaultSink=$(pactl info | grep 'Default Sink' | cut -d' ' -f3);
 
 isMuted;
-if [ $muted -eq 1 ]; then echo unmuted; else echo muted; fi
 
 case $1 in
     "up"*)
