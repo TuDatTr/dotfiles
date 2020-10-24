@@ -80,7 +80,6 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [title="KeePassX$"] floating enable border normal
 for_window [title="Eddie - Settings"] floating enable border normal
 for_window [class="^Thunderbird$" title="^.*Event:"] floating enable
-# for_window [class="^urxvt$"] border pixel style 3
 
 # https://github.com/z3ntu/dotfiles/blob/master/i3/.config/i3/config
 # Steam
@@ -104,7 +103,6 @@ exec --no-startup-id compton
 exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
 exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc
-exec --no-startup-id urxvtd
 # exec --no-startup-id synergyc -f --no-tray --debug INFO --name genesis --enable-crypto 192.168.178.38:24800
 exec --no-startup-id dunst
 exec --no-startup-id ~/.scripts/startup.sh
@@ -120,7 +118,7 @@ bindsym $mod+Shift+0 exec python ~/.scripts/i3lock.py
 bindsym $mod+Shift+s exec poweroff
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -144,7 +142,7 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 # Application Shortcuts
 bindsym $mod+b exec firefox
 bindsym $mod+p exec firefox --private-window https://mos4.de
-bindsym $mod+e exec urxvtc -e ranger
+bindsym $mod+e exec termite -e ranger
 bindsym $mod+m exec thunderbird
 
 # Whole Screen

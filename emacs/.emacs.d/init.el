@@ -7,7 +7,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(theme-magic use-package ox-twbs org-bullets no-littering moe-theme ivy-prescient evil-collection diminish counsel)))
+   '(ox-reveal ox-hugo theme-magic use-package ox-twbs org-bullets no-littering moe-theme ivy-prescient evil-collection diminish counsel)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

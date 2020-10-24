@@ -1,6 +1,13 @@
 #+TITLE: Emacs Configuration from [[https://gitlab.com/TuDatTr/][TuDatTr]]
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+OPTIONS: n:t
 
+* Preface
+  Before installing and using emacs, emacs should be run as a daemon.
+  This decreases the loading times of the editor enormously and enables you to return to your former emacs session at any time.
+  To do this you first need to make sure =emacs --daemon= is run during the start up.
+  To access the daemonized emacs you can either run =emacsclient -t= to use it in the terminal or simply =emacsclient= if you want to use the GUI version.
+  
 * Package installation
 ** Preperation
    Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
@@ -12,9 +19,8 @@
    #+END_SRC
 
 ** Package installation
-*** use-package
+*** [[https://github.com/jwiegley/use-package][use-package]]
     ~A use-package declaration for simplifying your .emacs~
-    The following snippets uses =use-package= to automatically install the specified packages if they aren't installed yet.
 
     #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -25,25 +31,23 @@
 (setq use-package-always-ensure t)
     #+END_SRC
 
-*** diminish
+*** [[https://github.com/myrjola/diminish.el][diminish]]
     ~Diminished modes are minor modes with no modeline display~
-    Diminish is used to hide modes from the mode bar in emacs. It's also required to use the diminish function in =use-package=
 
     #+BEGIN_SRC emacs-lisp
 (use-package diminish)
     #+END_SRC
 
-*** no-littering
+*** [[https://github.com/emacscollective/no-littering][no-littering]]
     ~Help keeping ~/.emacs.d clean~
 
     #+BEGIN_SRC emacs-lisp
 (use-package no-littering)
     #+END_SRC
 
-*** evil/evil-collection
+*** [[https://github.com/emacs-evil/evil][evil]]/[[https://github.com/emacs-evil/evil-collection][evil-collection]]
     ~The extensible vi layer for Emacs.~
     ~A set of keybindings for evil-mode~
-    Vim keybindings for emacs to get the best of both worlds.
 
     #+BEGIN_SRC emacs-lisp
 (use-package evil
@@ -58,9 +62,8 @@
   (evil-collection-init))
     #+END_SRC
 
-*** Ivy/Counsil/Swiper
+*** [[https://github.com/abo-abo/swiper][Ivy/Counsil/Swiper]]
     ~Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!~
-    Simply a interface for completion/search in emacs.
 
     #+BEGIN_SRC emacs-lisp
 (use-package prescient)
@@ -79,14 +82,22 @@
 (use-package swiper
   :bind (("C-s" . 'swiper)))
     #+END_SRC
-*** ox-twbs
+
+*** [[https://github.com/yjwen/org-reveal][ox-reveal]]
+    ~Exports Org-mode contents to Reveal.js HTML presentation.~
+
+    #+BEGIN_SRC emacs-lisp
+(use-package ox-reveal)
+    #+END_SRC
+
+*** [[https://github.com/marsmining/ox-twbs][ox-twbs]]
     ~Export org-mode docs as HTML compatible with Twitter Bootstrap.~
 
     #+BEGIN_SRC emacs-lisp
 (use-package ox-twbs)
     #+END_SRC
 
-*** org-bullets
+*** [[https://github.com/sabof/org-bullets][org-bullets]]
     ~utf-8 bullets for org-mode~
 
     #+BEGIN_SRC emacs-lisp
@@ -96,7 +107,7 @@
 * Appearance
   This section is for appearance customization. Either via packages or manually.
 
-** moe-theme
+** [[https://github.com/kuanyui/moe-theme.el][moe-theme]]
    ~A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!~
 
    #+BEGIN_SRC emacs-lisp
@@ -109,7 +120,6 @@
 ** Transparent Emacs
    Makes the default color of the background of emacs the same as the terminals color.
    This is kind of a janky solution, but it works.
-   It doesn't work when you reload the config manually while emacs is running.
 
    #+BEGIN_SRC emacs-lisp
 (add-hook 'window-setup-hook
@@ -127,6 +137,8 @@
 
 * Emacs Configuration
 ** Symbolic Links
+   Follow symlinks without asking for confirmation.
+
    #+BEGIN_SRC emacs-lisp
    (setq vc-follow-symlinks t)
    #+END_SRC
