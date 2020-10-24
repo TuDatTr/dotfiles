@@ -14,6 +14,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 alias xsel='xsel -ib'
 alias msfconsole="msfconsole -x \"db_connect metasploit@msf\""
 alias nmap="nmap -T5 --min-parallelism 100 -Pn"
+alias edaemon="\emacs --daemon"
+alias emacs="emacsclient -t"
 
 # Theme
 ZSH_THEME="agnoster"

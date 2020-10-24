@@ -1,364 +1,127 @@
-#+TITLE: Emacs configure
-#+AUTHOR: Tuan-Dat Tran
-#+DATE: <2018-01-11 Do>
-#+EMAIL: tran.tuan-dat@mailbox.org
-#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
-#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
-#+OPTIONS: e:t email:nil f:t inline:t num:t p:nil pri:nil stat:t
-#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:t todo:t |:t
-#+KEYWORDS:
-#+LANGUAGE: en
-#+SELECT_TAGS: export
+#+TITLE: Emacs Configuration from [[https://gitlab.com/TuDatTr/][TuDatTr]]
 
-* Packages
-A list of installed packages and details about them.
-** Package Archives
-   Adding the melpa package repository to Emacs.
-#+BEGIN_SRC emacs-lisp
+* Package installation
+** Preperation
+   Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
+
+   #+BEGIN_SRC emacs-lisp
 (require 'package)
-(add-to-list 'package-archives
-    '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-#+END_SRC
-** Installed packages:
-   A require for all my installed packages, so that they are automatically installed
-   in case I want to setup my emacs on another pc he same way as always
-#+BEGIN_SRC emacs-lisp
+   #+END_SRC
+
+** Package installation
+*** use-package
+    ~A use-package declaration for simplifying your .emacs ~
+    The following snippets uses =use-package= to automatically install the specified packages if they aren't installed yet.
+
+    #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+    #+END_SRC
 
-(use-package anaconda-mode)
-(use-package auctex
-:defer t
-:ensure t)
-(use-package auto-complete)
-(use-package auto-complete-auctex
-:defer t
-:ensure t)
-(use-package counsel)
-(use-package flycheck)
+*** diminish
+    ~Diminished modes are minor modes with no modeline display~
+    Diminish is used to hide modes from the mode bar in emacs. It's also required to use the diminish function in =use-package=
+
+    #+BEGIN_SRC emacs-lisp
+(use-package diminish)
+    #+END_SRC
+
+*** no-littering
+    ~Help keeping ~/.emacs.d clean~
+
+    #+BEGIN_SRC emacs-lisp
+(use-package no-littering)
+    #+END_SRC
+
+*** evil/evil-collection
+    ~The extensible vi layer for Emacs.~
+    ~A set of keybindings for evil-mode~
+    Vim keybindings for emacs to get the best of both worlds.
+
+    #+BEGIN_SRC emacs-lisp
+(use-package evil
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1)
+  (setq evil-search-module 'evil-search))
+
+(use-package evil-collection
+  :config
+  (evil-collection-init))
+    #+END_SRC
+
+*** Ivy/Counsil/Swiper
+    ~Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!~
+    Simply a interface for completion/search in emacs.
+
+    #+BEGIN_SRC emacs-lisp
+(use-package prescient)
+
+(use-package ivy-prescient
+  :config
+  (ivy-prescient-mode 1))
+
 (use-package ivy)
-(use-package ledger-mode)
-(use-package paper-theme)
-(use-package ox-gfm)
-(use-package ox-twbs)
-(use-package powerline)
-(use-package rainbow-delimiters)
-(use-package rainbow-mode)
-(use-package smart-compile)
-(use-package smartparens)
-(use-package swiper)
-(use-package visual-regexp)
-#+END_SRC
-* Appearance
-  Using the Molokai-Theme.
-#+BEGIN_SRC emacs-lisp
-(load-theme 'paper t)
-#+END_SRC
 
-Changes the Emacs background to the terminals defaults. (Generally)
-#+BEGIN_SRC emacs-lisp
+(use-package counsel  
+  :diminish counsel-mode
+  :config
+  (counsel-mode 1))
+
+(use-package swiper
+  :bind (("C-s" . 'swiper)))
+    #+END_SRC
+    
+*** org-bullets
+    ~utf-8 bullets for org-mode~
+
+    #+BEGIN_SRC emacs-lisp
+(use-package org-bullets)
+    #+END_SRC
+
+* Appearance
+  This section is for appearance customization. Either via packages or manually.
+
+** moe-theme
+   ~A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!~
+
+   #+BEGIN_SRC emacs-lisp
+(use-package moe-theme
+  :config
+  (moe-dark))
+   #+END_SRC
+
+
+** Transparent Emacs
+   Makes the default color of the background of emacs the same as the terminals color. 
+   This is kind of a janky solution, but it works.
+   It doesn't work when you reload the config manually while emacs is running.
+
+   #+BEGIN_SRC emacs-lisp
 (add-hook 'window-setup-hook
       '(lambda ()
-         (set-face-background 'default "unspecified-bg")))
-#+END_SRC
+	 (set-face-background 'default "unspecified-bg")))
+   #+END_SRC
 
-Remove menubar
-#+BEGIN_SRC emacs-lisp
+** Menubar
+
+   Remove the menu-bar at the top of the screen for better immersion.
+
+   #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
-#+END_SRC
+   #+END_SRC
 
-Powerline for Emacs
-#+BEGIN_SRC emacs-lisp
-(powerline-center-theme)
-#+END_SRC
+* Org Mode
+  Always unfold every section in org files.
 
-* Emacs behavior
-  Save auto-save files in ~/.emacs-save
-#+BEGIN_SRC emacs-lisp
-(f-mkdir "~/.emacs-saves")
-(setq backup-directory-alist
-  '((".*" . "~/.emacs-saves/")))
-(setq auto-save-file-name-transforms
-  '((".*" "~/.emacs-saves/" t)))
-(setq custom-file "~/.emacs.d/config.el")
-(setq auto-mode-alist (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
-#+END_SRC
-
-Delete trailing spaces before saving
-#+BEGIN_SRC emacs-lisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-#+END_SRC
-
-* Functions
-  All the functions I use.
-** Cut/Copy and Paste by Boruch Baum
-A nice way to copy and paste contents comfortably inside and out of emacs.
-*** Copy
-Copy the marked area to the clipboard.
-#+BEGIN_SRC emacs-lisp
-(defun copy-to-xclipboard(arg)
-  (interactive "P")
-  (cond
-   ((not (use-region-p))
-    (message "Nothing to yank to X-clipboard"))
-   ((and (not (display-graphic-p))
-	 (/= 0 (shell-command-on-region
-		(region-beginning) (region-end) "xsel -i -b")))
-    (error "Is program `xsel' installed?"))
-   (t
-    (when (display-graphic-p)
-      (call-interactively 'clipboard-kill-ring-save))
-    (message "Yanked region to X-clipboard")
-    (deactivate-mark))))
-#+END_SRC
-
-*** Cut
-Cut the marked area to the clipboard.
-#+BEGIN_SRC emacs-lisp
-(defun cut-to-xclipboard(arg)
-  (interactive "P")
-  (cond
-   ((not (use-region-p))
-    (message "Nothing to yank to X-clipboard"))
-   ((and (not (display-graphic-p))
-	 (/= 0 (shell-command-on-region
-		(region-beginning) (region-end) "xsel -i -b")))
-    (error "Is program `xsel' installed?"))
-   (t
-    (when (display-graphic-p)
-    (call-interactively 'clipboard-kill-ring-save))
-    (message "Yanked region to X-clipboard")
-    (kill-region  (region-beginning) (region-end))
-    (deactivate-mark))))
-#+END_SRC
-
-*** Paste
-Paste from the clipboard.
-#+BEGIN_SRC emacs-lisp
-(defun paste-from-xclipboard()
-  "Uses shell command `xsel -o' to paste from x-clipboard. With
-    one prefix arg, pastes from X-PRIMARY, and with two prefix args,
-    pastes from X-SECONDARY."
-  (interactive)
-  (if (display-graphic-p)
-      (clipboard-yank)
-    (let*
-	((opt (prefix-numeric-value current-prefix-arg))
-	 (opt (cond
-	       ((=  1 opt) "b")
-	       ((=  4 opt) "p")
-	       ((= 16 opt) "s"))))
-      (insert (shell-command-to-string (concat "xsel -o -" opt))))))
-#+END_SRC
-
-** Personal functions
-Go back to indentation, if you are at the indentation, go to beginning of the line instead.
-#+BEGIN_SRC emacs-lisp
-  (defun back-to-indentation-or-beginning ()
-  "Go back to indentation, if at indentation go to beginning of line"
-  (interactive)
-   (if (= (point) (progn (back-to-indentation) (point)))
-       (beginning-of-line)))
-#+END_SRC
-
-Sets the background of Emacs in terminal-mode to the terminals. Doesn't change it in window
-mode though.
-Function is not currently used since I still have to figure out how to make it work with emacs in daemon mode
-#+BEGIN_SRC emacs-lisp
-(defun transparent-terminal ()
-  (unless (display-graphic-p (selected-frame))
-    (set-face-background 'default "unspecified-bg" (selected-frame))))
-#+END_SRC
-
-Copy word
-#+BEGIN_SRC emacs-lisp
-(defun copy-word (&optinal arg)
-"Copy words at point into kill-ring"
-(interactive "P")
-(copy-thing 'backward-word 'forward-word arg)
-)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(defun insert-current-date () (interactive)
- (insert (shell-command-to-string "echo -n $(date +%d.%m.%Y)")))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(defun insert-current-time () (interactive)
- (insert (shell-command-to-string "echo -n $(date +%H:%M)")))
-#+END_SRC
-
-* Modes
-** Window Modes
-** Autocomplete
-#+BEGIN_SRC emacs-lisp
-(ac-config-default)
-
-#+END_SRC
-** Python
-Using Anaconda-mode as default python development mode
-#+BEGIN_SRC emacs-lisp
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-#+END_SRC
-** Java
-#+BEGIN_SRC emacs-lisp
-(add-hook
-  'java-mode-hook
-    (lambda()
-      (local-set-key (kbd "C-c C-c") #'smart-compile)
-      (local-set-key (kbd "C-c /") #'comment-region)))
-#+END_SRC
-
-** C++
-My exec doesnt quite work yet.
-#+BEGIN_SRC emacs-lisp
-;;(defun my-exec ()
-;;  (interactive)
-;;  (let ((exe (smart-compile-string "%n")))
-;;    (with-current-buffer "*eshell*"
-;;      (goto-char (point-max))
-;;      (insert "./")
-;;      (insert exe)
-;;      (eshell-send-input))
-;;    (switch-to-buffer-other-window "*eshell*")))
-(add-hook
-  'c++-mode-hook
-    (lambda()
-      (local-set-key (kbd "C-c C-c") #'smart-compile)
-      (local-set-key (kbd "C-c /") #'comment-region)))
-#+END_SRC
-
-** NASM
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
-#+END_SRC
-
-** LaTeX
-Some default settings for LaTeX-Mode.
-AucTeX is needed.
-#+BEGIN_SRC emacs-lisp
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-#+END_SRC
-** Org
-Use Evince as default pdf viewer.
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook
-      '(lambda ()
-         (delete '("\\.pdf\\'" . default) org-file-apps)
-         (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))))
-#+END_SRC
-
-Enable syntax highlighting in Org-mode.
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook
-      '(lambda ()
-         (setq org-src-fontify-natively t)))
-#+END_SRC
-
-Enable
-Enable automatic translation of special characters
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook
-      '(lambda ()
-         (setq org-pretty-entities t)))
-#+END_SRC
-
-Add rainbow-delimiters in org-mode
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
-#+END_SRC
-
-Handy shortcuts
-#+BEGIN_SRC emacs-lisp
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cl" 'org-store-link)
-(setq org-log-done t)
-#+END_SRC
-
-GNU Plot
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook
-      '(lambda ()
-         (local-set-key (kbd "C-c c") #'org-plot/gnuplot)))
-#+END_SRC
-
-Enabled languages:
-#+BEGIN_SRC emacs-lisp
-(org-babel-do-load-languages
-'org-babel-load-languages
-'( (python . t)
-   (emacs-lisp . t)
-   (C . t)
-   (gnuplot . t)
-   (latex . t)
-   (shell . t)
- ))
-#+END_SRC
-
-** Ivy/Counsel/Swiper
-#+BEGIN_SRC emacs-lisp
-(counsel-mode 1)
-(global-set-key "\C-s" 'swiper)
-#+END_SRC
-** Parenthesis
-#+BEGIN_SRC emacs-lisp
-;; (require 'paren)
-(setq show-paren-style 'parenthesis)
-(show-paren-mode 1)
-#+END_SRC
-** Highlight line
-Globaly highlight the current line in a slightly darker shade of grey.
-#+BEGIN_SRC emacs-lisp
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#141b1e")
-(set-face-foreground 'highlight nil)
-#+END_SRC
-** Yasnippet
-#+BEGIN_SRC emacs-lisp
-;; (require 'yasnippet)
-(setq yas-snippet-dirs
-  '("~/.emacs.d/snippets/"))
-(yas-global-mode 1)
-#+END_SRC
-
-** Ledger
-#+BEGIN_SRC emacs-lisp
-(org-babel-load-file "~/.emacs.d/ledger.org")
-#+END_SRC
-** Personal Global
-#+BEGIN_SRC emacs-lisp
-(defvar my-keys-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-a") 'back-to-indentation-or-beginning)
-    (define-key map (kbd "C-c M-w") 'copy-to-xclipboard)
-    (define-key map (kbd "C-c C-w") 'cut-to-xclipboard)
-    (define-key map (kbd "C-c M-y") 'paste-from-xclipboard)
-    (define-key map (kbd "C-c w") 'copy-word)
-    (define-key map (kbd "C-c r") 'vr/query-replace)
-    (define-key map (kbd "M-/") 'comment-region)
-    (define-key map (kbd "C-c d") 'insert-current-date)
-    (define-key map (kbd "C-c t") 'insert-current-time)
-    map)
-  "my-keys-minor-mode keymap.")
-
-(define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings override annoying major modes."
-  :init-value t
-  :lighter " my-keys")
-
-(my-keys-minor-mode 1)
-#+END_SRC
-
-** Conf
-#+BEGIN_SRC emacs-lisp
-(add-hook 'conf-mode 'rainbow-mode)
-#+END_SRC
+  #+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook #'org-show-all)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  #+END_SRC
