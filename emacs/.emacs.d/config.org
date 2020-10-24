@@ -79,7 +79,13 @@
 (use-package swiper
   :bind (("C-s" . 'swiper)))
     #+END_SRC
-    
+*** ox-twbs
+    ~Export org-mode docs as HTML compatible with Twitter Bootstrap.~
+
+    #+BEGIN_SRC emacs-lisp
+(use-package ox-twbs)
+    #+END_SRC
+
 *** org-bullets
     ~utf-8 bullets for org-mode~
 
@@ -119,10 +125,32 @@
 (menu-bar-mode -1)
    #+END_SRC
 
-* Org Mode
-  Always unfold every section in org files.
+* Emacs Configuration
+** Symbolic Links
+   #+BEGIN_SRC emacs-lisp
+   (setq vc-follow-symlinks t)
+   #+END_SRC
 
-  #+BEGIN_SRC emacs-lisp
+* Mode Configuration
+** Org-Mode
+   Always unfold every section in org files.
+
+   #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook #'org-show-all)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  #+END_SRC
+   #+END_SRC
+
+   Enable org-bullets and hide leading stars.
+   #+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 
+  (lambda () 
+    (org-bullets-mode 1)))
+   #+END_SRC
+
+* OS
+** Theme Magic
+   ~🎨 Apply your Emacs theme to the rest of Linux, using magic. Also works on Mac.~
+
+   #+Begin_SRC emacs-lisp
+   (use-package theme-magic)
+   (theme-magic-export-theme-mode)
+   #+END_SRC
