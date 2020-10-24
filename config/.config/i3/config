@@ -100,7 +100,7 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 # exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps; setxkbmap -option grp:lalt_lshift_toggle
 exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/Wallpaper/*
-exec --no-startup-id picom -b
+exec --no-startup-id compton
 exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
 exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc

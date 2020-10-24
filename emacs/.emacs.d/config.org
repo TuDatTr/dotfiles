@@ -145,12 +145,3 @@
   (lambda () 
     (org-bullets-mode 1)))
    #+END_SRC
-
-* OS
-** Theme Magic
-   ~🎨 Apply your Emacs theme to the rest of Linux, using magic. Also works on Mac.~
-
-   #+Begin_SRC emacs-lisp
-   (use-package theme-magic)
-   (theme-magic-export-theme-mode)
-   #+END_SRC
