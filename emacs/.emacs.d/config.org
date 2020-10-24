@@ -1,8 +1,9 @@
 #+TITLE: Emacs Configuration from [[https://gitlab.com/TuDatTr/][TuDatTr]]
+#+OPTIONS: n:t
 
 * Package installation
 ** Preperation
-   Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.\
+   Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
 
    #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -12,8 +13,8 @@
 
 ** Package installation
 *** use-package
-    ~A use-package declaration for simplifying your .emacs~\
-    The following snippets uses =use-package= to automatically install the specified packages if they aren't installed yet.\
+    ~A use-package declaration for simplifying your .emacs~
+    The following snippets uses =use-package= to automatically install the specified packages if they aren't installed yet.
 
     #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -25,24 +26,24 @@
     #+END_SRC
 
 *** diminish
-    ~Diminished modes are minor modes with no modeline display~\
-    Diminish is used to hide modes from the mode bar in emacs. It's also required to use the diminish function in =use-package=\
+    ~Diminished modes are minor modes with no modeline display~
+    Diminish is used to hide modes from the mode bar in emacs. It's also required to use the diminish function in =use-package=
 
     #+BEGIN_SRC emacs-lisp
 (use-package diminish)
     #+END_SRC
 
 *** no-littering
-    ~Help keeping ~/.emacs.d clean~\
+    ~Help keeping ~/.emacs.d clean~
 
     #+BEGIN_SRC emacs-lisp
 (use-package no-littering)
     #+END_SRC
 
 *** evil/evil-collection
-    ~The extensible vi layer for Emacs.~\
-    ~A set of keybindings for evil-mode~\
-    Vim keybindings for emacs to get the best of both worlds.\
+    ~The extensible vi layer for Emacs.~
+    ~A set of keybindings for evil-mode~
+    Vim keybindings for emacs to get the best of both worlds.
 
     #+BEGIN_SRC emacs-lisp
 (use-package evil
@@ -80,17 +81,17 @@
     #+END_SRC
     
 *** org-bullets
-    ~utf-8 bullets for org-mode~\
+    ~utf-8 bullets for org-mode~
 
     #+BEGIN_SRC emacs-lisp
 (use-package org-bullets)
     #+END_SRC
 
 * Appearance
-  This section is for appearance customization. Either via packages or manually.\
+  This section is for appearance customization. Either via packages or manually.
 
 ** moe-theme
-   ~A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!~\
+   ~A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!~
 
    #+BEGIN_SRC emacs-lisp
 (use-package moe-theme
@@ -100,9 +101,9 @@
 
 
 ** Transparent Emacs
-   Makes the default color of the background of emacs the same as the terminals color.\
-   This is kind of a janky solution, but it works.\
-   It doesn't work when you reload the config manually while emacs is running.\
+   Makes the default color of the background of emacs the same as the terminals color.
+   This is kind of a janky solution, but it works.
+   It doesn't work when you reload the config manually while emacs is running.
 
    #+BEGIN_SRC emacs-lisp
 (add-hook 'window-setup-hook
@@ -112,14 +113,14 @@
 
 ** Menubar
 
-   Remove the menu-bar at the top of the screen for better immersion.\
+   Remove the menu-bar at the top of the screen for better immersion.
 
    #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
    #+END_SRC
 
 * Org Mode
-  Always unfold every section in org files.\
+  Always unfold every section in org files.
 
   #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook #'org-show-all)
