@@ -1,3 +1,7 @@
+# -*- mode: snippet -*-
+# name: template
+# key: template
+# --
 CC = gcc
 CFLAGS = 
 RM = rm

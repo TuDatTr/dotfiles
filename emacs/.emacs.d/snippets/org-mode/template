@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: template
+# key: template
+# --
+#+TITLE: $0
+#+SETUPFILE: $HOME/Templates/Org-Mode/setupfile.org

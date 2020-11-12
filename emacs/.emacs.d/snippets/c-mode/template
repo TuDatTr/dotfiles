@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: template
+# key: templat
+# --
+#include <stdio.h>
+
+int main(int argc, char *argv[]){
+    $0
+}
