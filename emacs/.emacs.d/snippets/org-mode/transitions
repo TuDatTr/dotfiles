@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: transitions
-# key: tran
-# --
-S_{$1}\rightarrow{}S_{$2}
-$0

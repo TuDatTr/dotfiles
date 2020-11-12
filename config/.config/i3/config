@@ -107,6 +107,7 @@ exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc
 exec --no-startup-id dunst
 exec --no-startup-id ~/.scripts/startup.sh
 exec --no-startup-id llk
+exec --no-startup-id emacs --daemon
 
 ###############################################################################
 ################################# Keybindings #################################

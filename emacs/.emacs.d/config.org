@@ -5,155 +5,205 @@
 * Preface
   Before installing and using emacs, emacs should be run as a daemon.
   This decreases the loading times of the editor enormously and enables you to return to your former emacs session at any time.
-  To do this you first need to make sure =emacs --daemon= is run during the start up.
-  To access the daemonized emacs you can either run =emacsclient -t= to use it in the terminal or simply =emacsclient= if you want to use the GUI version.
+  To do this you first need to make sure ~emace --daemon~ is run during the start up.
+  To access the daemonized emacs you can either run ~emacsclient -t~ to use it in the terminal or simply ~emacsclient~ if you want to use the GUI version.
   
 * Package installation
 ** Preperation
    Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
 
-   #+BEGIN_SRC emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-   #+END_SRC
+   #+begin_src emacs-lisp
+     (require 'package)
+     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+     (package-initialize)
+     (package-refresh-contents)
+   #+end_src
 
-** Package installation
+** Installation
 *** [[https://github.com/jwiegley/use-package][use-package]]
-    ~A use-package declaration for simplifying your .emacs~
+    =A use-package declaration for simplifying your .emacs=
 
-    #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+    #+begin_src emacs-lisp
+      (unless (package-installed-p 'use-package)
+	(package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
-    #+END_SRC
+      (require 'use-package)
+      (setq use-package-always-ensure t)
+    #+end_src
 
 *** [[https://github.com/myrjola/diminish.el][diminish]]
-    ~Diminished modes are minor modes with no modeline display~
+    =Diminished modes are minor modes with no modeline display=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package diminish)
-    #+END_SRC
+    #+begin_src emacs-lisp
+      (use-package diminish)
+    #+end_src
 
 *** [[https://github.com/emacscollective/no-littering][no-littering]]
-    ~Help keeping ~/.emacs.d clean~
+    =Help keeping ~/.emacs.d clean=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package no-littering)
-    #+END_SRC
+    #+begin_src emacs-lisp
+      (use-package no-littering)
+    #+end_src
 
 *** [[https://github.com/emacs-evil/evil][evil]]/[[https://github.com/emacs-evil/evil-collection][evil-collection]]
-    ~The extensible vi layer for Emacs.~
-    ~A set of keybindings for evil-mode~
+    =The extensible vi layer for Emacs.=
+    =A set of keybindings for evil-mode=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package evil
-  :init
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1)
-  (setq evil-search-module 'evil-search))
+    #+begin_src emacs-lisp
+      (use-package evil
+	:init
+	(setq evil-want-keybinding nil)
+	:config
+	(evil-mode 1)
+	(setq evil-search-module 'evil-search))
 
-(use-package evil-collection
-  :config
-  (evil-collection-init))
-    #+END_SRC
+      (use-package evil-collection
+	:config
+	(evil-collection-init))
+    #+end_src
 
-*** [[https://github.com/abo-abo/swiper][Ivy/Counsil/Swiper]]
-    ~Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!~
+*** [[https://github.com/abo-abo/swiper][Ivy]]/[[https://github.com/abo-abo/swiper][Counsil]]/[[https://github.com/abo-abo/swiper][Swiper]]
+    =Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package prescient)
+    #+begin_src emacs-lisp
+      (use-package prescient)
 
-(use-package ivy-prescient
-  :config
-  (ivy-prescient-mode 1))
+      (use-package ivy-prescient
+	:config
+	(ivy-prescient-mode 1))
 
-(use-package ivy)
+      (use-package ivy)
 
-(use-package counsel  
-  :diminish counsel-mode
-  :config
-  (counsel-mode 1))
+      (use-package counsel  
+	:diminish counsel-mode
+	:config
+	(counsel-mode 1))
 
-(use-package swiper
-  :bind (("C-s" . 'swiper)))
-    #+END_SRC
+      (use-package swiper
+	:bind (("C-s" . 'swiper)))
+    #+end_src
+
+*** [[https://magit.vc/][Magit]]
+    =A Git Porcelain inside Emacs.=
+    
+    #+begin_src emacs-lisp
+      (use-package magit)
+    #+end_src
+
+*** [[https://www.gnu.org/software/auctex/][AUCTeX]]
+    =an extensible package for writing and formatting TeX files.=
+
+    #+begin_src emacs-lisp
+      (use-package auctex
+	:defer t
+	:config
+	(setq TeX-parse-self t)
+	(setq-default TeX-master nil)
+	(setq TeX-PDF-mode t))
+    #+end_src
 
 *** [[https://github.com/yjwen/org-reveal][ox-reveal]]
-    ~Exports Org-mode contents to Reveal.js HTML presentation.~
+    =Exports Org-mode contents to Reveal.js HTML presentation.=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package ox-reveal)
-    #+END_SRC
+    #+begin_src emacs-lisp
+      (use-package ox-reveal)
+    #+end_src
 
 *** [[https://github.com/marsmining/ox-twbs][ox-twbs]]
-    ~Export org-mode docs as HTML compatible with Twitter Bootstrap.~
+    =Export org-mode docs as HTML compatible with Twitter Bootstrap.=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package ox-twbs)
-    #+END_SRC
+    #+begin_src emacs-lisp
+      (use-package ox-twbs)
+    #+end_src
 
 *** [[https://github.com/sabof/org-bullets][org-bullets]]
-    ~utf-8 bullets for org-mode~
+    =utf-8 bullets for org-mode=
 
-    #+BEGIN_SRC emacs-lisp
-(use-package org-bullets)
-    #+END_SRC
+    #+begin_src emacs-lisp
+      (use-package org-bullets)
+    #+end_src
+
+*** [[https://elpa.gnu.org/packages/rainbow-mode.html][rainbow-mode]]
+    =Colorize color names in buffers=
+    
+    #+begin_src emacs-lisp
+      (use-package rainbow-mode)
+    #+end_src
+
+*** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
+    =Emacs rainbow delimiters mode=
+
+    #+begin_src emacs-lisp
+      (use-package rainbow-delimiters)
+    #+end_src
+
+*** [[https://github.com/joaotavora/yasnippet][yasnippet]]
+    =A template system for Emacs=
+    
+    #+begin_src emacs-lisp
+      (use-package yasnippet)
+    #+end_src
 
 * Appearance
   This section is for appearance customization. Either via packages or manually.
 
 ** [[https://github.com/kuanyui/moe-theme.el][moe-theme]]
-   ~A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!~
+   =A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!=
 
-   #+BEGIN_SRC emacs-lisp
-(use-package moe-theme
-  :config
-  (moe-dark))
-   #+END_SRC
+   #+begin_src emacs-lisp
+     (use-package moe-theme
+       :config
+       (moe-dark))
+   #+end_src
 
 
 ** Transparent Emacs
    Makes the default color of the background of emacs the same as the terminals color.
    This is kind of a janky solution, but it works.
 
-   #+BEGIN_SRC emacs-lisp
-(add-hook 'window-setup-hook
-      '(lambda ()
-	 (set-face-background 'default "unspecified-bg")))
-   #+END_SRC
+   #+begin_src emacs-lisp
+     (add-hook 'window-setup-hook
+	       '(lambda ()
+		  (set-face-background 'default "unspecified-bg")))
+   #+end_src
 
 ** Menubar
 
    Remove the menu-bar at the top of the screen for better immersion.
 
-   #+BEGIN_SRC emacs-lisp
-(menu-bar-mode -1)
-   #+END_SRC
+   #+begin_src emacs-lisp
+     (menu-bar-mode -1)
+   #+end_src
 
 * Emacs Configuration
 ** Symbolic Links
    Follow symlinks without asking for confirmation.
 
-   #+BEGIN_SRC emacs-lisp
-   (setq vc-follow-symlinks t)
-   #+END_SRC
+   #+begin_src emacs-lisp
+     (setq vc-follow-symlinks t)
+   #+end_src
 
 * Mode Configuration
 ** Org-Mode
-   Always unfold every section in org files.
-
-   #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook #'org-show-all)
-   #+END_SRC
-
    Enable org-bullets and hide leading stars.
-   #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 
-  (lambda () 
-    (org-bullets-mode 1)))
-   #+END_SRC
+
+   #+begin_src emacs-lisp
+     (add-hook 'org-mode-hook 
+	       (lambda () 
+		 (org-bullets-mode 1)))
+   #+end_src
+
+   Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation concirmation. The code afterwords enables proper indentation inside those source blocks.
+   #+begin_src emacs-lisp
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+	(C . t)
+	(makefile . t)
+	(shell . t)
+	(latex . t)
+	(python . t)))
+
+     (setq org-confirm-babel-evaluate nil)
+     (setq org-src-tab-acts-natively t)
+   #+end_src

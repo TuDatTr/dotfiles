@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: color
-# key: col
-# --
-\color{$0} 

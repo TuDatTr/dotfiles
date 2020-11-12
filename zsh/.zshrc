@@ -6,6 +6,7 @@ export PenTestTools=$HOME/Local/PenTesting/
 export CTF=$HOME/Documents/CTF/
 export WORKSPACE=$HOME/workspace_l
 export ZSHRC="$HOME/.zshrc"
+export VISUAL="emacsclient -t"
 
 # Alias
 alias q="exit"
@@ -14,8 +15,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 alias xsel='xsel -ib'
 alias msfconsole="msfconsole -x \"db_connect metasploit@msf\""
 alias nmap="nmap -T5 --min-parallelism 100 -Pn"
-alias edaemon="\emacs --daemon"
-alias emacs="emacsclient -t"
+alias ed="\emacs --daemon"
+alias e="emacsclient -t"
 
 # Theme
 ZSH_THEME="agnoster"

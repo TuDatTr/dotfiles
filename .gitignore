@@ -22,4 +22,5 @@ emacs/.emacs.d/*
 *.log
 *.pdf
 vim/.vim/bundle/*
+vim/.vim/plugged/*
 vim/.vim/.netrwhist

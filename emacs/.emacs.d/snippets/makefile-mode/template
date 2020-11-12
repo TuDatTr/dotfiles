@@ -1,0 +1,12 @@
+CC = gcc
+CFLAGS = 
+RM = rm
+TARGET = $0
+
+all: ${TARGET}
+
+${TARGET}: ${TARGET}.c
+	${CC} ${CFLAGS} -o ${TARGET} ${TARGET}.c
+
+clean:
+	${RM} ${TARGET}
