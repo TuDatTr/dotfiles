@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: templatec
+# key: templatec
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+CC = gcc
+SRC = \$(wildcard *.c)
+OBJ = \$(SRC:.c=.o)
+CFLAGS = 
+RM = rm
+TARGET = $1
+
+all: \$(TARGET)
+
+\$(TARGET): \$(OBJ)
+	\$(CC) \$(CFLAGS) -o \$@ \$^
+
+clean:
+	\$(RM) \$(TARGET) \$(OBJ)

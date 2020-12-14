@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: templatecxx
+# key: templatecxx
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+CXX = g++
+SRC = \$(wildcard *.cpp)
+OBJ = \$(SRC:.cpp=.o)
+CFLAGS = 
+RM = rm
+TARGET = $1
+
+all: \$(TARGET)
+
+\$(TARGET): \$(OBJ)
+	\$(CXX) \$(CFLAGS) -o \$@ \$^
+
+clean:
+	\$(RM) \$(TARGET) \$(OBJ)

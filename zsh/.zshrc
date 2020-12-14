@@ -1,6 +1,6 @@
 # Paths
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools"
+export PATH="$PATH:$HOME/.go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$HOME:.scripts/"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PenTestTools=$HOME/Local/PenTesting/
 export CTF=$HOME/Documents/CTF/

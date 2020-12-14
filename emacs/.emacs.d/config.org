@@ -141,8 +141,36 @@
     =A template system for Emacs=
     
     #+begin_src emacs-lisp
-      (use-package yasnippet)
+      (use-package yasnippet
+	:config
+	(setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+	(yas-global-mode 1))
     #+end_src
+
+*** [[https://github.com/company-mode/company-mode][company-mode]]
+    =Modular in-buffer completion framework for Emacs=
+    
+    #+begin_src emacs-lisp
+      (use-package company
+	:config
+	(global-company-mode))
+    #+end_src
+
+*** [[https://github.com/flycheck/flycheck][flycheck]]
+    =On the fly syntax checking for GNU Emacs=
+    
+    #+begin_src emacs-lisp
+      (use-package flycheck
+        :config
+        (global-flycheck-mode))
+    #+end_src
+
+*** [[https://github.com/hniksic/emacs-htmlize][htmlize.el]]
+    =Convert buffer text and decorations to HTML.=
+    
+#+begin_src emacs-lisp
+      (use-package htmlize)
+#+end_src
 
 * Appearance
   This section is for appearance customization. Either via packages or manually.
@@ -183,15 +211,27 @@
      (setq vc-follow-symlinks t)
    #+end_src
 
+** Tab Behavior (spaces > tabs)
+
+   #+BEGIN_SRC emacs-lisp
+     (setq-default indent-tabs-mode nil)
+   #+END_SRC
+
 * Mode Configuration
 ** Org-Mode
    Enable org-bullets and hide leading stars.
 
    #+begin_src emacs-lisp
      (add-hook 'org-mode-hook 
-	       (lambda () 
-		 (org-bullets-mode 1)))
+               (lambda () 
+                 (org-bullets-mode 1)
+                 (setq org-pretty-entities t)
+                 (setq org-src-fontify-natively t)))
    #+end_src
+*** Keybindings
+#+begin_src emacs-lisp
+     (define-key org-mode-map (kbd "C-c ,") 'org-insert-structure-template)
+#+end_src
 
    Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation concirmation. The code afterwords enables proper indentation inside those source blocks.
    #+begin_src emacs-lisp
@@ -206,4 +246,17 @@
 
      (setq org-confirm-babel-evaluate nil)
      (setq org-src-tab-acts-natively t)
+   #+end_src
+** C-Mode
+   #+begin_src emacs-lisp
+     (add-hook 'c-mode-hook 
+	       (lambda () 
+               (display-line-numbers-mode 1)))
+   #+end_src
+
+** C++-Mode
+   #+begin_src emacs-lisp
+     (add-hook 'c++-mode-hook 
+	       (lambda () 
+               (display-line-numbers-mode 1)))
    #+end_src

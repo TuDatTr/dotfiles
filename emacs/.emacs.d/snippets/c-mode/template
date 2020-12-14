@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: template
-# key: templat
+# key: template
 # --
 #include <stdio.h>
 

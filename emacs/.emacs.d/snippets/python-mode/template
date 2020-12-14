@@ -2,5 +2,5 @@
 # name: template
 # key: template
 # --
-#+TITLE: $0
-#+SETUPFILE: ~/Templates/Org-Mode/setupfile.org
+if __name__ == '__main__':
+    $0
