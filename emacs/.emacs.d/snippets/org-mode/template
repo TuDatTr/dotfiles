@@ -4,3 +4,5 @@
 # --
 #+TITLE: $0
 #+SETUPFILE: ~/Templates/Org-Mode/setupfile.org
+
+$1

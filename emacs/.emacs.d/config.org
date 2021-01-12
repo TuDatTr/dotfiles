@@ -1,6 +1,6 @@
 #+TITLE: Emacs Configuration from [[https://gitlab.com/TuDatTr/][TuDatTr]]
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+OPTIONS: n:t
+#+SETUPFILE: ~/Templates/Org-Mode/setupfile.org
+#+OPTIONS: \n:t
 
 * Preface
   Before installing and using emacs, emacs should be run as a daemon.
@@ -25,7 +25,7 @@
 
     #+begin_src emacs-lisp
       (unless (package-installed-p 'use-package)
-	(package-install 'use-package))
+        (package-install 'use-package))
 
       (require 'use-package)
       (setq use-package-always-ensure t)
@@ -51,36 +51,37 @@
 
     #+begin_src emacs-lisp
       (use-package evil
-	:init
-	(setq evil-want-keybinding nil)
-	:config
-	(evil-mode 1)
-	(setq evil-search-module 'evil-search))
+        :init
+        (setq evil-want-keybinding nil)
+        :config
+        (evil-mode 1)
+        (setq evil-search-module 'evil-search))
 
       (use-package evil-collection
-	:config
-	(evil-collection-init))
+        :config
+        (evil-collection-init))
     #+end_src
 
 *** [[https://github.com/abo-abo/swiper][Ivy]]/[[https://github.com/abo-abo/swiper][Counsil]]/[[https://github.com/abo-abo/swiper][Swiper]]
-    =Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!=
+    =Ivy - a generic completion frontend for Emacs=
+    =Swiper - isearch with an overview, and more. Oh, man!=
 
     #+begin_src emacs-lisp
       (use-package prescient)
 
       (use-package ivy-prescient
-	:config
-	(ivy-prescient-mode 1))
+        :config
+        (ivy-prescient-mode 1))
 
       (use-package ivy)
 
       (use-package counsel  
-	:diminish counsel-mode
-	:config
-	(counsel-mode 1))
+        :diminish counsel-mode
+        :config
+        (counsel-mode 1))
 
       (use-package swiper
-	:bind (("C-s" . 'swiper)))
+        :bind (("C-s" . 'swiper)))
     #+end_src
 
 *** [[https://magit.vc/][Magit]]
@@ -95,11 +96,11 @@
 
     #+begin_src emacs-lisp
       (use-package auctex
-	:defer t
-	:config
-	(setq TeX-parse-self t)
-	(setq-default TeX-master nil)
-	(setq TeX-PDF-mode t))
+        :defer t
+        :config
+        (setq TeX-parse-self t)
+        (setq-default TeX-master nil)
+        (setq TeX-PDF-mode t))
     #+end_src
 
 *** [[https://github.com/yjwen/org-reveal][ox-reveal]]
@@ -142,9 +143,9 @@
     
     #+begin_src emacs-lisp
       (use-package yasnippet
-	:config
-	(setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
-	(yas-global-mode 1))
+        :config
+        (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+        (yas-global-mode 1))
     #+end_src
 
 *** [[https://github.com/company-mode/company-mode][company-mode]]
@@ -152,8 +153,8 @@
     
     #+begin_src emacs-lisp
       (use-package company
-	:config
-	(global-company-mode))
+        :config
+        (global-company-mode))
     #+end_src
 
 *** [[https://github.com/flycheck/flycheck][flycheck]]
@@ -168,9 +169,18 @@
 *** [[https://github.com/hniksic/emacs-htmlize][htmlize.el]]
     =Convert buffer text and decorations to HTML.=
     
-#+begin_src emacs-lisp
+    #+begin_src emacs-lisp
       (use-package htmlize)
-#+end_src
+    #+end_src
+
+*** [[https://github.com/k1LoW/emacs-ansible][ansible]]
+    =Ansible minor mode=
+    
+    #+BEGIN_SRC emacs-lisp
+      (use-package ansible
+        :config
+        (ansible 1))
+    #+END_SRC
 
 * Appearance
   This section is for appearance customization. Either via packages or manually.
@@ -191,8 +201,9 @@
 
    #+begin_src emacs-lisp
      (add-hook 'window-setup-hook
-	       '(lambda ()
-		  (set-face-background 'default "unspecified-bg")))
+               '(lambda ()
+                  (if not (display-graphic-p)
+                    (set-face-background 'default "unspecified-bg"))))
    #+end_src
 
 ** Menubar
@@ -228,35 +239,38 @@
                  (setq org-pretty-entities t)
                  (setq org-src-fontify-natively t)))
    #+end_src
+
 *** Keybindings
-#+begin_src emacs-lisp
-     (define-key org-mode-map (kbd "C-c ,") 'org-insert-structure-template)
-#+end_src
+    #+begin_src emacs-lisp
+      (define-key org-mode-map (kbd "C-c ,") 'org-insert-structure-template)
+    #+end_src
 
-   Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation concirmation. The code afterwords enables proper indentation inside those source blocks.
-   #+begin_src emacs-lisp
-     (org-babel-do-load-languages
-      'org-babel-load-languages
-      '((emacs-lisp . t)
-	(C . t)
-	(makefile . t)
-	(shell . t)
-	(latex . t)
-	(python . t)))
+    Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation confirmation. The code afterwords enables proper indentation inside those source blocks.
+    #+begin_src emacs-lisp
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (C . t)
+         (makefile . t)
+         (shell . t)
+         (latex . t)
+         (python . t)))
 
-     (setq org-confirm-babel-evaluate nil)
-     (setq org-src-tab-acts-natively t)
-   #+end_src
+      (setq org-confirm-babel-evaluate nil)
+      (setq org-src-tab-acts-natively t)
+    #+end_src
+
 ** C-Mode
    #+begin_src emacs-lisp
      (add-hook 'c-mode-hook 
-	       (lambda () 
-               (display-line-numbers-mode 1)))
+               (lambda () 
+                 (display-line-numbers-mode 1)))
    #+end_src
 
 ** C++-Mode
    #+begin_src emacs-lisp
      (add-hook 'c++-mode-hook 
-	       (lambda () 
-               (display-line-numbers-mode 1)))
+               (lambda () 
+                 (display-line-numbers-mode 1)))
    #+end_src
+
