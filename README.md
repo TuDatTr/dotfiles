@@ -1,12 +1,15 @@
 # .dotfiles
 
+```
+README IS OUT OF DATE: UPDATE REQUIRED
+```
 These are my personal dotfiles.
 
 Main tools I am currently using are:
 
-- urxvt
+- Termite
 - byobu
-- vim
+- emacs
 - i3-gaps
 - ranger
 - rofi
