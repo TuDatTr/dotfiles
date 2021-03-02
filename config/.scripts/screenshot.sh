@@ -8,6 +8,8 @@ type xdotool >/dev/null 2>&1 || { echo >&2 "I require xdotool but it's not insta
 d=$HOME/Pictures/Screenshots/$(date +%Y-%m);
 fd=$(date +%G-%m-%d_%H-%M-%S)
 
+mkdir $d;
+
 case $1 in
     "screen"*)
         filename=$fd-$(cat /proc/$(xdotool getwindowfocus getwindowpid)/comm).png;
