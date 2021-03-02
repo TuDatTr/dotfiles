@@ -4,16 +4,16 @@
 # expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
 # --
 CXX = g++
-SRC = \$(wildcard *.cpp)
+SRC = \$(wildcard src/*.cpp)
 OBJ = \$(SRC:.cpp=.o)
-CFLAGS = 
-RM = rm
+CXXFLAGS = --std=c++11
+RM = rm -f
 TARGET = $1
 
 all: \$(TARGET)
 
 \$(TARGET): \$(OBJ)
-	\$(CXX) \$(CFLAGS) -o \$@ \$^
+	\$(CXX) \$(CXXFLAGS) -o \$@ \$^
 
 clean:
 	\$(RM) \$(TARGET) \$(OBJ)

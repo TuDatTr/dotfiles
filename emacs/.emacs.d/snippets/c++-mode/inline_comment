@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inline comment template
+# key: /*!
+# --
+/*!< $0 */

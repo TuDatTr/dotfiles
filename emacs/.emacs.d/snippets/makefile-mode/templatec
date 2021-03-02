@@ -4,10 +4,10 @@
 # expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
 # --
 CC = gcc
-SRC = \$(wildcard *.c)
+SRC = \$(wildcard src/*.c)
 OBJ = \$(SRC:.c=.o)
 CFLAGS = 
-RM = rm
+RM = rm -f
 TARGET = $1
 
 all: \$(TARGET)

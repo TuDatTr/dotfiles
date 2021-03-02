@@ -2,8 +2,13 @@
 # name: template
 # key: template
 # --
-#include <stdio>
+#include <iostream>
 
+/**
+   @brief 
+
+   @result 
+*/
 int main(int argc, char *argv[]){
     $0
 }

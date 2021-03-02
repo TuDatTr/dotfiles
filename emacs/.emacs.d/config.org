@@ -182,30 +182,47 @@
         (ansible 1))
     #+END_SRC
 
+*** [[https://github.com/flycheck/flycheck-rust][flycheck-rust]]
+    =Better Rust/Cargo support for Flycheck=
+    #+BEGIN_SRC emacs-lisp
+      (use-package flycheck-rust)
+    #+END_SRC
+ 
+*** [[https://github.com/rust-lang/rust-mode][rust-mode]]
+    =Emacs configuration for Rust=
+    #+BEGIN_SRC emacs-lisp
+      (use-package rust-mode)
+    #+END_SRC
+
+*** [[https://github.com/kwrooijen/cargo.el][cargo.el]]
+    #+BEGIN_SRC emacs-lisp
+      (use-package cargo)
+    #+END_SRC
+
 * Appearance
   This section is for appearance customization. Either via packages or manually.
 
-** [[https://github.com/kuanyui/moe-theme.el][moe-theme]]
-   =A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!=
+** [[https://github.com/balajisivaraman/emacs-one-themes][emacs-one-themes]]
+   =A port of the Vim/Atom One Dark and Light themes to Emacs=
 
-   #+begin_src emacs-lisp
-     (use-package moe-theme
-       :config
-       (moe-dark))
-   #+end_src
+   ##+begin_src emacs-lisp
+   #  (use-package one-themes
+   #    :init
+   #    (load-theme 'one-dark t))
+   ##+end_src
 
-
-** Transparent Emacs
+** Transparent Emacs (Commented out)
+   #+begin_comment
    Makes the default color of the background of emacs the same as the terminals color.
    This is kind of a janky solution, but it works.
 
    #+begin_src emacs-lisp
-     (add-hook 'window-setup-hook
-               '(lambda ()
-                  (if not (display-graphic-p)
-                    (set-face-background 'default "unspecified-bg"))))
+   (add-hook 'window-setup-hook
+   '(lambda ()
+   (if not (display-graphic-p)
+   (set-face-background 'default "unspecified-bg"))))
    #+end_src
-
+   #+end_comment
 ** Menubar
 
    Remove the menu-bar at the top of the screen for better immersion.
@@ -229,7 +246,7 @@
    #+END_SRC
 
 * Mode Configuration
-** Org-Mode
+** Org-mode
    Enable org-bullets and hide leading stars.
 
    #+begin_src emacs-lisp
@@ -238,6 +255,12 @@
                  (org-bullets-mode 1)
                  (setq org-pretty-entities t)
                  (setq org-src-fontify-natively t)))
+   #+end_src
+   
+   Enable utf8x on latex output
+
+   #+begin_src emacs-lisp
+     (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
    #+end_src
 
 *** Keybindings
@@ -260,17 +283,28 @@
       (setq org-src-tab-acts-natively t)
     #+end_src
 
-** C-Mode
+** C-mode
    #+begin_src emacs-lisp
      (add-hook 'c-mode-hook 
                (lambda () 
                  (display-line-numbers-mode 1)))
    #+end_src
 
-** C++-Mode
+** C++-mode
    #+begin_src emacs-lisp
      (add-hook 'c++-mode-hook 
                (lambda () 
                  (display-line-numbers-mode 1)))
    #+end_src
 
+
+** rust-mode
+   cargo.el
+   #+begin_src emacs-lisp
+     (add-hook 'rust-mode-hook 'cargo-minor-mode)
+   #+end_src
+
+   flycheck-rust
+   #+begin_src emacs-lisp
+     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+   #+end_src
