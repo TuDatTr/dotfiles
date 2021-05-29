@@ -10,7 +10,7 @@ function kb_routine {
     oldKBD="$KBD";
     case "$(xset -q | grep -A 0 'LED' | cut -c59-67)" in
         "00000000") 
-            KBD="English (US)" ;;
+            KBD="Europe" ;;
         "00001000") 
             KBD="Deutsch" ;;
         *) KBD="unknown" ;;
@@ -31,7 +31,7 @@ function battery_routine {
 
 while :
 do
-    #    kb_routine
+    kb_routine
     battery_routine
     sleep 1;
 done

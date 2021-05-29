@@ -63,16 +63,16 @@ def lock_config():
     lock_clock_align = '--time-align 1 --date-align 1 --layout-align 1'
     clock = "{} {}".format(lock_clock_args, lock_clock_align)
     # time
-    lock_time_pos = '--timepos="{}:{}"'.format(clock_x, clock_y)
-    lock_time_size = '--timesize={}'.format(default_fontsize * 2)
+    lock_time_pos = '--time-pos="{}:{}"'.format(clock_x, clock_y)
+    lock_time_size = '--time-size={}'.format(default_fontsize * 2)
     l_time = "{} {}".format(lock_time_pos, lock_time_size)
     # date
-    lock_date_pos = '--datepos="{}:{}"'.format(date_x, date_y)
-    lock_date_size = '--datesize={}'.format(default_fontsize)
+    lock_date_pos = '--date-pos="{}:{}"'.format(date_x, date_y)
+    lock_date_size = '--date-size={}'.format(default_fontsize)
     date = "{} {}".format(lock_date_pos, lock_date_size)
     # date color
-    datecolor = '--datecolor=777777ff'
-    timecolor = '--timecolor=777777ff'
+    datecolor = '--date-color=777777ff'
+    timecolor = '--time-color=777777ff'
     color = '{} {}'.format(datecolor, timecolor)
     # done
     datetime = "{} {} {}".format(l_time, date, color)
@@ -80,36 +80,36 @@ def lock_config():
     # Indicator config
     # Indicator inner
     # Color of the circle while resting/typing | Color: transparenet
-    lock_rest_color = '--insidecolor 00000000 '
+    lock_rest_color = '--inside-color 00000000 '
     # Color of the circle while "VERIFYING..." | Color: transparent
-    lock_ver_color = '--insidevercolor 00000000 '
+    lock_ver_color = '--insidever-color 00000000 '
     # Color of the circle if wrong | Color: transparent
-    lock_wrong_color = '--insidewrongcolor 00000000 '
+    lock_wrong_color = '--insidewrong-color 00000000 '
     indicator_inner = "{} {} {}".format(lock_rest_color, lock_wrong_color,
             lock_ver_color)
 
     # indicator_outer_ring
     # Default Color of the ring | Color: torquoise
-    lock_ring = '--ringcolor 00CED1FF'
+    lock_ring = '--ring-color 00CED1FF'
     # Color of ring when wrong pw | Color: red
-    lock_ring_w = '--ringwrongcolor D10000FF'
+    lock_ring_w = '--ringwrong-color D10000FF'
     # Color of ring when verifying | color dark-torquoise
-    lock_ring_v = '--ringvercolor 25B6B8FF'
+    lock_ring_v = '--ringver-color 25B6B8FF'
     # Color on Keypresses | Color: green
-    lock_press = '--keyhlcolor 00D103FF'
+    lock_press = '--keyhl-color 00D103FF'
     # Color on Deletion | Color: orange
-    lock_del = '--bshlcolor D13400FF'
+    lock_del = '--bshl-color D13400FF'
     # Color of seperator | Color: dark-blue
-    lock_sep_color = '--separatorcolor 0000D1FF'
+    lock_sep_color = '--separator-color 0000D1FF'
     # Right Text
-    lock_right_text = '--veriftext="..."'
+    lock_right_text = '--verif-text="..."'
     # Wrong Text
-    lock_wrong_text = '--wrongtext="Noope"'
+    lock_wrong_text = '--wrong-text="Noope"'
     # Text Size
     # lock_text_size = '--textsize=20'
     # Ring Position
     lock_texts = '{} {}'.format(lock_right_text, lock_wrong_text)
-    lock_pos = '--indpos={}:{}'.format(int(clock_x)+370, int(clock_y))
+    lock_pos = '--ind-pos={}:{}'.format(int(clock_x)+370, int(clock_y))
     # Ring size
     ring_size = 40
     lock_radius = '--radius {}'.format(ring_size)

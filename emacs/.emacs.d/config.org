@@ -199,6 +199,10 @@
       (use-package cargo)
     #+END_SRC
 
+*** [[https://github.com/millejoh/emacs-ipython-notebook][ein]]
+    #+begin_src emacs-lisp
+      (use-package ein)
+    #+end_src
 * Appearance
   This section is for appearance customization. Either via packages or manually.
 
@@ -296,7 +300,6 @@
                (lambda () 
                  (display-line-numbers-mode 1)))
    #+end_src
-
 
 ** rust-mode
    cargo.el
