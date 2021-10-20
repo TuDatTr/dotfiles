@@ -2,7 +2,8 @@
 # name: template
 # key: template
 # --
-#+TITLE: $0
+
+#+TITLE: $1
 #+SETUPFILE: ~/Templates/Org-Mode/setupfile.org
 
-$1
+$2

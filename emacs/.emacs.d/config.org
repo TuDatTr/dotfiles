@@ -100,7 +100,10 @@
         :config
         (setq TeX-parse-self t)
         (setq-default TeX-master nil)
-        (setq TeX-PDF-mode t))
+        (setq TeX-PDF-mode t)
+        (add-to-list 'TeX-view-program-list '(("Zathura" "zathura %o")))
+        (add-to-list 'TeX-view-program-selection '((output-pdf "Zathura")))
+        )
     #+end_src
 
 *** [[https://github.com/yjwen/org-reveal][ox-reveal]]
@@ -203,6 +206,19 @@
     #+begin_src emacs-lisp
       (use-package ein)
     #+end_src
+
+*** [[https://github.com/astahlman/ob-async][ob-async]]
+    #+begin_src emacs-lisp
+      (use-package ob-async)
+    #+end_src
+*** [[https://github.com/rolandwalker/simpleclip][simpleclip]]
+    #+begin_src emacs-lisp
+      (use-package simpleclip
+        :config
+        (simpleclip-mode 1))
+    #+end_src
+
+
 * Appearance
   This section is for appearance customization. Either via packages or manually.
 

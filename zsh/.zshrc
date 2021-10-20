@@ -26,8 +26,8 @@ alias msfconsole="msfconsole -x \"db_connect metasploit@msf\""
 alias nmap="nmap -T5 --min-parallelism 100 -Pn"
 alias ed="\emacs --daemon"
 alias e="emacsclient -t"
-alias con="source /opt/anaconda/bin/activate root"
-alias coff="source /opt/anaconda/bin/deactivate root"
+alias df="df -h"
+alias picpaste="xclip -selection clipboard -t image/png -o"
 
 # Theme
 ZSH_THEME="agnoster"

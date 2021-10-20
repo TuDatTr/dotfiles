@@ -103,9 +103,14 @@
 # or remain commented out. 1 = on, 0 = off. Warning: for certain terminal emulators cava will
 # not able to restore color definitions on exit, simply restart your terminal to restore colors.
 gradient = 1
+# GMK Noel
+gradient_color_1 = '#FFFFFF'
+gradient_color_2 = '#EEB9C1'
+gradient_color_3 = '#B3DCE1'
+gradient_color_4 = '#66B9D2'
 # Cool Blues
-gradient_color_1 = '#2193b0'
-gradient_color_2 = '#6dd5ed'
+; gradient_color_1 = '#2193b0'
+; gradient_color_2 = '#6dd5ed'
 # Quepal
 ; gradient_color_1 = '#11998e'
 ; gradient_color_2 = '#38ef7d'

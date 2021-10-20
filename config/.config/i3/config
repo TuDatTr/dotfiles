@@ -21,7 +21,7 @@ focus_follows_mouse no
 
 # Configure
 # border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
+new_window pixel 3
 new_float normal
 hide_edge_borders none
 
@@ -39,6 +39,7 @@ set $ws6 6: 
 set $ws7 7: 
 set $ws8 8: 
 set $ws9 9: 
+set $ws0 0: 0
 
 
 # switch to workspace
@@ -51,6 +52,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -62,6 +64,7 @@ bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws0
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -73,6 +76,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
 # Open specific applications in floating mode
 for_window [class="(?i)virtualbox"] floating enable border normal
@@ -96,7 +100,6 @@ for_window [title="^Steam Keyboard$"] floating enable
 ###############################################################################
 
 # exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps; setxkbmap -option grp:lalt_lshift_toggle
-exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/Wallpaper/*
 exec --no-startup-id picom
 exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
@@ -106,12 +109,13 @@ exec --no-startup-id dunst
 exec --no-startup-id ~/.scripts/startup.sh
 exec --no-startup-id llk
 exec --no-startup-id emacs --daemon
+exec --no-startup-id syncthing
 
 ###############################################################################
 ################################# Keybindings #################################
 ###############################################################################
 # Lock
-bindsym $mod+Shift+0 exec python ~/.scripts/i3lock.py
+bindsym $mod+Shift+space  exec --no-startup-id python ~/.scripts/i3lock.py
 
 # shutdown
 bindsym $mod+Shift+s exec poweroff
@@ -124,7 +128,7 @@ bindsym $mod+Return exec termite -e byobu
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -X -show run
+bindsym $mod+d exec --no-startup-id rofi -show run -config /home/tuan/.config/rofi/config
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/screen.sh up
@@ -163,6 +167,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# move focused workspace 
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+j move workspace to output down
+bindsym $mod+Mod1+k move workspace to output up
+bindsym $mod+Mod1+l move workspace to output right
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -178,7 +188,7 @@ bindsym $mod+q split toggle
 bindsym $mod+f fullscreen toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Mod1+space floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
