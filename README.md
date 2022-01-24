@@ -4,21 +4,30 @@ These are my personal dotfiles.
 
 Main tools I am currently using are:
 
-- urxvt
+- zsh
+- gvim
 - byobu
-- vim
+- conky
+- firefox
+- rxvt-unicode
+- dunst
+- highlight
 - i3-gaps
+- neofetch
 - ranger
 - rofi
+- emacs
+- polybar
+- termite
 
 ## Getting started
 
 To make full use of the dotfiles we need to install the following packages via pacman:
 
-`pacman -Syu zsh gvim byobu conky firefox rxvt-unicode dunst highlight i3-gaps neofetch ranger rofi`
+`pacman -Syu zsh gvim byobu conky firefox rxvt-unicode dunst highlight i3-gaps neofetch ranger rofi emacs`
 
 And the following packages from the AUR:
-`yay -S cava polybar`
+`yay -S polybar termite`
 
 ### zsh setup
 
