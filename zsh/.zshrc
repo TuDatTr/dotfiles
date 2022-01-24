@@ -15,8 +15,6 @@ export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 
-
-
 # Alias
 alias q="exit"
 alias b="byobu"
@@ -28,6 +26,9 @@ alias ed="\emacs --daemon"
 alias e="emacsclient -t"
 alias df="df -h"
 alias picpaste="xclip -selection clipboard -t image/png -o"
+alias eledger="e ~/Documents/Finanzen/Ledger/MyBudget.ledger"
+alias sshconfig="e ~/.ssh/config"
+alias econfig="e ~/.emacs.d/config.org"
 
 # Theme
 ZSH_THEME="agnoster"

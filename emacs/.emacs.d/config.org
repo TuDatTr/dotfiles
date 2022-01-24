@@ -218,6 +218,28 @@
         (simpleclip-mode 1))
     #+end_src
 
+*** [[https://github.com/ledger/ledger-mode][ledger-mode]]
+    #+BEGIN_SRC emacs-lisp
+      (use-package ledger-mode
+        :mode ("\\.ledger\\'")
+        :config
+        (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
+        (add-to-list 'load-path
+                     (expand-file-name "/path/to/ledger/source/lisp/"))
+        (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+        )
+    #+END_SRC
+
+*** [[https://github.com/yoshiki/yaml-mode][yaml-mode]]
+    #+BEGIN_SRC emacs-lisp
+      (use-package yaml-mode
+        :config
+        (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+        :bind-keymap
+        ("\C-m" . (newline-and-indent))
+        )
+    #+END_SRC
+    
 
 * Appearance
   This section is for appearance customization. Either via packages or manually.
@@ -265,23 +287,37 @@
      (setq-default indent-tabs-mode nil)
    #+END_SRC
 
+
 * Mode Configuration
 ** Org-mode
-   Enable org-bullets and hide leading stars.
+*** Enable org-bullets and hide leading stars.
 
-   #+begin_src emacs-lisp
-     (add-hook 'org-mode-hook 
-               (lambda () 
-                 (org-bullets-mode 1)
-                 (setq org-pretty-entities t)
-                 (setq org-src-fontify-natively t)))
-   #+end_src
+    #+begin_src emacs-lisp
+      (add-hook 'org-mode-hook 
+                (lambda () 
+                  (org-bullets-mode 1)
+                  (setq org-pretty-entities t)
+                  (setq org-src-fontify-natively t)))
+    #+end_src
    
-   Enable utf8x on latex output
+*** Enable utf8x on latex output
 
-   #+begin_src emacs-lisp
-     (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
-   #+end_src
+    #+begin_src emacs-lisp
+      (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
+    #+end_src
+
+*** minted options for pdfexport
+    #+begin_src emacs-lisp
+      (setq org-latex-listings 'minted
+            org-latex-packages-alist '(("" "minted"))
+            org-latex-pdf-process
+            '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+    #+end_src
+    #+begin_src emacs-lisp
+      (setq org-latex-minted-options '(("breaklines" "true")
+                                       ("breakanywhere" "true")))
+    #+end_src
 
 *** Keybindings
     #+begin_src emacs-lisp

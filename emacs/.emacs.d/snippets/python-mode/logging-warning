@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: logging-warning 
+# key: lwarning 
+# --
+logging.warning(f'$0')

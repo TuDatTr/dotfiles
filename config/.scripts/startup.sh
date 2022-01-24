@@ -26,6 +26,7 @@ function battery_routine {
     capacity=$(< /sys/class/power_supply/BAT0/capacity)
     if [[ $capacity -lt lower_battery_threshold ]]; then
         acpi | grep -q '0: Discharging' && dunstify "Battery at $capacity%";
+        sleep 60;
     fi
 }
 

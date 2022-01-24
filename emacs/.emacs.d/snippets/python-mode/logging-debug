@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: logging-debug
+# key: ldebug
+# --
+logging.debug(f'$0')

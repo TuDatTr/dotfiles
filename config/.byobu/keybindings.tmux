@@ -6,4 +6,5 @@ bind-key -n C-F1 display-panes \; split-window -h -c "#{pane_current_path}"
 bind-key -n F1 new-window -c "#{pane_current_path}" \; rename-window "-"
 bind-key -n F2 previous-window
 bind-key -n F3 next-window
-
+bind-key -n S-F2 previous-split
+bind-key -n S-F3 next-split
