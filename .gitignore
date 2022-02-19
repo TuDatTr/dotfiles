@@ -1,6 +1,6 @@
-*~
 .#*
 \#*\#
+~
 *API*
 *.bak
 config/.config/ranger/*
@@ -13,7 +13,8 @@ config/.mozilla/*
 !config/.mozilla/firefox/2x4tnepw.default/prefs.js
 !config/.mozilla/firefox/profiles.ini
 config/.scripts/playstate
-config/.ssh/known_hosts
+!config/.ssh/*
+!config/.ssh/config
 emacs/.emacs.d/*
 !emacs/.emacs.d/config.org
 !emacs/.emacs.d/ledger.org
@@ -22,5 +23,5 @@ emacs/.emacs.d/*
 *.log
 *.pdf
 vim/.vim/bundle/*
-vim/.vim/plugged/*
 vim/.vim/.netrwhist
+vim/.vim/plugged/*
