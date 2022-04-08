@@ -221,23 +221,23 @@
 *** [[https://github.com/ledger/ledger-mode][ledger-mode]]
     #+BEGIN_SRC emacs-lisp
       (use-package ledger-mode
-        :mode ("\\.ledger\\'")
-        :config
-        (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
-        (add-to-list 'load-path
-                     (expand-file-name "/path/to/ledger/source/lisp/"))
-        (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-        )
+	:mode ("\\.ledger\\'")
+	:config
+	(autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
+	(add-to-list 'load-path
+		     (expand-file-name "/path/to/ledger/source/lisp/"))
+	(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+	)
     #+END_SRC
 
 *** [[https://github.com/yoshiki/yaml-mode][yaml-mode]]
     #+BEGIN_SRC emacs-lisp
       (use-package yaml-mode
-        :config
-        (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-        :bind-keymap
-        ("\C-m" . (newline-and-indent))
-        )
+	:config
+	(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+	:bind-keymap
+	("\C-m" . (newline-and-indent))
+	)
     #+END_SRC
     
 
@@ -294,10 +294,10 @@
 
     #+begin_src emacs-lisp
       (add-hook 'org-mode-hook 
-                (lambda () 
-                  (org-bullets-mode 1)
-                  (setq org-pretty-entities t)
-                  (setq org-src-fontify-natively t)))
+		(lambda () 
+		  (org-bullets-mode 1)
+		  (setq org-pretty-entities t)
+		  (setq org-src-fontify-natively t)))
     #+end_src
    
 *** Enable utf8x on latex output
@@ -309,14 +309,14 @@
 *** minted options for pdfexport
     #+begin_src emacs-lisp
       (setq org-latex-listings 'minted
-            org-latex-packages-alist '(("" "minted"))
-            org-latex-pdf-process
-            '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+	    org-latex-packages-alist '(("" "minted"))
+	    org-latex-pdf-process
+	    '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	      "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
     #+end_src
     #+begin_src emacs-lisp
       (setq org-latex-minted-options '(("breaklines" "true")
-                                       ("breakanywhere" "true")))
+				       ("breakanywhere" "true")))
     #+end_src
 
 *** Keybindings
@@ -329,11 +329,11 @@
       (org-babel-do-load-languages
        'org-babel-load-languages
        '((emacs-lisp . t)
-         (C . t)
-         (makefile . t)
-         (shell . t)
-         (latex . t)
-         (python . t)))
+	 (C . t)
+	 (makefile . t)
+	 (shell . t)
+	 (latex . t)
+	 (python . t)))
 
       (setq org-confirm-babel-evaluate nil)
       (setq org-src-tab-acts-natively t)
@@ -342,15 +342,15 @@
 ** C-mode
    #+begin_src emacs-lisp
      (add-hook 'c-mode-hook 
-               (lambda () 
-                 (display-line-numbers-mode 1)))
+	       (lambda () 
+		 (display-line-numbers-mode 1)))
    #+end_src
 
 ** C++-mode
    #+begin_src emacs-lisp
      (add-hook 'c++-mode-hook 
-               (lambda () 
-                 (display-line-numbers-mode 1)))
+	       (lambda () 
+		 (display-line-numbers-mode 1)))
    #+end_src
 
 ** rust-mode
@@ -362,4 +362,8 @@
    flycheck-rust
    #+begin_src emacs-lisp
      (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+   #+end_src
+** p4-mode
+   #+begin_src emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.p4\\'" . c-mode))
    #+end_src
