@@ -41,7 +41,6 @@ set $ws8 8: 
 set $ws9 9: 
 set $ws0 0: 0
 
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -53,18 +52,20 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
 
 # Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-bindsym $mod+Ctrl+9 move container to workspace $ws9
-bindsym $mod+Ctrl+0 move container to workspace $ws0
+bindsym $mod+Control+1 move container to workspace $ws1
+bindsym $mod+Control+2 move container to workspace $ws2
+bindsym $mod+Control+3 move container to workspace $ws3
+bindsym $mod+Control+4 move container to workspace $ws4
+bindsym $mod+Control+5 move container to workspace $ws5
+bindsym $mod+Control+6 move container to workspace $ws6
+bindsym $mod+Control+7 move container to workspace $ws7
+bindsym $mod+Control+8 move container to workspace $ws8
+bindsym $mod+Control+9 move container to workspace $ws9
+bindsym $mod+Control+0 move container to workspace $ws0
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -101,7 +102,6 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 # exec --no-startup-id setxkbmap us,de; setxkbmap -option ctrl:nocaps; setxkbmap -option grp:lalt_lshift_toggle
 exec --no-startup-id picom
-exec --no-startup-id nextcloud --background
 exec --no-startup-id udiskie
 exec --no-startup-id conky -c ~/.conky/syclo-crimson-bottomleft.conkyrc
 # exec --no-startup-id synergyc -f --no-tray --debug INFO --name genesis --enable-crypto 192.168.178.38:24800
@@ -160,7 +160,7 @@ bindsym Mod1+Sys_Req --release exec --no-startup-id ~/.scripts/screenshot.sh win
 bindsym Print --release exec --no-startup-id ~/.scripts/screenshot.sh area
 
 # Kill Window
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym $mod+Control+x --release exec --no-startup-id xkill
 
 # change focus
 bindsym $mod+h focus left
