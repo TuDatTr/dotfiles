@@ -130,6 +130,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run -config /home/tuan/.config/rofi/config
+bindsym Mod1+Tab exec --no-startup-id rofi -show window -config /home/tuan/.config/rofi/config
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/screen.sh up
