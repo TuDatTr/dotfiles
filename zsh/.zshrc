@@ -29,6 +29,8 @@ alias picpaste="xclip -selection clipboard -t image/png -o"
 alias eledger="e ~/Documents/Finanzen/Ledger/MyBudget.ledger"
 alias sshconfig="e ~/.ssh/config"
 alias econfig="e ~/.emacs.d/config.org"
+alias wttr="curl wttr.in/Essen"
+alias tvres="xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1"
 
 # Theme
 ZSH_THEME="agnoster"
@@ -44,3 +46,4 @@ randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;};
 
 # Source
 source $ZSH/oh-my-zsh.sh
+

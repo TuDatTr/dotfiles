@@ -110,6 +110,7 @@ exec --no-startup-id ~/.scripts/startup.sh
 exec --no-startup-id llk
 exec --no-startup-id emacs --daemon
 exec --no-startup-id syncthing
+exec --no-startup-id xrandr --output eDP1 --auto  --left-of HDMI1 --output HDMI1 --off --output DP1 --off; feh --randomize --bg-fill /home/tuan/Pictures/Wallpaper/*
 exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/Wallpaper/*   
 
 ###############################################################################

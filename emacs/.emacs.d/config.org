@@ -3,367 +3,372 @@
 #+OPTIONS: \n:t
 
 * Preface
-  Before installing and using emacs, emacs should be run as a daemon.
-  This decreases the loading times of the editor enormously and enables you to return to your former emacs session at any time.
-  To do this you first need to make sure ~emace --daemon~ is run during the start up.
-  To access the daemonized emacs you can either run ~emacsclient -t~ to use it in the terminal or simply ~emacsclient~ if you want to use the GUI version.
+Before installing and using emacs, emacs should be run as a daemon.
+This decreases the loading times of the editor enormously and enables you to return to your former emacs session at any time.
+To do this you first need to make sure ~emace --daemon~ is run during the start up.
+To access the daemonized emacs you can either run ~emacsclient -t~ to use it in the terminal or simply ~emacsclient~ if you want to use the GUI version.
   
 * Package installation
 ** Preperation
-   Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
+Initialize Emacs builtin package system and add the [[https://melpa.org][melpa]]-package repository.
 
-   #+begin_src emacs-lisp
-     (require 'package)
-     (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-     (package-initialize)
-     (package-refresh-contents)
-   #+end_src
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+  (package-refresh-contents)
+#+end_src
 
 ** Installation
 *** [[https://github.com/jwiegley/use-package][use-package]]
-    =A use-package declaration for simplifying your .emacs=
+=A use-package declaration for simplifying your .emacs=
 
-    #+begin_src emacs-lisp
-      (unless (package-installed-p 'use-package)
-        (package-install 'use-package))
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
 
-      (require 'use-package)
-      (setq use-package-always-ensure t)
-    #+end_src
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+#+end_src
+
+*** [[https://github.com/rolandwalker/simpleclip][simpleclip]]
+#+begin_src emacs-lisp
+  (use-package simpleclip
+    :config
+    (simpleclip-mode 1))
+#+end_src
 
 *** [[https://github.com/myrjola/diminish.el][diminish]]
-    =Diminished modes are minor modes with no modeline display=
+=Diminished modes are minor modes with no modeline display=
 
-    #+begin_src emacs-lisp
-      (use-package diminish)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package diminish)
+#+end_src
 
 *** [[https://github.com/emacscollective/no-littering][no-littering]]
-    =Help keeping ~/.emacs.d clean=
+=Help keeping ~/.emacs.d clean=
 
-    #+begin_src emacs-lisp
-      (use-package no-littering)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package no-littering)
+#+end_src
 
 *** [[https://github.com/emacs-evil/evil][evil]]/[[https://github.com/emacs-evil/evil-collection][evil-collection]]
-    =The extensible vi layer for Emacs.=
-    =A set of keybindings for evil-mode=
+=The extensible vi layer for Emacs.=
+=A set of keybindings for evil-mode=
 
-    #+begin_src emacs-lisp
-      (use-package evil
-        :init
-        (setq evil-want-keybinding nil)
-        :config
-        (evil-mode 1)
-        (setq evil-search-module 'evil-search))
+#+begin_src emacs-lisp
+  (use-package evil
+    :init
+    (setq evil-want-keybinding nil)
+    :config
+    (evil-mode 1)
+    (setq evil-search-module 'evil-search)
 
-      (use-package evil-collection
-        :config
-        (evil-collection-init))
-    #+end_src
+    )
+
+  (use-package evil-collection
+    :config
+    (evil-collection-init))
+#+end_src
 
 *** [[https://github.com/abo-abo/swiper][Ivy]]/[[https://github.com/abo-abo/swiper][Counsil]]/[[https://github.com/abo-abo/swiper][Swiper]]
-    =Ivy - a generic completion frontend for Emacs=
-    =Swiper - isearch with an overview, and more. Oh, man!=
+=Ivy - a generic completion frontend for Emacs=
+=Swiper - isearch with an overview, and more. Oh, man!=
 
-    #+begin_src emacs-lisp
-      (use-package prescient)
+#+begin_src emacs-lisp
+  (use-package prescient)
 
-      (use-package ivy-prescient
-        :config
-        (ivy-prescient-mode 1))
+  (use-package ivy-prescient
+    :config
+    (ivy-prescient-mode 1))
 
-      (use-package ivy)
+  (use-package ivy)
 
-      (use-package counsel  
-        :diminish counsel-mode
-        :config
-        (counsel-mode 1))
+  (use-package counsel  
+    :diminish counsel-mode
+    :config
+    (counsel-mode 1))
 
-      (use-package swiper
-        :bind (("C-s" . 'swiper)))
-    #+end_src
+  (use-package swiper
+    :bind ("C-s" . 'swiper))
+#+end_src
 
 *** [[https://magit.vc/][Magit]]
-    =A Git Porcelain inside Emacs.=
+=A Git Porcelain inside Emacs.=
     
-    #+begin_src emacs-lisp
-      (use-package magit)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package magit)
+#+end_src
 
 *** [[https://www.gnu.org/software/auctex/][AUCTeX]]
-    =an extensible package for writing and formatting TeX files.=
+=an extensible package for writing and formatting TeX files.=
 
-    #+begin_src emacs-lisp
-      (use-package auctex
-        :defer t
-        :config
-        (setq TeX-parse-self t)
-        (setq-default TeX-master nil)
-        (setq TeX-PDF-mode t)
-        (add-to-list 'TeX-view-program-list '(("Zathura" "zathura %o")))
-        (add-to-list 'TeX-view-program-selection '((output-pdf "Zathura")))
-        )
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package auctex
+    :defer t
+    :config
+    (setq TeX-parse-self t)
+    (setq-default TeX-master nil)
+    (setq TeX-PDF-mode t)
+    (add-to-list 'TeX-view-program-list '(("Zathura" "zathura %o")))
+    (add-to-list 'TeX-view-program-selection '((output-pdf "Zathura")))
+    )
+#+end_src
 
 *** [[https://github.com/yjwen/org-reveal][ox-reveal]]
-    =Exports Org-mode contents to Reveal.js HTML presentation.=
+=Exports Org-mode contents to Reveal.js HTML presentation.=
 
-    #+begin_src emacs-lisp
-      (use-package ox-reveal)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package ox-reveal)
+#+end_src
 
 *** [[https://github.com/marsmining/ox-twbs][ox-twbs]]
-    =Export org-mode docs as HTML compatible with Twitter Bootstrap.=
+=Export org-mode docs as HTML compatible with Twitter Bootstrap.=
 
-    #+begin_src emacs-lisp
-      (use-package ox-twbs)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package ox-twbs)
+#+end_src
 
 *** [[https://github.com/sabof/org-bullets][org-bullets]]
-    =utf-8 bullets for org-mode=
+=utf-8 bullets for org-mode=
 
-    #+begin_src emacs-lisp
-      (use-package org-bullets)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package org-bullets)
+#+end_src
 
 *** [[https://elpa.gnu.org/packages/rainbow-mode.html][rainbow-mode]]
-    =Colorize color names in buffers=
+=Colorize color names in buffers=
     
-    #+begin_src emacs-lisp
-      (use-package rainbow-mode)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package rainbow-mode)
+#+end_src
 
 *** [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]]
-    =Emacs rainbow delimiters mode=
+=Emacs rainbow delimiters mode=
 
-    #+begin_src emacs-lisp
-      (use-package rainbow-delimiters)
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters)
+#+end_src
 
 *** [[https://github.com/joaotavora/yasnippet][yasnippet]]
-    =A template system for Emacs=
+=A template system for Emacs=
     
-    #+begin_src emacs-lisp
-      (use-package yasnippet
-        :config
-        (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
-        (yas-global-mode 1))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :config
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
+    (yas-global-mode 1))
+#+end_src
 
 *** [[https://github.com/company-mode/company-mode][company-mode]]
-    =Modular in-buffer completion framework for Emacs=
+=Modular in-buffer completion framework for Emacs=
     
-    #+begin_src emacs-lisp
-      (use-package company
-        :config
-        (global-company-mode))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package company
+    :config
+    (global-company-mode))
+#+end_src
+
+*** [[https://github.com/TommyX12/company-tabnine][tabnine-company]]
+=A company-mode backend for TabNine, the all-language autocompleter: https://tabnine.com/=
+
+#+begin_src emacs-lisp
+  (use-package company-tabnine
+    :ensure t)
+  ;; Trigger completion immediately.
+  (setq company-idle-delay 0)
+
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (setq company-show-numbers t)
+
+  (add-to-list 'company-backends #'company-tabnine)
+#+end_src
 
 *** [[https://github.com/flycheck/flycheck][flycheck]]
-    =On the fly syntax checking for GNU Emacs=
+=On the fly syntax checking for GNU Emacs=
     
-    #+begin_src emacs-lisp
-      (use-package flycheck
-        :config
-        (global-flycheck-mode))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :config
+    (global-flycheck-mode))
+#+end_src
 
 *** [[https://github.com/hniksic/emacs-htmlize][htmlize.el]]
-    =Convert buffer text and decorations to HTML.=
+=Convert buffer text and decorations to HTML.=
     
-    #+begin_src emacs-lisp
-      (use-package htmlize)
-    #+end_src
-
-*** [[https://github.com/k1LoW/emacs-ansible][ansible]]
-    =Ansible minor mode=
-    
-    #+BEGIN_SRC emacs-lisp
-      (use-package ansible
-        :config
-        (ansible 1))
-    #+END_SRC
+#+begin_src emacs-lisp
+  (use-package htmlize)
+#+end_src
 
 *** [[https://github.com/flycheck/flycheck-rust][flycheck-rust]]
-    =Better Rust/Cargo support for Flycheck=
-    #+BEGIN_SRC emacs-lisp
-      (use-package flycheck-rust)
-    #+END_SRC
+=Better Rust/Cargo support for Flycheck=
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck-rust)
+#+END_SRC
  
 *** [[https://github.com/rust-lang/rust-mode][rust-mode]]
-    =Emacs configuration for Rust=
-    #+BEGIN_SRC emacs-lisp
-      (use-package rust-mode)
-    #+END_SRC
+=Emacs configuration for Rust=
+#+BEGIN_SRC emacs-lisp
+  (use-package rust-mode)
+#+END_SRC
 
 *** [[https://github.com/kwrooijen/cargo.el][cargo.el]]
-    #+BEGIN_SRC emacs-lisp
-      (use-package cargo)
-    #+END_SRC
-
-*** [[https://github.com/millejoh/emacs-ipython-notebook][ein]]
-    #+begin_src emacs-lisp
-      (use-package ein)
-    #+end_src
+#+BEGIN_SRC emacs-lisp
+  (use-package cargo)
+#+END_SRC
 
 *** [[https://github.com/astahlman/ob-async][ob-async]]
-    #+begin_src emacs-lisp
-      (use-package ob-async)
-    #+end_src
-*** [[https://github.com/rolandwalker/simpleclip][simpleclip]]
-    #+begin_src emacs-lisp
-      (use-package simpleclip
-        :config
-        (simpleclip-mode 1))
-    #+end_src
+#+begin_src emacs-lisp
+  (use-package ob-async)
+#+end_src
 
 *** [[https://github.com/ledger/ledger-mode][ledger-mode]]
-    #+BEGIN_SRC emacs-lisp
-      (use-package ledger-mode
-	:mode ("\\.ledger\\'")
-	:config
-	(autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
-	(add-to-list 'load-path
-		     (expand-file-name "/path/to/ledger/source/lisp/"))
-	(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-	)
-    #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package ledger-mode
+    :mode ("\\.ledger\\'")
+    :config
+    (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
+    (add-to-list 'load-path
+                 (expand-file-name "/path/to/ledger/source/lisp/"))
+    (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+    )
+#+END_SRC
 
 *** [[https://github.com/yoshiki/yaml-mode][yaml-mode]]
-    #+BEGIN_SRC emacs-lisp
-      (use-package yaml-mode
-	:config
-	(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-	:bind-keymap
-	("\C-m" . (newline-and-indent))
-	)
-    #+END_SRC
-    
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+#+END_SRC
 
+*** [[https://github.com/ethereum/emacs-solidit][solidity-mode]]
+#+begin_src emacs-lisp
+  (use-package solidity-mode)
+#+end_src
 * Appearance
-  This section is for appearance customization. Either via packages or manually.
+This section is for appearance customization. Either via packages or manually.
 
 ** [[https://github.com/balajisivaraman/emacs-one-themes][emacs-one-themes]]
-   =A port of the Vim/Atom One Dark and Light themes to Emacs=
+=A port of the Vim/Atom One Dark and Light themes to Emacs=
 
-   ##+begin_src emacs-lisp
-   #  (use-package one-themes
-   #    :init
-   #    (load-theme 'one-dark t))
-   ##+end_src
+##+begin_src emacs-lisp
+#  (use-package one-themes
+#    :init
+#    (load-theme 'one-dark t))
+##+end_src
 
 ** Transparent Emacs (Commented out)
-   #+begin_comment
-   Makes the default color of the background of emacs the same as the terminals color.
-   This is kind of a janky solution, but it works.
+#+begin_comment
+Makes the default color of the background of emacs the same as the terminals color.
+This is kind of a janky solution, but it works.
 
-   #+begin_src emacs-lisp
-   (add-hook 'window-setup-hook
-   '(lambda ()
-   (if not (display-graphic-p)
-   (set-face-background 'default "unspecified-bg"))))
-   #+end_src
-   #+end_comment
+#+begin_src emacs-lisp
+(add-hook 'window-setup-hook
+'(lambda ()
+(if not (display-graphic-p)
+(set-face-background 'default "unspecified-bg"))))
+#+end_src
+#+end_comment
 ** Menubar
 
-   Remove the menu-bar at the top of the screen for better immersion.
+Remove the menu-bar at the top of the screen for better immersion.
 
-   #+begin_src emacs-lisp
-     (menu-bar-mode -1)
-   #+end_src
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+#+end_src
 
 * Emacs Configuration
 ** Symbolic Links
-   Follow symlinks without asking for confirmation.
+Follow symlinks without asking for confirmation.
 
-   #+begin_src emacs-lisp
-     (setq vc-follow-symlinks t)
-   #+end_src
+#+begin_src emacs-lisp
+  (setq vc-follow-symlinks t)
+#+end_src
 
 ** Tab Behavior (spaces > tabs)
 
-   #+BEGIN_SRC emacs-lisp
-     (setq-default indent-tabs-mode nil)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+END_SRC
 
 
 * Mode Configuration
 ** Org-mode
 *** Enable org-bullets and hide leading stars.
 
-    #+begin_src emacs-lisp
-      (add-hook 'org-mode-hook 
-		(lambda () 
-		  (org-bullets-mode 1)
-		  (setq org-pretty-entities t)
-		  (setq org-src-fontify-natively t)))
-    #+end_src
+#+begin_src emacs-lisp
+  (add-hook 'org-mode-hook 
+            (lambda () 
+              (org-bullets-mode 1)
+              (setq org-pretty-entities f)
+              (setq org-src-fontify-natively 1)))
+#+end_src
    
 *** Enable utf8x on latex output
 
-    #+begin_src emacs-lisp
-      (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
-    #+end_src
+#+begin_src emacs-lisp
+  (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
+#+end_src
 
 *** minted options for pdfexport
-    #+begin_src emacs-lisp
-      (setq org-latex-listings 'minted
-	    org-latex-packages-alist '(("" "minted"))
-	    org-latex-pdf-process
-	    '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-	      "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-    #+end_src
-    #+begin_src emacs-lisp
-      (setq org-latex-minted-options '(("breaklines" "true")
-				       ("breakanywhere" "true")))
-    #+end_src
+#+begin_src emacs-lisp
+  (setq org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+#+end_src
+#+begin_src emacs-lisp
+  (setq org-latex-minted-options '(("breaklines" "true")
+                                   ("breakanywhere" "true")))
+#+end_src
 
 *** Keybindings
-    #+begin_src emacs-lisp
-      (define-key org-mode-map (kbd "C-c ,") 'org-insert-structure-template)
-    #+end_src
+#+begin_src emacs-lisp
+  (define-key org-mode-map (kbd "C-c ,") 'org-insert-structure-template)
+  (define-key evil-normal-state-map (kbd "Y") 'simpleclip-copy)
+#+end_src
 
-    Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation confirmation. The code afterwords enables proper indentation inside those source blocks.
-    #+begin_src emacs-lisp
-      (org-babel-do-load-languages
-       'org-babel-load-languages
-       '((emacs-lisp . t)
-	 (C . t)
-	 (makefile . t)
-	 (shell . t)
-	 (latex . t)
-	 (python . t)))
+Enables specific languages for org-babel, so those languages can be used and compiled in code blocks and disable the compilation confirmation. The code afterwords enables proper indentation inside those source blocks.
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (C . t)
+     (makefile . t)
+     (shell . t)
+     (latex . t)
+     (python . t)))
 
-      (setq org-confirm-babel-evaluate nil)
-      (setq org-src-tab-acts-natively t)
-    #+end_src
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-src-tab-acts-natively t)
+#+end_src
 
 ** C-mode
-   #+begin_src emacs-lisp
-     (add-hook 'c-mode-hook 
-	       (lambda () 
-		 (display-line-numbers-mode 1)))
-   #+end_src
+#+begin_src emacs-lisp
+  (add-hook 'c-mode-hook 
+            (lambda () 
+              (display-line-numbers-mode 1)))
+#+end_src
 
 ** C++-mode
-   #+begin_src emacs-lisp
-     (add-hook 'c++-mode-hook 
-	       (lambda () 
-		 (display-line-numbers-mode 1)))
-   #+end_src
+#+begin_src emacs-lisp
+  (add-hook 'c++-mode-hook 
+            (lambda () 
+              (display-line-numbers-mode 1)))
+#+end_src
 
 ** rust-mode
-   cargo.el
-   #+begin_src emacs-lisp
-     (add-hook 'rust-mode-hook 'cargo-minor-mode)
-   #+end_src
+cargo.el
+#+begin_src emacs-lisp
+  (add-hook 'rust-mode-hook 'cargo-minor-mode)
+#+end_src
 
-   flycheck-rust
-   #+begin_src emacs-lisp
-     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-   #+end_src
+flycheck-rust
+#+begin_src emacs-lisp
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+#+end_src
 ** p4-mode
-   #+begin_src emacs-lisp
-     (add-to-list 'auto-mode-alist '("\\.p4\\'" . c-mode))
-   #+end_src
+#+begin_src emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.p4\\'" . c-mode))
+#+end_src
