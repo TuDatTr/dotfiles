@@ -13,7 +13,7 @@ config/.mozilla/*
 !config/.mozilla/firefox/2x4tnepw.default/prefs.js
 !config/.mozilla/firefox/profiles.ini
 config/.scripts/playstate
-!config/.ssh/*
+config/.ssh/*
 !config/.ssh/config
 emacs/.emacs.d/*
 !emacs/.emacs.d/config.org
