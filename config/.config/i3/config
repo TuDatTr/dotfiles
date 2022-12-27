@@ -123,8 +123,8 @@ bindsym $mod+Shift+space  exec --no-startup-id python ~/.scripts/i3lock.py
 bindsym $mod+Shift+s exec poweroff
 
 # start a terminal
-bindsym $mod+space exec termite
-bindsym $mod+Return exec termite -e byobu
+bindsym $mod+space exec alacritty
+bindsym $mod+Return exec alacritty -e byobu
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -149,7 +149,7 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 # Application Shortcuts
 bindsym $mod+b exec firefox
 bindsym $mod+p exec firefox --private-window https://mos4.de
-bindsym $mod+e exec termite -e ranger
+bindsym $mod+e exec alacritty -e ranger
 bindsym $mod+m exec thunderbird
 
 # Whole Screen

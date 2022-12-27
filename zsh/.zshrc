@@ -7,6 +7,8 @@ export CTF=$HOME/Documents/CTF/
 export WORKSPACE=$HOME/workspace_l
 export ZSHRC="$HOME/.zshrc"
 export VISUAL="emacsclient -t"
+export EDITOR="emacsclient -t"
+
 
 # History
 export HISTSIZE=10000000
@@ -31,6 +33,12 @@ alias sshconfig="e ~/.ssh/config"
 alias econfig="e ~/.emacs.d/config.org"
 alias wttr="curl wttr.in/Essen"
 alias tvres="xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1"
+alias defaultres="xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1"
+alias ezsh="e ~/.zshrc; source ~/.zshrc;"
+alias notify="dunstify \"ping~\""
+alias ekill="pkill emacs; rm ~/.emacs.d/config.el; ed"
+alias latexmk="latexmk -f -pdf -interaction=nonstopmode"
+alias picotik="picocom --b 115200 /dev/ttyUSB0"
 
 # Theme
 ZSH_THEME="agnoster"
