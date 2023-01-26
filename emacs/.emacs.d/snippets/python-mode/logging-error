@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: logging-error 
-# key: lerror 
-# --
-logging.error(f'$0')

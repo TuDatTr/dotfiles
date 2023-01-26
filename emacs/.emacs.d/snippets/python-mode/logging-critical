@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: logging-critical 
-# key: lcritical 
-# --
-logging.critical(f'$0')

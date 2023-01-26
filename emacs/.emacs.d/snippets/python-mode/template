@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: template
-# key: template
-# --
-if __name__ == '__main__':
-    $0
