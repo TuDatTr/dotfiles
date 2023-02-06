@@ -75,6 +75,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+; Rust
 (use-package rustic
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
@@ -123,13 +124,8 @@
   (lsp-ui-sideline-show-hover t)
   (lsp-ui-doc-enable nil))
 
-(use-package ledger-mode
-    :mode ("\\.ledger\\'")
-    :config
-    (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
-    (add-to-list 'load-path
-                 (expand-file-name "/path/to/ledger/source/lisp/"))
-    (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
-    )
-
+; Latex
 (setq +latex-viewers '(zathura))
+
+; Roam
+(setq org-roam-directory "~/workspace_l/roam/")
