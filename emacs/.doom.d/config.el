@@ -128,4 +128,4 @@
 (setq +latex-viewers '(zathura))
 
 ; Roam
-(setq org-roam-directory "~/workspace_l/roam/")
+(setq org-roam-directory "~/Documents/roam/")
