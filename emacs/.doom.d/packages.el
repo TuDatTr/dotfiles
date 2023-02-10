@@ -54,3 +54,6 @@
 (package! lsp-ui)
 (package! flycheck)
 (package! ledger-mode)
+
+(unpin! org-roam)
+(package! org-roam-ui)

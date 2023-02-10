@@ -36,7 +36,7 @@ alias tvres="xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1"
 alias defaultres="xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1"
 alias zshconfig="e ~/.zshrc; source ~/.zshrc;"
 alias notify="dunstify \"ping~\""
-alias ekill="e -e \"(kill-emacs)\"; ed"
+alias ekill="pkill emacs; pkill emacsclient; ed"
 alias latexmk="latexmk -f -pdf -interaction=nonstopmode"
 alias picotik="picocom --b 115200 /dev/ttyUSB0"
 
