@@ -28,17 +28,19 @@ alias ed="\emacs --daemon"
 alias e="open_emacs"
 alias df="df -h"
 alias picpaste="xclip -selection clipboard -t image/png -o"
-alias eledger="e ~/Documents/Finanzen/Ledger/MyBudget.ledger"
-alias sshconfig="e ~/.ssh/config"
-alias econfig="e ~/.doom.d/init.el"
+alias eledger="emacsclient -nw ~/Documents/Finanzen/Ledger/MyBudget.ledger"
+alias sshconfig="emacsclient -nw ~/.ssh/config"
+alias econfig="emacsclient -nw ~/.doom.d/init.el"
 alias wttr="curl wttr.in/Essen"
 alias tvres="xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1"
 alias defaultres="xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1"
-alias zshconfig="e ~/.zshrc; source ~/.zshrc;"
+alias zshconfig="emacsclient -vw ~/.zshrc; source ~/.zshrc;"
 alias notify="dunstify \"ping~\""
 alias ekill="pkill emacs; pkill emacsclient; ed"
 alias latexmk="latexmk -f -pdf -interaction=nonstopmode"
 alias picotik="picocom --b 115200 /dev/ttyUSB0"
+## git
+alias gps="git push soft --all"
 
 # Theme
 ZSH_THEME="agnoster"
@@ -55,4 +57,5 @@ randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;};
 # Source
 source $ZSH/oh-my-zsh.sh
 
+gras() { git remote add soft ssh://git.aya01:/$1 }
 open_emacs() { emacsclient -c $1 & disown; };
