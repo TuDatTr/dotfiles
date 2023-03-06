@@ -124,7 +124,7 @@ bindsym $mod+Shift+s exec poweroff
 
 # start a terminal
 bindsym $mod+space exec alacritty
-bindsym $mod+Return exec alacritty -e byobu
+bindsym $mod+Return exec alacritty -e nu /home/tuan/.scripts/zellij-chooser.nu
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -149,7 +149,7 @@ bindsym XF86AudioPrevious exec "playerctl previous; cmus-remote -r"
 # Application Shortcuts
 bindsym $mod+b exec firefox
 bindsym $mod+p exec firefox --private-window https://mos4.de
-bindsym $mod+e exec alacritty -e ranger
+bindsym $mod+e exec emacsclient -c
 bindsym $mod+m exec thunderbird
 
 # Whole Screen

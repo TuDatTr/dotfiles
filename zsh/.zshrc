@@ -34,13 +34,14 @@ alias econfig="emacsclient -nw ~/.doom.d/init.el"
 alias wttr="curl wttr.in/Essen"
 alias tvres="xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1"
 alias defaultres="xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1"
-alias zshconfig="emacsclient -vw ~/.zshrc; source ~/.zshrc;"
+alias zshconfig="emacsclient -nw ~/.zshrc; source ~/.zshrc;"
 alias notify="dunstify \"ping~\""
 alias ekill="pkill emacs; pkill emacsclient; ed"
 alias latexmk="latexmk -f -pdf -interaction=nonstopmode"
 alias picotik="picocom --b 115200 /dev/ttyUSB0"
 ## git
 alias gps="git push soft --all"
+alias gras="add_soft_git"
 
 # Theme
 ZSH_THEME="agnoster"
@@ -57,5 +58,5 @@ randpw() { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;};
 # Source
 source $ZSH/oh-my-zsh.sh
 
-gras() { git remote add soft ssh://git.aya01:/$1 }
+add_soft_git() { git remote add soft ssh://git.aya01:/$1 }
 open_emacs() { emacsclient -c $1 & disown; };
