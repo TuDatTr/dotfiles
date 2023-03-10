@@ -130,8 +130,7 @@ bindsym $mod+Return exec alacritty -e nu /home/tuan/.scripts/zellij-chooser.nu
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run -config /home/tuan/.config/rofi/config
-bindsym Mod1+Tab exec --no-startup-id rofi -show window -config /home/tuan/.config/rofi/config
+bindsym $mod+d exec --no-startup-id /home/tuan/.config/rofi/launchers/type-1/launcher.sh
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/screen.sh up

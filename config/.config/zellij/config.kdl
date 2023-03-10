@@ -1,11 +1,19 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
-    normal {
+    normal clear-defaults=true {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        bind "F1" {SwitchToMode "Tab"; }
+        bind "F2" {SwitchToMode "Pane"; }
+        bind "F5" {SwitchToMode "Session"; }
+        bind "F6" {SwitchToMode "Search"; }
+        bind "F7" {SwitchToMode "Scroll"; }
+        bind "F8" {SwitchToMode "Resize"; }
+        bind "F9" {SwitchToMode "Move"; }
+        bind "F12" {SwitchToMode "Locked"; }
     }
     locked {
-        bind "Ctrl g" { SwitchToMode "Normal"; }
+        bind "F12" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }

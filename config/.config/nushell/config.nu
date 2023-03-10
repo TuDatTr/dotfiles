@@ -552,6 +552,6 @@ alias gaa = git add --all
 alias gco = git checkout
 alias grv = git remote -v
 
-let-env PATH = ($env.PATH | append /home/tuan/.emacs.d/bin/)
 let-env DOCKER_BUILDKIT = 1
 source ~/.cache/starship/init.nu
+
