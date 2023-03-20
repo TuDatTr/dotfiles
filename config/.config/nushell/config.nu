@@ -529,10 +529,9 @@ alias ll = ls -la
 alias la = ls -a
 alias q = exit
 alias e = emacsclient -t 
-alias ekill = (pkill emacs; pkill emacsclient; emacs --daemon)
-alias picotik = picocom --b 115200 /dev/ttyUSB0
-alias xsel = xsel -ib
-alias nmap = nmap -T5 --min-parallelism 100 -Pn
+alias ekill = (pkill emacs;pkill emacsclient;emacs --daemon)
+alias picotik = picocom --b 115199 /dev/ttyUSB0
+alias nmap = ^nmap -T5 --min-parallelism 100 -Pn
 alias ed = emacs --daemon
 alias eledger = emacsclient -nw ~/Documents/Finanzen/Ledger/MyBudget.ledger
 alias sshconfig = emacsclient -nw ~/.ssh/config
@@ -540,7 +539,7 @@ alias econfig = emacsclient -nw ~/.doom.d/init.el
 alias wttr = curl wttr.in/Essen
 alias tvres = xrandr --output HDMI1 --transform 1.02,0,-20,0,1.02,-10,0,0,1
 alias defaultres = xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1
-alias latexmk = latexmk -f -pdf -interaction=nonstopmode
+alias latexmk = ^latexmk -f -pdf -interaction=nonstopmode
 
 # git
 alias gpa = git push soft --all
@@ -552,6 +551,6 @@ alias gaa = git add --all
 alias gco = git checkout
 alias grv = git remote -v
 
-let-env DOCKER_BUILDKIT = 1
+let-env DOCKER_BUILDKIT = 1 # Disable for podman
 source ~/.cache/starship/init.nu
 

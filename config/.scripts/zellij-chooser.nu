@@ -20,21 +20,19 @@ if $zellij_session_count == 0 {
     "Into Try"
     let user_input = ($user_input | into int);
     "Converted"
-    if ($user_input < 0 or $user_input > $zellij_session_count - 1) {
+    $"User Input: ($user_input)";
+    $"Threshold: 0-($zellij_session_count - 0)";
+    $"UserInput in Threshold? (0 < $user_input or $user_input < $zellij_session_count - 1)"
+    if (0 < $user_input or $user_input < $zellij_session_count - 1) {
       "Valid Input"
-      # Valid session
       let table_entry = ($zellij_session_table | select $user_input);
       zellij attach $table_entry;
     } else {
       "Invalid Input"
-      # Invalid session
-      # Create new one
       zellij;
     }  
   } catch {
     "Catch"
     zellij;
   }
-
-  
 }
