@@ -523,7 +523,7 @@ let-env config = {
 
 }
 
-def add_soft [project] { git remote add soft ssh://git.aya00:/$project }
+def add_soft [project] { git remote add soft $"ssh://git.aya00:/($project)" }
 
 alias ll = ls -la
 alias la = ls -a
@@ -542,7 +542,7 @@ alias defaultres = xrandr --output HDMI1 --transform 1.00,0,0,0,1.00,0,0,0,1
 alias latexmk = ^latexmk -f -pdf -interaction=nonstopmode
 
 # git
-alias gpa = git push soft --all
+alias gpa = git push all --all
 alias gras = add_soft
 alias gd = git diff
 alias gp = git push
