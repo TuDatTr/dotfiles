@@ -1,0 +1,49 @@
+* .dotfiles
+
+These are the personal dotfiles for my laptop.
+
+Main tools I am currently using are (may be out of date):
+- alacritty
+- emacs (Doom Emacs)
+- vim
+- nu
+- starship
+- picom
+- i3wm
+- zellij
+- synthing (as my home directory)
+
+#+CAPTION: Neofetch
+#+ATTR_HTML: :width 960px
+[[./resources/23-04-10_10-30-18-alacritty.png]]
+
+** Getting started
+
+*** Font setup
+
+Since we're using a powerline font we need to install them first.
+
+#+begin_src shell
+git clone https://github.com/powerline/fonts.git --depth=1
+./fonts/install.sh
+rm -rf fonts/
+#+end_src
+
+*** Installing the dotfiles
+
+To deploy the .dotfiles we use the tool stow.
+
+#+begin_src shell
+git clone https://github.com/TuDatTr/dotfiles .dotfiles && cd .dotfiles
+stow emacs
+stow zsh
+stow config
+#+end_src
+
+** Author
+
+- Tuan-Dat Tran - [[https://gitlab.com/TuDatTr/][TuDatTr]]
+
+** License
+
+This project is licensed under the GPL-3.0 License - see LICENSE file for details.
